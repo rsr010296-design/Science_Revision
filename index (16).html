@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 10 Science — Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,400&family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fffbeb;
+  --bg2: #fef3c7;
+  --card: #ffffff;
+  --orange: #c2410c;
+  --orange-l: #ffedd5;
+  --orange-m: #fb923c;
+  --blue: #0369a1;
+  --blue-l: #e0f2fe;
+  --blue-m: #38bdf8;
+  --green: #15803d;
+  --green-l: #dcfce7;
+  --green-m: #4ade80;
+  --purple: #7c3aed;
+  --purple-l: #ede9fe;
+  --purple-m: #a78bfa;
+  --teal: #0f766e;
+  --teal-l: #ccfbf1;
+  --teal-m: #2dd4bf;
+  --pink: #be185d;
+  --pink-l: #fce7f3;
+  --pink-m: #f472b6;
+  --text: #1c1107;
+  --text2: #44331a;
+  --text3: #78614a;
+  --border: #fde68a;
+  --shadow: 0 4px 32px rgba(120,60,0,0.10);
+  --font-head: 'Fraunces', serif;
+  --font-mono: 'Fira Code', monospace;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(251,146,60,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -200px; left: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(56,189,248,0.10) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  padding: .9rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(255,251,235,0.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 2px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: .78rem; font-weight: 600;
+  color: #92400e; letter-spacing: .12em; text-transform: uppercase;
+}
+.nav-badge {
+  font-family: var(--font-mono);
+  font-size: .72rem; background: var(--orange-l);
+  color: var(--orange); border: 1.5px solid #fcd34d;
+  padding: .25rem .75rem; border-radius: 999px; letter-spacing: .08em;
+}
+
+.hero {
+  position: relative; z-index: 1;
+  padding: 4rem 2.5rem 3rem;
+  max-width: 900px; margin: 0 auto;
+  text-align: center;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: .75rem; color: var(--orange);
+  letter-spacing: .18em; text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; display: block;
+  width: 40px; height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--orange));
+}
+.hero-eyebrow::after { transform: scaleX(-1); }
+
+.hero h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 800; line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.hero h1 em {
+  font-style: italic; color: var(--orange);
+}
+.hero p {
+  font-size: 1.05rem; color: var(--text2);
+  max-width: 520px; margin: 0 auto 2rem;
+}
+
+.progress-wrap {
+  max-width: 400px; margin: 0 auto 1rem;
+}
+.progress-label {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono); font-size: .72rem;
+  color: var(--text3); margin-bottom: .4rem;
+}
+.progress-bar-bg {
+  background: var(--bg2); border-radius: 999px;
+  height: 10px; overflow: hidden;
+  border: 1.5px solid var(--border);
+}
+.progress-bar-fill {
+  height: 100%; border-radius: 999px;
+  background: linear-gradient(90deg, var(--orange-m), #fbbf24);
+  transition: width .6s cubic-bezier(.4,0,.2,1);
+  width: 0%;
+}
+
+.subject-group {
+  max-width: 1000px; margin: 0 auto;
+  padding: 0 2.5rem;
+  position: relative; z-index: 1;
+}
+.subject-heading {
+  font-family: var(--font-mono);
+  font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--text3);
+  margin: 2.5rem 0 1rem;
+  display: flex; align-items: center; gap: .75rem;
+}
+.subject-heading::after {
+  content: '';
+  flex: 1; height: 1.5px;
+  background: var(--border);
+}
+.subject-group:first-of-type .subject-heading { margin-top: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 20px;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+  display: flex; flex-direction: column;
+  animation: fadeUp .5s ease backwards;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 48px rgba(120,60,0,0.15);
+}
+.card:nth-child(1) { animation-delay: .05s; }
+.card:nth-child(2) { animation-delay: .12s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-stripe {
+  height: 6px;
+}
+.card--chem .card-stripe  { background: linear-gradient(90deg, var(--orange), #fbbf24); }
+.card--phys .card-stripe  { background: linear-gradient(90deg, var(--blue), var(--blue-m)); }
+.card--bio  .card-stripe  { background: linear-gradient(90deg, var(--green), var(--green-m)); }
+.card--chem2 .card-stripe { background: linear-gradient(90deg, var(--pink), var(--pink-m)); }
+.card--phys2 .card-stripe { background: linear-gradient(90deg, var(--purple), var(--purple-m)); }
+.card--bio2 .card-stripe  { background: linear-gradient(90deg, var(--teal), var(--teal-m)); }
+
+.card-icon-wrap {
+  padding: 1.5rem 1.5rem .5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.card-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; flex-shrink: 0;
+}
+.card--chem .card-icon  { background: var(--orange-l); }
+.card--phys .card-icon  { background: var(--blue-l); }
+.card--bio  .card-icon  { background: var(--green-l); }
+.card--chem2 .card-icon { background: var(--pink-l); }
+.card--phys2 .card-icon { background: var(--purple-l); }
+.card--bio2 .card-icon  { background: var(--teal-l); }
+
+.card-meta { flex: 1; }
+.card-subject {
+  font-family: var(--font-mono); font-size: .68rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  margin-bottom: .1rem;
+}
+.card--chem .card-subject  { color: var(--orange); }
+.card--phys .card-subject  { color: var(--blue); }
+.card--bio  .card-subject  { color: var(--green); }
+.card--chem2 .card-subject { color: var(--pink); }
+.card--phys2 .card-subject { color: var(--purple); }
+.card--bio2 .card-subject  { color: var(--teal); }
+
+.card-ch {
+  font-family: var(--font-mono); font-size: .72rem;
+  color: var(--text3);
+}
+
+.card-body { padding: .5rem 1.5rem 1rem; flex: 1; }
+.card-title {
+  font-family: var(--font-head);
+  font-size: 1.25rem; font-weight: 600;
+  color: var(--text); line-height: 1.25;
+  margin-bottom: .6rem;
+}
+.card-desc {
+  font-size: .85rem; color: var(--text3);
+  line-height: 1.6;
+}
+
+.card-topics {
+  padding: 0 1.5rem .75rem;
+  display: flex; flex-wrap: wrap; gap: .4rem;
+}
+.topic-tag {
+  font-size: .72rem; padding: .2rem .6rem;
+  border-radius: 999px; border: 1.5px solid;
+  font-weight: 500;
+}
+.card--chem .topic-tag  { background: var(--orange-l); color: var(--orange); border-color: #fcd34d; }
+.card--phys .topic-tag  { background: var(--blue-l);   color: var(--blue);   border-color: #bae6fd; }
+.card--bio  .topic-tag  { background: var(--green-l);  color: var(--green);  border-color: #bbf7d0; }
+.card--chem2 .topic-tag { background: var(--pink-l);   color: var(--pink);   border-color: #fbcfe8; }
+.card--phys2 .topic-tag { background: var(--purple-l); color: var(--purple); border-color: #ddd6fe; }
+.card--bio2 .topic-tag  { background: var(--teal-l);   color: var(--teal);   border-color: #99f6e4; }
+
+.card-footer {
+  padding: 1rem 1.5rem 1.4rem;
+  display: flex; align-items: center; gap: .75rem;
+  border-top: 1.5px solid var(--border);
+}
+
+.btn-study {
+  flex: 1;
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .65rem 1.2rem;
+  border-radius: 12px; border: none; cursor: pointer;
+  font-family: var(--font-body); font-size: .88rem; font-weight: 600;
+  text-decoration: none;
+  transition: filter .2s, transform .15s;
+}
+.btn-study:hover { filter: brightness(1.08); transform: scale(1.02); }
+.card--chem .btn-study  { background: var(--orange-l); color: var(--orange); }
+.card--phys .btn-study  { background: var(--blue-l);   color: var(--blue); }
+.card--bio  .btn-study  { background: var(--green-l);  color: var(--green); }
+.card--chem2 .btn-study { background: var(--pink-l);   color: var(--pink); }
+.card--phys2 .btn-study { background: var(--purple-l); color: var(--purple); }
+.card--bio2 .btn-study  { background: var(--teal-l);   color: var(--teal); }
+
+.toggle-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: .25rem;
+}
+.toggle-label {
+  font-family: var(--font-mono); font-size: .62rem;
+  color: var(--text3); letter-spacing: .06em;
+  text-transform: uppercase; line-height: 1;
+}
+.toggle {
+  position: relative; width: 44px; height: 24px;
+  cursor: pointer;
+}
+.toggle input { display: none; }
+.toggle-track {
+  width: 100%; height: 100%;
+  background: #e5e7eb; border-radius: 999px;
+  transition: background .25s;
+  border: 2px solid #d1d5db;
+}
+.toggle input:checked + .toggle-track {
+  background: var(--green-m); border-color: var(--green);
+}
+.toggle-thumb {
+  position: absolute; top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  background: white; border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+  transition: transform .25s cubic-bezier(.4,0,.2,1);
+}
+.toggle input:checked ~ .toggle-thumb {
+  transform: translateX(20px);
+}
+
+.card.is-done { border-color: #bbf7d0; }
+.card.is-done .card-stripe { background: linear-gradient(90deg, var(--green), var(--green-m)) !important; }
+.done-badge {
+  display: none;
+  font-family: var(--font-mono); font-size: .68rem;
+  color: var(--green); background: var(--green-l);
+  border: 1.5px solid #86efac;
+  padding: .2rem .65rem; border-radius: 999px;
+  align-items: center; gap: .3rem;
+}
+.card.is-done .done-badge { display: inline-flex; }
+
+.footer {
+  position: relative; z-index: 1;
+  text-align: center; padding: 1.5rem 2rem 2.5rem;
+  font-family: var(--font-mono); font-size: .72rem;
+  color: var(--text3); letter-spacing: .08em;
+  border-top: 1.5px solid var(--border);
+  margin-top: 3rem;
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 3rem 1.25rem 2rem; }
+  .subject-group { padding: 0 1.25rem; }
+  .grid { gap: 1.2rem; }
+  .nav { padding: .75rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-logo">⚗ Class 10 · Science</span>
+  <span class="nav-badge">CBSE 2025–26</span>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Study Hub</div>
+  <h1>Your <em>Science</em><br>Chapters, All Here</h1>
+  <p>Six chapters ready to explore. Mark each one complete as you go and track your progress.</p>
+
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>Overall Progress</span>
+      <span id="prog-text">0 / 6 completed</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="prog-bar"></div>
+    </div>
+  </div>
+</section>
+
+<div class="subject-group">
+  <div class="subject-heading">⚗ Chemistry</div>
+  <div class="grid">
+
+    <div class="card card--chem" id="card-chem1">
+      <div class="card-stripe"></div>
+      <div class="card-icon-wrap">
+        <div class="card-icon">⚗️</div>
+        <div class="card-meta">
+          <div class="card-subject">Chemistry</div>
+          <div class="card-ch">Chapter 1</div>
+        </div>
+        <span class="done-badge">✔ Done</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Chemical Reactions &amp; Equations</div>
+        <div class="card-desc">Learn how substances transform, how to write balanced equations, and explore different types of chemical reactions.</div>
+      </div>
+      <div class="card-topics">
+        <span class="topic-tag">Balancing Equations</span>
+        <span class="topic-tag">Oxidation &amp; Reduction</span>
+        <span class="topic-tag">Combination</span>
+        <span class="topic-tag">Decomposition</span>
+      </div>
+      <div class="card-footer">
+        <a class="btn-study" href="CBSE_Chemistry_Ch1_ChemicalReactionsEquations.html" target="_blank">
+          📖 Study Chapter
+        </a>
+        <div class="toggle-wrap">
+          <span class="toggle-label">Done</span>
+          <label class="toggle">
+            <input type="checkbox" onchange="markDone('chem1', this)">
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card--chem2" id="card-chem2">
+      <div class="card-stripe"></div>
+      <div class="card-icon-wrap">
+        <div class="card-icon">🧪</div>
+        <div class="card-meta">
+          <div class="card-subject">Chemistry</div>
+          <div class="card-ch">Chapter 2</div>
+        </div>
+        <span class="done-badge">✔ Done</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Acids, Bases &amp; Salts</div>
+        <div class="card-desc">Discover the properties of acids and bases, how they react with each other, and learn about common salts used in daily life.</div>
+      </div>
+      <div class="card-topics">
+        <span class="topic-tag">pH Scale</span>
+        <span class="topic-tag">Neutralisation</span>
+        <span class="topic-tag">Indicators</span>
+        <span class="topic-tag">Common Salts</span>
+      </div>
+      <div class="card-footer">
+        <a class="btn-study" href="CBSE_Chemistry_Ch2_AcidsBasesSalts.html" target="_blank">
+          📖 Study Chapter
+        </a>
+        <div class="toggle-wrap">
+          <span class="toggle-label">Done</span>
+          <label class="toggle">
+            <input type="checkbox" onchange="markDone('chem2', this)">
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="subject-group">
+  <div class="subject-heading">🔭 Physics</div>
+  <div class="grid">
+
+    <div class="card card--phys" id="card-phys1">
+      <div class="card-stripe"></div>
+      <div class="card-icon-wrap">
+        <div class="card-icon">🔭</div>
+        <div class="card-meta">
+          <div class="card-subject">Physics</div>
+          <div class="card-ch">Chapter 9</div>
+        </div>
+        <span class="done-badge">✔ Done</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Light — Reflection &amp; Refraction</div>
+        <div class="card-desc">Understand how light bounces off mirrors and bends through lenses, with ray diagrams and the lens formula.</div>
+      </div>
+      <div class="card-topics">
+        <span class="topic-tag">Mirrors</span>
+        <span class="topic-tag">Lenses</span>
+        <span class="topic-tag">Ray Diagrams</span>
+        <span class="topic-tag">Snell's Law</span>
+      </div>
+      <div class="card-footer">
+        <a class="btn-study" href="CBSE_Physics_Ch9_LightReflectionRefraction.html" target="_blank">
+          📖 Study Chapter
+        </a>
+        <div class="toggle-wrap">
+          <span class="toggle-label">Done</span>
+          <label class="toggle">
+            <input type="checkbox" onchange="markDone('phys1', this)">
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card--phys2" id="card-phys2">
+      <div class="card-stripe"></div>
+      <div class="card-icon-wrap">
+        <div class="card-icon">🌈</div>
+        <div class="card-meta">
+          <div class="card-subject">Physics</div>
+          <div class="card-ch">Chapter 10</div>
+        </div>
+        <span class="done-badge">✔ Done</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">The Human Eye &amp; Colourful World</div>
+        <div class="card-desc">Explore how the human eye works, common vision defects and their correction, and the science behind rainbows and the colour of the sky.</div>
+      </div>
+      <div class="card-topics">
+        <span class="topic-tag">Eye Defects</span>
+        <span class="topic-tag">Power of Accommodation</span>
+        <span class="topic-tag">Prism &amp; Dispersion</span>
+        <span class="topic-tag">Scattering of Light</span>
+      </div>
+      <div class="card-footer">
+        <a class="btn-study" href="CBSE_Physics_Ch10_HumanEyeColourfulWorld__1_.html" target="_blank">
+          📖 Study Chapter
+        </a>
+        <div class="toggle-wrap">
+          <span class="toggle-label">Done</span>
+          <label class="toggle">
+            <input type="checkbox" onchange="markDone('phys2', this)">
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="subject-group">
+  <div class="subject-heading">🌿 Biology</div>
+  <div class="grid">
+
+    <div class="card card--bio" id="card-bio1">
+      <div class="card-stripe"></div>
+      <div class="card-icon-wrap">
+        <div class="card-icon">🌿</div>
+        <div class="card-meta">
+          <div class="card-subject">Biology</div>
+          <div class="card-ch">Chapter 5</div>
+        </div>
+        <span class="done-badge">✔ Done</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Life Processes</div>
+        <div class="card-desc">Discover the essential processes that keep living organisms alive — from nutrition and respiration to transportation and excretion.</div>
+      </div>
+      <div class="card-topics">
+        <span class="topic-tag">Nutrition</span>
+        <span class="topic-tag">Respiration</span>
+        <span class="topic-tag">Transportation</span>
+        <span class="topic-tag">Excretion</span>
+      </div>
+      <div class="card-footer">
+        <a class="btn-study" href="CBSE_Biology_Ch5_LifeProcesses.html" target="_blank">
+          📖 Study Chapter
+        </a>
+        <div class="toggle-wrap">
+          <span class="toggle-label">Done</span>
+          <label class="toggle">
+            <input type="checkbox" onchange="markDone('bio1', this)">
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card--bio2" id="card-bio2">
+      <div class="card-stripe"></div>
+      <div class="card-icon-wrap">
+        <div class="card-icon">🌍</div>
+        <div class="card-meta">
+          <div class="card-subject">Biology</div>
+          <div class="card-ch">Chapter 13</div>
+        </div>
+        <span class="done-badge">✔ Done</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Our Environment</div>
+        <div class="card-desc">Learn about ecosystems, food chains and food webs, and understand how human activities affect the environment around us.</div>
+      </div>
+      <div class="card-topics">
+        <span class="topic-tag">Ecosystems</span>
+        <span class="topic-tag">Food Chains</span>
+        <span class="topic-tag">Biodegradable Waste</span>
+        <span class="topic-tag">Ozone Layer</span>
+      </div>
+      <div class="card-footer">
+        <a class="btn-study" href="CBSE_Biology_Ch13_OurEnvironment__4_.html" target="_blank">
+          📖 Study Chapter
+        </a>
+        <div class="toggle-wrap">
+          <span class="toggle-label">Done</span>
+          <label class="toggle">
+            <input type="checkbox" onchange="markDone('bio2', this)">
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  CBSE · Class 10 · Science · Study Hub — Keep going, you've got this! 🚀
+</footer>
+
+<script>
+  const total = 6;
+  const state = { chem1: false, chem2: false, phys1: false, phys2: false, bio1: false, bio2: false };
+
+  Object.keys(state).forEach(key => {
+    const saved = localStorage.getItem('done_' + key);
+    if (saved === 'true') {
+      state[key] = true;
+      document.querySelector(`#card-${key} input[type=checkbox]`).checked = true;
+      document.getElementById('card-' + key).classList.add('is-done');
+    }
+  });
+  updateProgress();
+
+  function markDone(key, checkbox) {
+    state[key] = checkbox.checked;
+    const card = document.getElementById('card-' + key);
+    if (checkbox.checked) {
+      card.classList.add('is-done');
+    } else {
+      card.classList.remove('is-done');
+    }
+    localStorage.setItem('done_' + key, checkbox.checked);
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const done = Object.values(state).filter(Boolean).length;
+    const pct = (done / total) * 100;
+    document.getElementById('prog-bar').style.width = pct + '%';
+    document.getElementById('prog-text').textContent = done + ' / ' + total + ' completed';
+  }
+</script>
+</body>
+</html>

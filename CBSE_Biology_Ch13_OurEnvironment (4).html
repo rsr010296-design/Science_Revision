@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 10 Biology — Chapter 13: Our Environment</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f0faf4;--bg2:#e0f5e9;--bg3:#c8ecd6;
+  --card:#ffffff;--card2:#f5fcf7;
+  --green:#1a6b3c;--green-l:#d4eddf;--green-d:#0d3d22;
+  --blue:#0369a1;--blue-l:#e0f2fe;--blue-d:#0c4a6e;
+  --amber:#b45309;--amber-l:#fef3c7;--amber-d:#78350f;
+  --red:#b91c1c;--red-l:#fee2e2;
+  --purple:#7c3aed;--purple-l:#ede9fe;
+  --text:#111827;--text2:#374151;--text3:#6b7280;
+  --border:#bbf7d0;--shadow:0 4px 24px rgba(0,0,0,0.07);
+  --font-head:'Playfair Display',serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --font-body:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.75;overflow-x:hidden;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg2);}::-webkit-scrollbar-thumb{background:var(--green);border-radius:3px;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.8rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(240,250,244,0.95);backdrop-filter:blur(16px);border-bottom:2px solid var(--border);}
+.nav-logo{font-family:var(--font-mono);font-size:.8rem;color:var(--green);font-weight:600;letter-spacing:.1em;}
+.nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
+.nav-links a{font-size:.75rem;color:var(--text3);text-decoration:none;font-family:var(--font-mono);padding:.25rem .6rem;border-radius:4px;transition:all .2s;}
+.nav-links a:hover{background:var(--green-l);color:var(--green);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;padding:6rem 2rem 3rem;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#f0faf4 0%,#e0f5e9 40%,#c8ecd6 70%,#a7dfc0 100%);}
+.leaves{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.leaf{position:absolute;opacity:.12;animation:leaffall linear infinite;}
+.leaf svg{width:100%;height:100%;}
+.lf1{width:70px;height:70px;left:8%;animation-duration:10s;animation-delay:0s;}
+.lf2{width:50px;height:50px;left:25%;animation-duration:13s;animation-delay:-4s;}
+.lf3{width:90px;height:90px;left:55%;animation-duration:11s;animation-delay:-7s;}
+.lf4{width:40px;height:40px;left:75%;animation-duration:9s;animation-delay:-2s;}
+.lf5{width:60px;height:60px;left:42%;animation-duration:14s;animation-delay:-5s;}
+.lf6{width:80px;height:80px;left:88%;animation-duration:12s;animation-delay:-9s;}
+@keyframes leaffall{0%{bottom:-120px;transform:rotate(0deg) translateX(0);}50%{transform:rotate(180deg) translateX(30px);}100%{bottom:110%;transform:rotate(360deg) translateX(-20px);}}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:920px;}
+.chapter-badge{display:inline-block;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.2em;color:var(--green);border:2px solid var(--green);padding:.4rem 1.2rem;border-radius:4px;margin-bottom:1.5rem;background:rgba(255,255,255,0.75);}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:1.1;margin-bottom:.8rem;color:var(--green-d);}
+.hero h1 em{font-style:italic;color:var(--blue);}
+.hero h1 span{color:var(--amber);}
+.hero-sub{font-size:1.05rem;color:var(--text2);margin-bottom:2rem;}
+.hero-tags{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;}
+.tag{font-family:var(--font-mono);font-size:.68rem;padding:.3rem .8rem;border-radius:20px;letter-spacing:.08em;font-weight:600;}
+.tag-green{background:var(--green-l);color:var(--green-d);border:1px solid #6ee7b7;}
+.tag-blue{background:var(--blue-l);color:var(--blue-d);border:1px solid #7dd3fc;}
+.tag-amber{background:var(--amber-l);color:var(--amber-d);border:1px solid #fcd34d;}
+.tag-red{background:var(--red-l);color:var(--red);border:1px solid #fca5a5;}
+.tag-purple{background:var(--purple-l);color:var(--purple);border:1px solid #c4b5fd;}
+
+/* ENERGY PYRAMID HERO VISUAL */
+.pyramid-wrap{margin:0 auto 1.5rem;max-width:480px;}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:3px;}
+.pyr-row{display:flex;align-items:center;justify-content:center;border-radius:6px;font-family:var(--font-mono);font-size:.72rem;font-weight:600;color:white;transition:transform .3s;cursor:default;}
+.pyr-row:hover{transform:scaleX(1.04);}
+.pyr-r1{width:30%;background:#b91c1c;height:42px;}
+.pyr-r2{width:50%;background:#b45309;height:42px;}
+.pyr-r3{width:70%;background:#1a6b3c;height:42px;}
+.pyr-r4{width:92%;background:#0369a1;height:50px;font-size:.8rem;}
+.pyr-label{font-size:.8rem;color:var(--text2);margin-top:.6rem;font-family:var(--font-body);}
+
+/* SECTIONS */
+.section{padding:5rem 2rem;max-width:1100px;margin:0 auto;}
+.section-header{margin-bottom:2.5rem;}
+.section-num{font-family:var(--font-mono);font-size:.72rem;color:var(--green);letter-spacing:.2em;display:block;margin-bottom:.4rem;font-weight:600;}
+.section-title{font-family:var(--font-head);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.15;color:var(--text);}
+.section-title .g{color:var(--green);}
+.section-title .b{color:var(--blue);}
+.section-title .a{color:var(--amber);}
+.section-title .r{color:var(--red);}
+.divider{width:50px;height:4px;background:var(--green);margin-top:.8rem;border-radius:2px;}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
+.card{background:var(--card);border-radius:16px;padding:1.8rem;box-shadow:var(--shadow);border:1px solid var(--border);transition:transform .3s,box-shadow .3s;}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,0.12);}
+.card-icon{font-size:2.2rem;margin-bottom:.8rem;}
+.card h3{font-family:var(--font-head);font-size:1.15rem;margin-bottom:.5rem;}
+.card p{color:var(--text2);font-size:.93rem;}
+.card-green{border-top:4px solid var(--green);}
+.card-blue{border-top:4px solid var(--blue);}
+.card-amber{border-top:4px solid var(--amber);}
+.card-red{border-top:4px solid var(--red);}
+.card-purple{border-top:4px solid var(--purple);}
+
+/* HIGHLIGHT BOXES */
+.highlight{background:linear-gradient(135deg,var(--green-l),#f0fdf4);border:1px solid #6ee7b7;border-radius:10px;padding:1rem 1.2rem;margin:.8rem 0;}
+.highlight p{font-size:.95rem;color:var(--text2);}
+.highlight strong{color:var(--green);}
+.highlight.blue-hl{background:var(--blue-l);border-color:#7dd3fc;}
+.highlight.blue-hl strong{color:var(--blue-d);}
+.highlight.amber-hl{background:var(--amber-l);border-color:#fcd34d;}
+.highlight.amber-hl strong{color:var(--amber-d);}
+.highlight.red-hl{background:var(--red-l);border-color:#fca5a5;}
+.highlight.red-hl strong{color:var(--red);}
+.highlight.purple-hl{background:var(--purple-l);border-color:#c4b5fd;}
+.highlight.purple-hl strong{color:var(--purple);}
+
+/* TWO-COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.full-card{background:var(--card);border-radius:16px;padding:1.8rem;box-shadow:var(--shadow);border:1px solid var(--border);}
+.full-card h3{font-family:var(--font-head);font-size:1.2rem;margin-bottom:1rem;}
+
+/* STEPS */
+.steps{counter-reset:s;}
+.step{display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--card);border-radius:10px;margin-bottom:.8rem;border:1px solid var(--border);}
+.step-n{width:32px;height:32px;background:var(--green);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.75rem;font-weight:700;flex-shrink:0;}
+.step-n.blue{background:var(--blue);}
+.step-n.amber{background:var(--amber);}
+.step-n.red{background:var(--red);}
+.step-body{flex:1;}
+.step-body strong{display:block;font-size:.95rem;margin-bottom:.2rem;}
+.step-body p{font-size:.88rem;color:var(--text2);}
+.step-eq{font-family:var(--font-mono);font-size:.85rem;color:var(--green);margin-top:.4rem;padding:.4rem .7rem;background:var(--green-l);border-radius:6px;display:inline-block;}
+.step-eq.blue{color:var(--blue);background:var(--blue-l);}
+.step-eq.amber{color:var(--amber-d);background:var(--amber-l);}
+
+/* FOOD CHAIN VISUAL */
+.chain-visual{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem;background:var(--card);border-radius:16px;padding:1.8rem;box-shadow:var(--shadow);border:1px solid var(--border);margin:1.5rem 0;}
+.chain-node{display:flex;flex-direction:column;align-items:center;gap:.3rem;}
+.chain-icon{font-size:2rem;width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:2px solid;}
+.chain-lbl{font-family:var(--font-mono);font-size:.65rem;font-weight:600;text-align:center;line-height:1.3;}
+.chain-arrow{font-size:1.5rem;color:var(--text3);align-self:center;}
+.cn-green .chain-icon{background:var(--green-l);border-color:var(--green);color:var(--green);}
+.cn-green .chain-lbl{color:var(--green-d);}
+.cn-amber .chain-icon{background:var(--amber-l);border-color:var(--amber);color:var(--amber);}
+.cn-amber .chain-lbl{color:var(--amber-d);}
+.cn-blue .chain-icon{background:var(--blue-l);border-color:var(--blue);color:var(--blue);}
+.cn-blue .chain-lbl{color:var(--blue-d);}
+.cn-red .chain-icon{background:var(--red-l);border-color:var(--red);color:var(--red);}
+.cn-red .chain-lbl{color:var(--red);}
+
+/* ENERGY FLOW BARS */
+.energy-bars{margin:1.5rem 0;}
+.ebar-row{display:flex;align-items:center;gap:1rem;margin-bottom:.8rem;}
+.ebar-lbl{font-family:var(--font-mono);font-size:.72rem;font-weight:600;width:160px;flex-shrink:0;color:var(--text2);}
+.ebar-track{flex:1;background:var(--bg3);border-radius:8px;height:28px;overflow:hidden;position:relative;}
+.ebar-fill{height:100%;border-radius:8px;display:flex;align-items:center;padding-left:.6rem;font-family:var(--font-mono);font-size:.7rem;font-weight:700;color:white;transition:width 1.2s ease;}
+.ebar-val{position:absolute;right:.5rem;top:50%;transform:translateY(-50%);font-family:var(--font-mono);font-size:.7rem;color:var(--text3);}
+
+/* BIO MAGNIFICATION */
+.bmag-stack{display:flex;flex-direction:column;gap:.6rem;margin:1.5rem 0;}
+.bmag-row{display:flex;align-items:center;gap:1rem;padding:.9rem 1.2rem;border-radius:10px;border:1px solid;}
+.bmag-row .bmag-icon{font-size:1.6rem;flex-shrink:0;}
+.bmag-row .bmag-info{flex:1;}
+.bmag-row .bmag-info strong{font-size:.9rem;display:block;}
+.bmag-row .bmag-info span{font-size:.82rem;color:var(--text3);}
+.bmag-row .bmag-conc{font-family:var(--font-mono);font-size:.78rem;font-weight:700;padding:.3rem .7rem;border-radius:6px;}
+.bm1{background:#f0fdf4;border-color:#bbf7d0;}.bm1 .bmag-conc{background:var(--green-l);color:var(--green-d);}
+.bm2{background:#fef9ee;border-color:#fde68a;}.bm2 .bmag-conc{background:var(--amber-l);color:var(--amber-d);}
+.bm3{background:#fff7ed;border-color:#fed7aa;}.bm3 .bmag-conc{background:#fed7aa;color:#c2410c;}
+.bm4{background:#fef2f2;border-color:#fecaca;}.bm4 .bmag-conc{background:var(--red-l);color:var(--red);}
+
+/* OZONE SECTION */
+.ozone-wrap{background:linear-gradient(135deg,#e0f2fe,#f0f9ff);border-radius:16px;padding:2rem;border:1px solid #7dd3fc;margin:1.5rem 0;}
+.ozone-eq{font-family:var(--font-mono);font-size:1rem;color:var(--blue);background:white;border:1px solid #bae6fd;border-radius:8px;padding:.7rem 1.2rem;margin:.5rem 0;display:inline-block;line-height:1.8;}
+.cfc-badge{display:inline-block;background:var(--red-l);border:1px solid #fca5a5;color:var(--red);border-radius:20px;padding:.3rem .9rem;font-family:var(--font-mono);font-size:.72rem;font-weight:600;margin:.3rem .2rem;}
+
+/* WASTE TABLE */
+.waste-table{width:100%;border-collapse:collapse;font-size:.9rem;}
+.waste-table thead tr{background:var(--green);color:white;}
+.waste-table th{padding:.8rem 1rem;text-align:left;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;}
+.waste-table tbody tr:nth-child(even){background:var(--bg2);}
+.waste-table tbody tr:hover{background:var(--green-l);}
+.waste-table td{padding:.75rem 1rem;border-bottom:1px solid var(--border);}
+.waste-table td:first-child{font-weight:600;}
+.badge-bio{background:var(--green-l);color:var(--green-d);border:1px solid #6ee7b7;border-radius:12px;padding:.2rem .6rem;font-family:var(--font-mono);font-size:.68rem;font-weight:600;}
+.badge-nonbio{background:var(--red-l);color:var(--red);border:1px solid #fca5a5;border-radius:12px;padding:.2rem .6rem;font-family:var(--font-mono);font-size:.68rem;font-weight:600;}
+
+/* KEYWORD TABLE */
+.kw-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+.kw-table thead tr{background:linear-gradient(135deg,var(--green),#047857);}
+.kw-table th{padding:.8rem 1rem;text-align:left;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;color:white;}
+.kw-table tbody tr{border-bottom:1px solid var(--border);transition:background .2s;}
+.kw-table tbody tr:hover{background:var(--bg2);}
+.kw-table td{padding:.7rem 1rem;font-size:.9rem;}
+.kw-table td:first-child{font-family:var(--font-mono);color:var(--green);font-weight:600;}
+
+/* SUMMARY TABLE */
+.sum-table{width:100%;border-collapse:collapse;}
+.sum-table thead tr{background:var(--green);color:white;}
+.sum-table th{padding:.8rem 1rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-align:left;}
+.sum-table tbody tr:nth-child(odd){background:var(--card);}
+.sum-table tbody tr:nth-child(even){background:var(--bg2);}
+.sum-table td{padding:.75rem 1rem;font-size:.9rem;border-bottom:1px solid var(--border);}
+.sum-table td:first-child{font-weight:700;color:var(--green);}
+
+/* EXERCISES */
+.exercise-list{counter-reset:ex;list-style:none;padding:0;}
+.exercise-list li{counter-increment:ex;display:flex;gap:1rem;padding:.9rem 1rem;background:var(--card);border-radius:10px;border:1px solid var(--border);margin-bottom:.7rem;}
+.exercise-list li::before{content:counter(ex);font-family:var(--font-mono);font-size:.8rem;font-weight:700;color:white;background:var(--green);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ex-text{font-size:.92rem;color:var(--text2);}
+.ex-options{margin-top:.5rem;display:flex;flex-direction:column;gap:.3rem;}
+.ex-opt{font-size:.85rem;padding:.3rem .7rem;border-radius:6px;cursor:pointer;border:1px solid transparent;transition:all .2s;}
+.ex-opt:hover{background:var(--green-l);border-color:var(--green);}
+.ex-opt.correct{background:var(--green-l);border-color:var(--green);color:var(--green-d);font-weight:600;}
+.ex-opt.wrong{background:var(--red-l);border-color:var(--red);color:var(--red);}
+
+/* TICKER */
+.ticker-wrap{overflow:hidden;background:var(--green);padding:.5rem 0;margin:2rem 0;}
+.ticker{display:flex;gap:4rem;animation:tick 22s linear infinite;white-space:nowrap;}
+.ticker span{font-family:var(--font-mono);font-size:.75rem;color:white;letter-spacing:.1em;}
+.ticker span strong{color:#86efac;}
+@keyframes tick{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* REAL WORLD */
+.rw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin:1.5rem 0;}
+.rw-card{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);transition:transform .3s;}
+.rw-card:hover{transform:translateY(-4px);}
+.rw-header{padding:1.2rem 1.5rem;display:flex;align-items:center;gap:.8rem;}
+.rw-icon{font-size:2rem;}
+.rw-name{font-family:var(--font-head);font-size:1.1rem;font-weight:700;}
+.rw-body{padding:1rem 1.5rem 1.5rem;}
+.rw-body p{font-size:.88rem;color:var(--text2);margin-bottom:.6rem;}
+.rw-fact{font-family:var(--font-mono);font-size:.8rem;background:var(--bg2);padding:.5rem .8rem;border-radius:6px;color:var(--green);}
+.rw-g{background:linear-gradient(135deg,var(--green-l),#f0fdf9);}
+.rw-b{background:linear-gradient(135deg,var(--blue-l),#f0f9ff);}
+.rw-a{background:linear-gradient(135deg,var(--amber-l),#fffbeb);}
+.rw-r{background:linear-gradient(135deg,var(--red-l),#fff5f5);}
+.rw-p{background:linear-gradient(135deg,var(--purple-l),#faf5ff);}
+
+/* ANSWER TOGGLE */
+.ans-wrap{margin-top:.8rem;}
+.show-ans-btn{font-family:var(--font-mono);font-size:.75rem;font-weight:600;color:var(--green);background:var(--green-l);border:1.5px solid var(--green);border-radius:6px;padding:.35rem .9rem;cursor:pointer;transition:all .2s;letter-spacing:.05em;}
+.show-ans-btn:hover{background:var(--green);color:white;}
+.show-ans-btn.open{background:var(--green);color:white;}
+.ans-box{margin-top:.7rem;background:linear-gradient(135deg,var(--green-l),#f0fdf4);border-left:4px solid var(--green);border-radius:0 8px 8px 0;padding:.9rem 1.1rem;font-size:.9rem;color:var(--text2);line-height:1.8;animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .6s,transform .6s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* SECTION ALT BG */
+.section-alt{background:linear-gradient(180deg,var(--bg2),var(--bg));}
+
+@media(max-width:768px){
+  .two-col{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .chain-visual{gap:.3rem;}
+  .ebar-lbl{width:110px;font-size:.65rem;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">CBSE · CLASS 10 · BIOLOGY</div>
+  <div class="nav-links">
+    <a href="#ecosystem">Ecosystem</a>
+    <a href="#foodchain">Food Chain</a>
+    <a href="#energyflow">Energy Flow</a>
+    <a href="#biomag">Bio Magnification</a>
+    <a href="#ozone">Ozone Layer</a>
+    <a href="#waste">Waste</a>
+    <a href="#keywords">Keywords</a>
+    <a href="#exercises">Exercises</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="leaves">
+    <div class="leaf lf1"><svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 5 C50 5 55 30 30 55 C5 30 10 5 30 5Z" fill="#1a6b3c"/></svg></div>
+    <div class="leaf lf2"><svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 5 C50 5 55 30 30 55 C5 30 10 5 30 5Z" fill="#0369a1"/></svg></div>
+    <div class="leaf lf3"><svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 5 C50 5 55 30 30 55 C5 30 10 5 30 5Z" fill="#b45309"/></svg></div>
+    <div class="leaf lf4"><svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 5 C50 5 55 30 30 55 C5 30 10 5 30 5Z" fill="#1a6b3c"/></svg></div>
+    <div class="leaf lf5"><svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 5 C50 5 55 30 30 55 C5 30 10 5 30 5Z" fill="#7c3aed"/></svg></div>
+    <div class="leaf lf6"><svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 5 C50 5 55 30 30 55 C5 30 10 5 30 5Z" fill="#0369a1"/></svg></div>
+  </div>
+  <div class="hero-content">
+    <div class="chapter-badge">CHAPTER 13 · CBSE CLASS 10 SCIENCE · BIOLOGY</div>
+    <h1>Our <em>Environment</em></h1>
+    <p class="hero-sub">Ecosystem · Food Chains · Energy Flow · Ozone Layer · Waste Management</p>
+    <div class="hero-tags">
+      <span class="tag tag-green">🌿 BIOTIC &amp; ABIOTIC</span>
+      <span class="tag tag-blue">🔗 FOOD CHAINS &amp; WEBS</span>
+      <span class="tag tag-amber">⚡ 10% ENERGY TRANSFER</span>
+      <span class="tag tag-red">☠️ BIO MAGNIFICATION</span>
+      <span class="tag tag-purple">🌍 OZONE DEPLETION</span>
+    </div>
+    <!-- Trophic Pyramid -->
+    <div class="pyramid-wrap">
+      <div class="pyramid">
+        <div class="pyr-row pyr-r1">🦁 Tertiary Consumers</div>
+        <div class="pyr-row pyr-r2">🦊 Secondary Consumers</div>
+        <div class="pyr-row pyr-r3">🐇 Primary Consumers</div>
+        <div class="pyr-row pyr-r4">🌿 Producers (Plants)</div>
+      </div>
+      <p class="pyr-label">▲ Trophic levels — energy available decreases at each step</p>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span><strong>Ecosystem =</strong> Biotic + Abiotic components</span>
+    <span><strong>10% Rule:</strong> Only 10% energy passes to next trophic level</span>
+    <span><strong>Ozone (O₃)</strong> shields Earth from UV radiation</span>
+    <span><strong>CFCs</strong> → responsible for ozone layer depletion</span>
+    <span><strong>Biodegradable:</strong> broken down by biological processes</span>
+    <span><strong>Biological Magnification:</strong> harmful chemicals accumulate at each trophic level</span>
+    <span><strong>Producers →</strong> Herbivores (Primary consumers) → Carnivores (Secondary consumers) → Larger Carnivores (Tertiary consumers)</span>
+    <span><strong>Decomposers:</strong> bacteria &amp; fungi break down dead matter</span>
+    <span><strong>Ecosystem =</strong> Biotic + Abiotic components</span>
+    <span><strong>10% Rule:</strong> Only 10% energy passes to next trophic level</span>
+    <span><strong>Ozone (O₃)</strong> shields Earth from UV radiation</span>
+    <span><strong>CFCs</strong> → responsible for ozone layer depletion</span>
+    <span><strong>Biodegradable:</strong> broken down by biological processes</span>
+    <span><strong>Biological Magnification:</strong> harmful chemicals accumulate at each trophic level</span>
+  </div>
+</div>
+
+<!-- SECTION 1: ECOSYSTEM -->
+<section class="section" id="ecosystem">
+  <div class="section-header reveal">
+    <span class="section-num">01 · ECOSYSTEM</span>
+    <h2 class="section-title">What is an <span class="g">Ecosystem</span>?</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="card-grid reveal">
+    <div class="card card-green">
+      <div class="card-icon">🌿</div>
+      <h3 style="color:var(--green)">Ecosystem</h3>
+      <p>All interacting organisms in an area <strong>together with the non-living constituents</strong> of the environment form an ecosystem. It has <strong>biotic</strong> and <strong>abiotic</strong> components.</p>
+      <p style="margin-top:.5rem;font-size:.85rem;color:var(--text3)">Examples: forests, ponds, lakes, gardens, crop-fields</p>
+    </div>
+    <div class="card card-blue">
+      <div class="card-icon">🌡️</div>
+      <h3 style="color:var(--blue)">Abiotic Components</h3>
+      <p>Physical, non-living factors that influence ecosystems: <strong>temperature, rainfall, wind, soil</strong> and <strong>minerals</strong>.</p>
+      <p style="margin-top:.5rem;font-size:.85rem;color:var(--text3)">Natural ecosystems: forests, ponds, lakes. Artificial: gardens, crop-fields, aquarium.</p>
+    </div>
+    <div class="card card-amber">
+      <div class="card-icon">🌱</div>
+      <h3 style="color:var(--amber)">Biotic Components</h3>
+      <p>All living organisms — plants, animals, microorganisms, humans. Classified as <strong>producers, consumers</strong> and <strong>decomposers</strong>.</p>
+      <p style="margin-top:.5rem;font-size:.85rem;color:var(--text3)">Consumers: herbivores, carnivores, omnivores, parasites</p>
+    </div>
+  </div>
+
+  <div class="two-col reveal" style="margin-top:1.5rem;">
+    <div class="full-card">
+      <h3>🌿 Producers</h3>
+      <p style="font-size:.9rem;color:var(--text2);margin-bottom:.8rem;">Green plants and certain bacteria that produce food by <strong>photosynthesis</strong> from inorganic substances using solar energy. They are at the <strong>first trophic level</strong>.</p>
+      <div class="highlight"><p>💡 <strong>Only about 1%</strong> of sunlight energy that falls on leaves is captured and converted into food energy by green plants.</p></div>
+    </div>
+    <div class="full-card">
+      <h3>🍄 Decomposers</h3>
+      <p style="font-size:.9rem;color:var(--text2);margin-bottom:.8rem;">Microorganisms — mainly <strong>bacteria and fungi</strong> — that break down the dead remains and waste products of organisms. They break down the <strong>complex organic substances into simple inorganic substances</strong> that go into the soil and are used up once more by the plants.</p>
+      <div class="highlight amber-hl"><p>⚠️ <strong>Without decomposers:</strong> Dead organic matter would pile up, nutrient recycling in soil would stop, and ecosystem balance would collapse.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: FOOD CHAIN -->
+<section class="section section-alt" id="foodchain">
+  <div class="section-header reveal">
+    <span class="section-num">02 · FOOD CHAINS &amp; WEBS</span>
+    <h2 class="section-title"><span class="g">Food Chains,</span> Webs &amp; <span class="b">Trophic Levels</span></h2>
+    <div class="divider"></div>
+  </div>
+
+  <!-- Food Chain Visuals -->
+  <div class="full-card reveal" style="margin-bottom:1.5rem;">
+    <h3>🌿 Food Chain — Grassland Example</h3>
+    <div class="chain-visual">
+      <div class="chain-node cn-green">
+        <div class="chain-icon">🌾</div>
+        <div class="chain-lbl">Grass<br><span style="color:var(--text3);font-size:.6rem;">PRODUCER<br>Trophic Level 1</span></div>
+      </div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-node cn-amber">
+        <div class="chain-icon">🐇</div>
+        <div class="chain-lbl">Rabbit<br><span style="color:var(--text3);font-size:.6rem;">HERBIVORE<br>Trophic Level 2</span></div>
+      </div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-node cn-blue">
+        <div class="chain-icon">🦊</div>
+        <div class="chain-lbl">Fox<br><span style="color:var(--text3);font-size:.6rem;">CARNIVORE<br>Trophic Level 3</span></div>
+      </div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-node cn-red">
+        <div class="chain-icon">🦅</div>
+        <div class="chain-lbl">Eagle<br><span style="color:var(--text3);font-size:.6rem;">TERTIARY CONSUMER<br>Trophic Level 4</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-card reveal" style="margin-bottom:1.5rem;">
+    <h3>🌊 Food Chain — Aquatic (Pond) Example</h3>
+    <div class="chain-visual">
+      <div class="chain-node cn-green">
+        <div class="chain-icon">🌿</div>
+        <div class="chain-lbl">Algae / Water<br>Plants<br><span style="color:var(--text3);font-size:.6rem;">PRODUCER</span></div>
+      </div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-node cn-amber">
+        <div class="chain-icon">🦐</div>
+        <div class="chain-lbl">Small<br>Insects<br><span style="color:var(--text3);font-size:.6rem;">HERBIVORE</span></div>
+      </div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-node cn-blue">
+        <div class="chain-icon">🐟</div>
+        <div class="chain-lbl">Small Fish<br><br><span style="color:var(--text3);font-size:.6rem;">CARNIVORE</span></div>
+      </div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-node cn-red">
+        <div class="chain-icon">🐊</div>
+        <div class="chain-lbl">Large Fish<br>/ Frog<br><span style="color:var(--text3);font-size:.6rem;">TERTIARY CONSUMER</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-body">
+        <strong>Trophic Levels</strong>
+        <p>Each step or level of a food chain is called a <strong>trophic level</strong>. Producers = 1st, herbivores = 2nd, small carnivores = 3rd, large carnivores = 4th trophic level.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-body">
+        <strong>Food Web</strong>
+        <p>In nature, each organism is eaten by two or more organisms, and in turn eats several others. This complex interlinking of food chains forms a <strong>food web</strong>.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-body">
+        <strong>Autotrophs vs Heterotrophs</strong>
+        <p><strong>Autotrophs</strong> (producers) capture solar energy and convert it to chemical energy. <strong>Heterotrophs</strong> (consumers) depend on autotrophs directly or indirectly.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-body">
+        <strong>Why Short Food Chains?</strong>
+        <p>Loss of energy at each step is so great that very little usable energy remains after four trophic levels. Food chains generally consist of only <strong>3 to 4 steps</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight reveal" style="margin-top:1rem;">
+    <p>🌐 <strong>A food web</strong> consists of many interlinking food chains. It is a more realistic picture of feeding relationships in nature because most organisms eat more than one type of food.</p>
+  </div>
+</section>
+
+<!-- SECTION 3: ENERGY FLOW -->
+<section class="section" id="energyflow">
+  <div class="section-header reveal">
+    <span class="section-num">03 · ENERGY FLOW</span>
+    <h2 class="section-title">Energy Flow &amp; the <span class="a">10% Energy Transfer</span></h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="two-col reveal">
+    <div class="full-card">
+      <h3>⚡ Key Principles of Energy Flow</h3>
+      <div class="steps" style="margin-top:.5rem;">
+        <div class="step">
+          <div class="step-n amber">1</div>
+          <div class="step-body">
+            <strong>Unidirectional Flow</strong>
+            <p>Energy flows only in one direction — from producers to consumers. It <strong>does not reverse</strong> back to the previous level.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n amber">2</div>
+          <div class="step-body">
+            <strong>Energy Decreases at Each Level</strong>
+            <p>The energy available at each trophic level gets diminished progressively. Energy is lost as heat to the environment, some goes into digestion and in doing work, and only the rest goes towards growth.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n amber">3</div>
+          <div class="step-body">
+            <strong>10% Energy Transfer</strong>
+            <p>Only <strong>10%</strong> of the food eaten is turned into body mass and made available for the next level. 90% is lost as heat, digestion, and work.</p>
+            <div class="step-eq amber">1000 J → 100 J → 10 J → 1 J (across 4 levels)</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n amber">4</div>
+          <div class="step-body">
+            <strong>Plants Capture 1% of Sunlight</strong>
+            <p>Green plants in a terrestrial ecosystem capture about <strong>1%</strong> of the sunlight energy that falls on their leaves.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="full-card">
+      <h3>📊 Energy Available at Each Level</h3>
+      <p style="font-size:.85rem;color:var(--text3);margin-bottom:1rem;">Starting from 10,000 units of solar energy absorbed by plants</p>
+      <div class="energy-bars" id="ebars">
+        <div class="ebar-row">
+          <div class="ebar-lbl">🌿 Producers</div>
+          <div class="ebar-track">
+            <div class="ebar-fill" id="eb1" style="width:0%;background:var(--green);">10,000 J</div>
+            <div class="ebar-val">10,000 J</div>
+          </div>
+        </div>
+        <div class="ebar-row">
+          <div class="ebar-lbl">🐇 Herbivores</div>
+          <div class="ebar-track">
+            <div class="ebar-fill" id="eb2" style="width:0%;background:var(--amber);">1,000 J</div>
+            <div class="ebar-val">1,000 J</div>
+          </div>
+        </div>
+        <div class="ebar-row">
+          <div class="ebar-lbl">🦊 Carnivores</div>
+          <div class="ebar-track">
+            <div class="ebar-fill" id="eb3" style="width:0%;background:#b45309;">100 J</div>
+            <div class="ebar-val">100 J</div>
+          </div>
+        </div>
+        <div class="ebar-row">
+          <div class="ebar-lbl">🦁 Top Carnivores</div>
+          <div class="ebar-track">
+            <div class="ebar-fill" id="eb4" style="width:0%;background:var(--red);">10 J</div>
+            <div class="ebar-val">10 J</div>
+          </div>
+        </div>
+      </div>
+      <div class="highlight amber-hl" style="margin-top:.5rem;">
+        <p>⚡ <strong>90% energy is lost</strong> at each trophic level as heat, in digestion, and in doing work. Only 10% becomes body mass for the next level.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: BIOLOGICAL MAGNIFICATION -->
+<section class="section section-alt" id="biomag">
+  <div class="section-header reveal">
+    <span class="section-num">04 · BIOLOGICAL MAGNIFICATION</span>
+    <h2 class="section-title">Biological <span class="r">Magnification</span></h2>
+    <div class="divider" style="background:var(--red);"></div>
+  </div>
+
+  <div class="two-col reveal">
+    <div class="full-card">
+      <h3>☠️ What is Biological Magnification?</h3>
+      <p style="font-size:.9rem;color:var(--text2);margin-bottom:1rem;">Pesticides and harmful chemicals used to protect crops are washed into soil and water. They enter the food chain and get <strong>progressively concentrated</strong> at each trophic level. This is called <strong>biological magnification</strong>.</p>
+      <div class="steps" style="margin-top:.5rem;">
+        <div class="step">
+          <div class="step-n red">1</div>
+          <div class="step-body">
+            <strong>Entry Point</strong>
+            <p>Pesticides are washed into soil/water → absorbed by plants and aquatic organisms → enter the food chain.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n red">2</div>
+          <div class="step-body">
+            <strong>Non-Degradable Accumulation</strong>
+            <p>Since these chemicals are <strong>not degradable</strong>, they accumulate progressively at each trophic level and are not excreted.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n red">3</div>
+          <div class="step-body">
+            <strong>Humans at Greatest Risk</strong>
+            <p>Humans occupy the <strong>top of food chains</strong>, so the maximum concentration of toxic chemicals accumulates in our bodies.</p>
+          </div>
+        </div>
+      </div>
+      <div class="highlight red-hl" style="margin-top:.5rem;">
+        <p>⚠️ <strong>Pesticide residues</strong> are found in wheat, rice, vegetables, fruits and even meat. They cannot always be removed by washing.</p>
+      </div>
+    </div>
+    <div class="full-card">
+      <h3>📈 Concentration Increases Up the Chain</h3>
+      <div class="bmag-stack" style="margin-top:.5rem;">
+        <div class="bmag-row bm1">
+          <div class="bmag-icon">🌿</div>
+          <div class="bmag-info">
+            <strong>Producers (Plants / Algae)</strong>
+            <span>Absorb pesticides from soil &amp; water</span>
+          </div>
+          <div class="bmag-conc">0.001 ppm</div>
+        </div>
+        <div class="bmag-row bm2">
+          <div class="bmag-icon">🦐</div>
+          <div class="bmag-info">
+            <strong>Primary Consumers (Insects / Small Animals)</strong>
+            <span>Eat large amounts of plants</span>
+          </div>
+          <div class="bmag-conc">0.01 ppm</div>
+        </div>
+        <div class="bmag-row bm3">
+          <div class="bmag-icon">🐟</div>
+          <div class="bmag-info">
+            <strong>Secondary Consumers (Fish / Birds)</strong>
+            <span>Accumulate from prey eaten</span>
+          </div>
+          <div class="bmag-conc">0.1 ppm</div>
+        </div>
+        <div class="bmag-row bm4">
+          <div class="bmag-icon">👤</div>
+          <div class="bmag-info">
+            <strong>Top Consumers (Humans)</strong>
+            <span>Highest concentration — most at risk</span>
+          </div>
+          <div class="bmag-conc">1–10 ppm ⚠️</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: OZONE LAYER -->
+<section class="section" id="ozone">
+  <div class="section-header reveal">
+    <span class="section-num">05 · OZONE LAYER</span>
+    <h2 class="section-title">Ozone Layer &amp; <span class="b">Its Depletion</span></h2>
+    <div class="divider" style="background:var(--blue);"></div>
+  </div>
+
+  <div class="two-col reveal">
+    <div class="full-card">
+      <h3>🌍 What is the Ozone Layer?</h3>
+      <p style="font-size:.9rem;color:var(--text2);margin-bottom:1rem;">Ozone (O₃) is a molecule formed by <strong>three atoms of oxygen</strong>. Ozone is a <strong>deadly poison</strong>. However, at the higher levels of the atmosphere, ozone performs an essential function. It <strong>shields the surface of the earth from ultraviolet (UV) radiation</strong> from the Sun. This radiation is highly damaging to organisms — it is known to cause <strong>skin cancer in human beings</strong>.</p>
+      <div class="ozone-wrap">
+        <p style="font-family:var(--font-mono);font-size:.72rem;color:var(--blue-d);letter-spacing:.1em;margin-bottom:.8rem;font-weight:600;">HOW OZONE FORMS IN THE STRATOSPHERE</p>
+        <div class="ozone-eq">O₂ →<sup>UV</sup> O + O</div>
+        <br>
+        <div class="ozone-eq">O + O₂ → O₃ (Ozone)</div>
+        <p style="font-size:.85rem;color:var(--text3);margin-top:.8rem;">High-energy UV radiation splits O₂ molecules into free oxygen atoms which then combine with O₂ to form ozone.</p>
+      </div>
+    </div>
+    <div class="full-card">
+      <h3>⚠️ How is it Getting Depleted?</h3>
+      <div class="steps" style="margin-top:.5rem;">
+        <div class="step">
+          <div class="step-n blue">1</div>
+          <div class="step-body">
+            <strong>Sharp Drop in the 1980s</strong>
+            <p>Ozone levels in the atmosphere began dropping sharply in the <strong>1980s</strong> — scientists noticed a growing "hole" over Antarctica.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n blue">2</div>
+          <div class="step-body">
+            <strong>CFCs are the Culprit</strong>
+            <p>Linked to synthetic <strong>chlorofluorocarbons (CFCs)</strong> used as refrigerants and in fire extinguishers — they destroy ozone molecules.</p>
+            <div style="margin-top:.5rem;">
+              <span class="cfc-badge">Refrigerants</span>
+              <span class="cfc-badge">Fire Extinguishers</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n blue">3</div>
+          <div class="step-body">
+            <strong>UNEP Agreement — 1987</strong>
+            <p>The <strong>United Nations Environment Programme (UNEP)</strong> succeeded in forging an agreement to freeze CFC production at 1986 levels.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n blue">4</div>
+          <div class="step-body">
+            <strong>CFC-Free Refrigerators Mandatory</strong>
+            <p>It is now <strong>mandatory for all manufacturing companies</strong> to make CFC-free refrigerators throughout the world.</p>
+          </div>
+        </div>
+      </div>
+      <div class="highlight blue-hl" style="margin-top:.5rem;">
+        <p>☀️ <strong>UV Radiation Danger:</strong> UV radiation is highly damaging to organisms. It is known to cause skin cancer in human beings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: WASTE MANAGEMENT -->
+<section class="section section-alt" id="waste">
+  <div class="section-header reveal">
+    <span class="section-num">06 · WASTE MANAGEMENT</span>
+    <h2 class="section-title">Biodegradable vs <span class="r">Non-Biodegradable</span> Waste</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="card-grid reveal">
+    <div class="card card-green">
+      <div class="card-icon">♻️</div>
+      <h3 style="color:var(--green)">Biodegradable</h3>
+      <p>Substances broken down by <strong>biological processes</strong> — by bacteria, fungi or other microorganisms. They decompose naturally and return nutrients to the soil.</p>
+      <p style="margin-top:.6rem;font-size:.85rem;color:var(--text3)">Examples: vegetable peels, fruit waste, paper, cloth, wood, food scraps, tea leaves</p>
+    </div>
+    <div class="card card-red">
+      <div class="card-icon">⚠️</div>
+      <h3 style="color:var(--red)">Non-Biodegradable</h3>
+      <p>Substances that are <strong>not broken down</strong> by biological processes — not acted upon by bacteria or other saprophytes. They persist in the environment for a long time or may harm the various members of the ecosystem.</p>
+      <p style="margin-top:.6rem;font-size:.85rem;color:var(--text3)">Examples: human-made materials like plastics, metals, synthetic fibres, chemicals like DDT</p>
+    </div>
+    <div class="card card-amber">
+      <div class="card-icon">🏭</div>
+      <h3 style="color:var(--amber)">Waste Problem</h3>
+      <p>Improved lifestyle → <strong>greater waste generation</strong>. More disposable items. Changes in packaging → more non-biodegradable waste. Serious environmental impact.</p>
+      <p style="margin-top:.6rem;font-size:.85rem;color:var(--text3)">Sewage, industrial waste, e-waste, plastic waste are major concerns</p>
+    </div>
+  </div>
+
+  <div class="full-card reveal" style="margin-top:1.5rem;">
+    <h3>📋 Biodegradable vs Non-Biodegradable — Comparison</h3>
+    <table class="waste-table">
+      <thead><tr><th>PROPERTY</th><th>BIODEGRADABLE</th><th>NON-BIODEGRADABLE</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Definition</td>
+          <td>Broken down by biological processes</td>
+          <td>Cannot be broken down biologically</td>
+        </tr>
+        <tr>
+          <td>Agents</td>
+          <td>Bacteria, fungi, microorganisms</td>
+          <td>Only physical processes (heat/pressure)</td>
+        </tr>
+        <tr>
+          <td>Persistence</td>
+          <td>Decomposes in weeks to months</td>
+          <td>Persists for decades to centuries</td>
+        </tr>
+        <tr>
+          <td>Effect on Soil</td>
+          <td>Replenishes nutrients; improves soil</td>
+          <td>Makes soil infertile; clogs it</td>
+        </tr>
+        <tr>
+          <td>Food Chain Risk</td>
+          <td>Low (natural compounds)</td>
+          <td>High — undergo biological magnification (e.g. DDT, pesticides)</td>
+        </tr>
+        <tr>
+          <td>Examples</td>
+          <td><span class="badge-bio">Paper</span> <span class="badge-bio">Food waste</span> <span class="badge-bio">Cotton</span> <span class="badge-bio">Wood</span></td>
+          <td><span class="badge-nonbio">Plastic</span> <span class="badge-nonbio">Glass</span> <span class="badge-nonbio">DDT</span> <span class="badge-nonbio">Metal cans</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Real World Applications -->
+  <div class="section-header reveal" style="margin-top:3rem;margin-bottom:1rem;">
+    <span class="section-num">06.1 · REAL-WORLD ENVIRONMENT ISSUES</span>
+    <h2 class="section-title" style="font-size:1.8rem;">Our <span class="g">Impact</span> on the Environment</h2>
+  </div>
+  <div class="rw-grid reveal">
+    <div class="rw-card">
+      <div class="rw-header rw-g"><div class="rw-icon">🌾</div><div class="rw-name" style="color:var(--green-d)">Pesticides in Food</div></div>
+      <div class="rw-body">
+        <p>Pesticides used to protect crops enter the food chain through soil and water. Due to biological magnification, they reach dangerous levels in food grains, vegetables, and meat.</p>
+        <div class="rw-fact">Our food grains such as wheat and rice, vegetables and fruits, and even meat, contain varying amounts of pesticide residues that cannot always be removed by washing</div>
+      </div>
+    </div>
+    <div class="rw-card">
+      <div class="rw-header rw-b"><div class="rw-icon">🌊</div><div class="rw-name" style="color:var(--blue-d)">Water Body Pollution</div></div>
+      <div class="rw-body">
+        <p>Untreated sewage and industrial waste discharged into water bodies pollutes rivers and lakes. Aquatic food chains absorb these pollutants, endangering all dependent life.</p>
+        <div class="rw-fact" style="color:var(--blue);">Solution: Sewage treatment plants before water body discharge</div>
+      </div>
+    </div>
+    <div class="rw-card">
+      <div class="rw-header rw-a"><div class="rw-icon">♻️</div><div class="rw-name" style="color:var(--amber-d)">Disposable Culture</div></div>
+      <div class="rw-body">
+        <p>From plastic cups to electronic gadgets, our disposable lifestyle generates enormous non-biodegradable waste. E-waste contains hazardous materials like mercury and lead.</p>
+        <div class="rw-fact" style="color:var(--amber-d);">Kulhads → Plastic cups → Paper cups: a historical shift in waste impact</div>
+      </div>
+    </div>
+    <div class="rw-card">
+      <div class="rw-header rw-r"><div class="rw-icon">🔬</div><div class="rw-name" style="color:var(--red)">E-Waste Hazard</div></div>
+      <div class="rw-body">
+        <p>Electronic items we use daily, such as phones and computers, contain hazardous materials. Improper disposal of e-waste can pollute soil and water, causing serious harm to the environment.</p>
+        <div class="rw-fact" style="color:var(--red);">NCERT notes that electronic items contain hazardous materials that must be disposed of carefully to protect the environment</div>
+      </div>
+    </div>
+    <div class="rw-card">
+      <div class="rw-header rw-p"><div class="rw-icon">🌍</div><div class="rw-name" style="color:var(--purple)">Ozone Hole — Antarctica</div></div>
+      <div class="rw-body">
+        <p>The ozone hole discovered over Antarctica is evidence of CFC damage. International agreements have slowed CFC emissions and the ozone layer shows signs of slow recovery.</p>
+        <div class="rw-fact" style="color:var(--purple);">UNEP 1987 agreement: global CFC production freeze — ozone layer showing signs of slow recovery</div>
+      </div>
+    </div>
+    <div class="rw-card">
+      <div class="rw-header rw-g"><div class="rw-icon">🏫</div><div class="rw-name" style="color:var(--green-d)">What You Can Do</div></div>
+      <div class="rw-body">
+        <p>Use cloth bags, switch off unused lights and fans, walk or cycle instead of taking vehicles, segregate biodegradable and non-biodegradable waste at home.</p>
+        <div class="rw-fact">Segregate biodegradable and non-biodegradable waste at home and dispose of them responsibly</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: KEYWORDS -->
+<section class="section" id="keywords" style="background:linear-gradient(180deg,var(--bg2),var(--bg));">
+  <div class="section-header reveal">
+    <span class="section-num">07 · IMPORTANT KEYWORDS</span>
+    <h2 class="section-title">Keywords &amp; <span class="b">Definitions</span> <small style="font-size:.6em;color:var(--text3)">(as per NCERT)</small></h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="full-card reveal">
+    <table class="kw-table">
+      <thead><tr><th>KEYWORD</th><th>NCERT DEFINITION</th></tr></thead>
+      <tbody>
+        <tr><td>Ecosystem</td><td>All the interacting organisms in an area together with the non-living constituents of the environment. Consists of biotic and abiotic components.</td></tr>
+        <tr><td>Biotic Components</td><td>The living organisms in an ecosystem — plants, animals, microorganisms and humans — categorised as producers, consumers and decomposers.</td></tr>
+        <tr><td>Abiotic Components</td><td>The non-living physical factors of an ecosystem: temperature, rainfall, wind, soil and minerals.</td></tr>
+        <tr><td>Producers</td><td>Green plants and certain bacteria that produce food by photosynthesis using radiant energy of the Sun from inorganic substances. At the first trophic level.</td></tr>
+        <tr><td>Consumers</td><td>Organisms that consume food produced by producers, either directly (herbivores) or indirectly (carnivores). Includes herbivores, carnivores, omnivores and parasites.</td></tr>
+        <tr><td>Decomposers</td><td>Microorganisms (bacteria and fungi) that break down dead remains and waste products of organisms into simple inorganic substances returned to the soil.</td></tr>
+        <tr><td>Food Chain</td><td>A series of organisms each feeding on the previous one, showing the transfer of food energy. Each step is a trophic level.</td></tr>
+        <tr><td>Food Web</td><td>A complex network of interconnected food chains. Each organism is generally eaten by two or more organisms forming a series of branching lines.</td></tr>
+        <tr><td>Trophic Level</td><td>Each step or level of a food chain. Producers = 1st level, herbivores = 2nd, small carnivores = 3rd, larger carnivores = 4th.</td></tr>
+        <tr><td>Flow of Energy (10% Rule)</td><td>On average, only 10% of the food (energy) eaten at each trophic level is turned into its own body mass and made available for the next level of consumers. 90% is lost as heat, in digestion and in doing work.</td></tr>
+        <tr><td>Biological Magnification</td><td>The progressive accumulation of non-degradable chemicals (like pesticides) at each trophic level. Concentration is highest in organisms at the top of food chains (humans).</td></tr>
+        <tr><td>Ozone (O₃)</td><td>A molecule formed by three atoms of oxygen. At higher atmospheric levels it shields Earth from harmful UV radiation from the Sun.</td></tr>
+        <tr><td>CFCs</td><td>Chlorofluorocarbons — synthetic chemicals used in refrigerants and fire extinguishers that are responsible for depletion of the ozone layer.</td></tr>
+        <tr><td>UV Radiation</td><td>Ultraviolet radiation from the Sun. The ozone layer shields the surface of the earth from this radiation. It is highly damaging to organisms and is known to cause skin cancer in human beings.</td></tr>
+        <tr><td>Biodegradable</td><td>Substances that can be broken down by biological processes (bacteria, fungi). Examples: food waste, paper, cotton, wood.</td></tr>
+        <tr><td>Non-Biodegradable</td><td>Substances that are not broken down by biological processes (not acted upon by bacteria or other saprophytes). These substances may be inert and simply persist in the environment for a long time or may harm the various members of the ecosystem. Examples: human-made materials like plastics, metals, DDT.</td></tr>
+        <tr><td>UNEP</td><td>United Nations Environment Programme — the international body that succeeded in forging an agreement in 1987 to freeze CFC production at 1986 levels. It is now mandatory for all manufacturing companies to make CFC-free refrigerators throughout the world.</td></tr>
+        <tr><td>Autotrophs</td><td>Organisms that can manufacture their own food from inorganic substances using sunlight energy (photosynthesis). Synonymous with producers.</td></tr>
+        <tr><td>Heterotrophs</td><td>Organisms that cannot make their own food and depend on autotrophs directly or indirectly for sustenance. Synonymous with consumers.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Summary Table -->
+  <div class="full-card reveal" style="margin-top:1.5rem;">
+    <h3 style="margin-bottom:1rem;font-family:var(--font-head);">📋 Key Facts Summary</h3>
+    <table class="sum-table">
+      <thead><tr><th>Concept</th><th>Key Fact</th><th>Significance</th></tr></thead>
+      <tbody>
+        <tr><td>Sunlight Capture</td><td>Plants capture ~1% of sunlight</td><td>Starting energy for all food chains</td></tr>
+        <tr><td>Energy Flow (10%)</td><td>~10% energy passes to next level</td><td>Limits food chains to 3–4 steps</td></tr>
+        <tr><td>Food Chain Length</td><td>Usually 3–4 trophic levels only</td><td>Energy too low beyond 4 levels</td></tr>
+        <tr><td>Decomposers</td><td>Bacteria and fungi</td><td>Recycle nutrients back to soil</td></tr>
+        <tr><td>Bio Magnification</td><td>Harmful chemicals accumulate at each trophic level</td><td>Human beings (top level) most affected</td></tr>
+        <tr><td>Ozone</td><td>O₃ in stratosphere shields UV</td><td>Protects all life on Earth</td></tr>
+        <tr><td>CFC Danger</td><td>CFCs destroy ozone molecules</td><td>Cause of ozone hole since 1980s</td></tr>
+        <tr><td>UNEP Agreement</td><td>1987 — freeze CFC production at 1986 levels</td><td>UNEP agreement to freeze CFC production at 1986 levels</td></tr>
+        <tr><td>Biodegradable</td><td>Broken down by microorganisms</td><td>Natural nutrient recycling</td></tr>
+        <tr><td>Non-Biodegradable</td><td>Persists for decades-centuries</td><td>Accumulates and harms ecosystem</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 8: EXERCISES -->
+<section class="section" id="exercises" style="background:linear-gradient(180deg,var(--bg2),var(--bg));">
+  <div class="section-header reveal">
+    <span class="section-num">08 · NCERT EXERCISES</span>
+    <h2 class="section-title">Practice <span class="g">Questions</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="full-card reveal">
+    <p style="font-size:.85rem;color:var(--text3);margin-bottom:.4rem;font-family:var(--font-mono);">MCQs — CLICK AN OPTION TO CHECK YOUR ANSWER</p>
+    <p style="font-size:.82rem;color:var(--text3);margin-bottom:1.4rem;font-family:var(--font-mono);">LONG ANSWERS — CLICK "SHOW ANSWER" TO REVEAL</p>
+    <ol class="exercise-list">
+      <!-- Q1 MCQ -->
+      <li>
+        <div class="ex-text">
+          Which of the following groups contain only biodegradable items?
+          <div class="ex-options">
+            <div class="ex-opt" data-correct="false">(a) Grass, flowers and leather</div>
+            <div class="ex-opt" data-correct="false">(b) Grass, wood and plastic</div>
+            <div class="ex-opt" data-correct="true">(c) Fruit-peels, cake and lime-juice</div>
+            <div class="ex-opt" data-correct="false">(d) Cake, wood and grass</div>
+          </div>
+        </div>
+      </li>
+      <!-- Q2 MCQ -->
+      <li>
+        <div class="ex-text">
+          Which of the following constitute a food-chain?
+          <div class="ex-options">
+            <div class="ex-opt" data-correct="false">(a) Grass, wheat and mango</div>
+            <div class="ex-opt" data-correct="true">(b) Grass, goat and human</div>
+            <div class="ex-opt" data-correct="false">(c) Goat, cow and elephant</div>
+            <div class="ex-opt" data-correct="false">(d) Grass, fish and goat</div>
+          </div>
+        </div>
+      </li>
+      <!-- Q3 MCQ -->
+      <li>
+        <div class="ex-text">
+          Which of the following are environment-friendly practices?
+          <div class="ex-options">
+            <div class="ex-opt" data-correct="false">(a) Carrying cloth-bags to put purchases in while shopping</div>
+            <div class="ex-opt" data-correct="false">(b) Switching off unnecessary lights and fans</div>
+            <div class="ex-opt" data-correct="false">(c) Walking to school instead of getting your mother to drop you on her scooter</div>
+            <div class="ex-opt" data-correct="true">(d) All of the above</div>
+          </div>
+        </div>
+      </li>
+      <!-- Q4 Long -->
+      <li>
+        <div class="ex-text">
+          What will happen if we kill all the organisms in one trophic level?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>The entire food chain or food web will be disturbed. The organisms at the trophic level above will lose their source of food and their numbers will decrease. The organisms at the trophic level below will no longer be eaten and will increase in number (overpopulation). This imbalance will affect all the other trophic levels in the ecosystem and may eventually lead to its collapse.</div>
+          </div>
+        </div>
+      </li>
+      <!-- Q5 Long -->
+      <li>
+        <div class="ex-text">
+          Will the impact of removing all the organisms in a trophic level be different for different trophic levels? Can the organisms of any trophic level be removed without causing any damage to the ecosystem?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>Yes, the impact will be different for different trophic levels. Removing producers (first trophic level) will be the most damaging as all other trophic levels depend directly or indirectly on them — the entire ecosystem will collapse. Removing larger carnivores (tertiary consumers) has a less immediate but still significant effect. No organism from any trophic level can be removed without causing some damage to the ecosystem, because all organisms are interconnected through food chains and food webs.</div>
+          </div>
+        </div>
+      </li>
+      <!-- Q6 Long -->
+      <li>
+        <div class="ex-text">
+          What is biological magnification? Will the levels of this magnification be different at different levels of the ecosystem?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>The progressive accumulation of non-degradable harmful chemicals (such as pesticides like DDT) at each trophic level in a food chain is called biological magnification. Since these chemicals are not broken down and cannot be excreted, they accumulate in the body of organisms. Yes, the levels of magnification differ at different trophic levels — the concentration increases as we move up the food chain. Producers have the lowest concentration, and organisms at the top trophic level (such as human beings) have the highest concentration of these chemicals in their bodies.</div>
+          </div>
+        </div>
+      </li>
+      <!-- Q7 Long -->
+      <li>
+        <div class="ex-text">
+          What are the problems caused by the non-biodegradable wastes that we generate?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>(i) Non-biodegradable wastes persist in the environment for a very long time and cause pollution of soil and water bodies. (ii) They may enter food chains and undergo biological magnification, harming organisms at higher trophic levels. (iii) They may release toxic substances that harm plants, animals and human beings. (iv) They can block drains, choke soil pores and reduce soil fertility. (v) They harm marine and terrestrial wildlife that may accidentally ingest them.</div>
+          </div>
+        </div>
+      </li>
+      <!-- Q8 Long -->
+      <li>
+        <div class="ex-text">
+          If all the waste we generate is biodegradable, will this have no impact on the environment?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>No. Even if all waste is biodegradable, it will still impact the environment if generated in very large quantities. Large amounts of biodegradable waste will put pressure on decomposers — they may not be able to break it all down. This can lead to: (i) foul odours and unhygienic conditions; (ii) depletion of oxygen in soil and water bodies, harming organisms; (iii) breeding of disease-causing organisms; (iv) disturbance of the natural balance of the ecosystem. So, the rate of waste generation must remain within the capacity of decomposers to break it down.</div>
+          </div>
+        </div>
+      </li>
+      <!-- Q9 Long -->
+      <li>
+        <div class="ex-text">
+          Why is damage to the ozone layer a cause for concern? What steps are being taken to limit this damage?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>The ozone layer in the upper atmosphere shields the surface of the earth from ultraviolet (UV) radiation from the Sun. UV radiation is highly damaging to organisms — it is known to cause skin cancer in human beings and can harm other organisms too. Damage to the ozone layer allows more UV radiation to reach the Earth's surface, increasing health and ecological risks. Steps being taken: (i) In 1987, the United Nations Environment Programme (UNEP) succeeded in forging an agreement to freeze CFC production at 1986 levels. (ii) It is now mandatory for all the manufacturing companies to make CFC-free refrigerators throughout the world.</div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<div style="height:3rem;"></div>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Energy bar animation on scroll
+const ebarsSection = document.getElementById('ebars');
+const ebarObs = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      setTimeout(()=>{ document.getElementById('eb1').style.width='100%'; },100);
+      setTimeout(()=>{ document.getElementById('eb2').style.width='10%'; },400);
+      setTimeout(()=>{ document.getElementById('eb3').style.width='1%'; },700);
+      setTimeout(()=>{ document.getElementById('eb4').style.width='.1%'; },1000);
+      ebarObs.disconnect();
+    }
+  });
+},{threshold:0.3});
+if(ebarsSection) ebarObs.observe(ebarsSection);
+
+// MCQ checker — reads data-correct attribute, no answer visible in HTML
+document.querySelectorAll('.ex-opt').forEach(opt=>{
+  opt.addEventListener('click', function(){
+    const parent = this.closest('.ex-options');
+    if(parent.dataset.answered) return;
+    parent.dataset.answered = '1';
+    const isCorrect = this.dataset.correct === 'true';
+    this.classList.add(isCorrect ? 'correct' : 'wrong');
+    if(!isCorrect){
+      parent.querySelectorAll('.ex-opt').forEach(o=>{
+        if(o.dataset.correct==='true') o.classList.add('correct');
+      });
+    }
+    parent.querySelectorAll('.ex-opt').forEach(o=>o.style.cursor='default');
+  });
+});
+
+// Show/hide long answer
+function toggleAns(btn){
+  const box = btn.nextElementSibling;
+  if(box.hidden){
+    box.hidden = false;
+    btn.textContent = 'Hide Answer ▲';
+    btn.classList.add('open');
+  } else {
+    box.hidden = true;
+    btn.textContent = 'Show Answer ▼';
+    btn.classList.remove('open');
+  }
+}
+</script>
+</body>
+</html>

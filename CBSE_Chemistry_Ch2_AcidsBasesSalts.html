@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 10 Chemistry — Chapter 2: Acids, Bases and Salts</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff0f6;--bg2:#fce7f3;--bg3:#fbcfe8;
+  --card:#ffffff;--card2:#fff5fa;
+  --acid:#dc2626;--acid-l:#fee2e2;--acid-d:#7f1d1d;
+  --base:#1d4ed8;--base-l:#dbeafe;--base-d:#1e3a8a;
+  --salt:#db2777;--salt-l:#fce7f3;--salt-d:#831843;
+  --neutral:#9d174d;--neutral-l:#fce7f3;
+  --text:#111827;--text2:#374151;--text3:#6b7280;
+  --border:#fbcfe8;--shadow:0 4px 24px rgba(0,0,0,0.07);
+  --font-head:'Lora',serif;--font-mono:'IBM Plex Mono',monospace;
+  --font-body:'Nunito',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.75;overflow-x:hidden;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg2);}::-webkit-scrollbar-thumb{background:var(--neutral);border-radius:3px;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.8rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(255,240,246,0.95);backdrop-filter:blur(16px);border-bottom:2px solid var(--border);}
+.nav-logo{font-family:var(--font-mono);font-size:.8rem;color:var(--neutral);font-weight:600;letter-spacing:.1em;}
+.nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
+.nav-links a{font-size:.75rem;color:var(--text3);text-decoration:none;font-family:var(--font-mono);padding:.25rem .6rem;border-radius:4px;transition:all .2s;}
+.nav-links a:hover{background:var(--neutral-l);color:var(--neutral);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;padding:6rem 2rem 3rem;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#fff0f6 0%,#fce7f3 40%,#fbcfe8 70%,#f9a8d4 100%);}
+.chem2-canvas{position:absolute;inset:0;pointer-events:none;z-index:1;}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:900px;}
+.chapter-badge{display:inline-block;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.2em;color:#9d174d;border:2px solid #db2777;padding:.4rem 1.2rem;border-radius:4px;margin-bottom:1.5rem;background:rgba(255,255,255,0.6);}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:1.1;margin-bottom:.8rem;color:#831843;}
+.hero h1 em{font-style:italic;color:var(--acid);}
+.hero h1 span{color:var(--base);}
+.hero-sub{font-size:1.1rem;color:#9d174d;margin-bottom:2rem;}
+.hero-tags{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;}
+.tag{font-family:var(--font-mono);font-size:.68rem;padding:.3rem .8rem;border-radius:20px;letter-spacing:.08em;font-weight:600;}
+.tag-acid{background:var(--acid-l);color:var(--acid-d);border:1px solid #fca5a5;}
+.tag-base{background:var(--base-l);color:var(--base-d);border:1px solid #93c5fd;}
+.tag-salt{background:var(--salt-l);color:var(--salt-d);border:1px solid #c4b5fd;}
+.tag-green{background:var(--neutral-l);color:var(--neutral);border:1px solid #f9a8d4;}
+
+/* pH ANIMATION IN HERO */
+.ph-strip{display:flex;border-radius:12px;overflow:hidden;height:60px;width:100%;max-width:600px;margin:0 auto 1.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.15);}
+.ph-cell{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.65rem;font-weight:600;transition:transform .3s;cursor:default;}
+.ph-cell:hover{transform:scaleY(1.1);}
+.ph-cell span{font-size:.9rem;font-weight:700;}
+.ph0{background:#ff0000;color:white;}
+.ph1{background:#ff3300;color:white;}
+.ph2{background:#ff6600;color:white;}
+.ph3{background:#ff9900;color:white;}
+.ph4{background:#ffcc00;color:#333;}
+.ph5{background:#cccc00;color:#333;}
+.ph6{background:#99cc00;color:#333;}
+.ph7{background:#00aa44;color:white;}
+.ph8{background:#00aaaa;color:white;}
+.ph9{background:#0088cc;color:white;}
+.ph10{background:#0055ff;color:white;}
+.ph11{background:#3300ff;color:white;}
+.ph12{background:#6600cc;color:white;}
+.ph13{background:#8800aa;color:white;}
+.ph14{background:#660066;color:white;}
+.ph-label{font-family:var(--font-body);font-size:.85rem;color:#db2777;margin-top:.5rem;}
+
+/* SECTIONS */
+.section{padding:5rem 2rem;max-width:1100px;margin:0 auto;}
+.section-header{margin-bottom:2.5rem;}
+.section-num{font-family:var(--font-mono);font-size:.72rem;color:#9d174d;letter-spacing:.2em;display:block;margin-bottom:.4rem;font-weight:600;}
+.section-title{font-family:var(--font-head);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.15;color:var(--text);}
+.section-title .acid{color:var(--acid);}
+.section-title .base{color:var(--base);}
+.section-title .salt{color:var(--salt);}
+.divider{width:50px;height:4px;background:#db2777;margin-top:.8rem;border-radius:2px;}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.card{background:var(--card);border-radius:16px;padding:1.8rem;box-shadow:var(--shadow);border:1px solid var(--border);transition:transform .3s,box-shadow .3s;}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,0.12);}
+.card-icon{font-size:2.2rem;margin-bottom:.8rem;}
+.card h3{font-family:var(--font-head);font-size:1.2rem;margin-bottom:.5rem;}
+.card p{color:var(--text2);font-size:.95rem;}
+.card-acid{border-top:4px solid var(--acid);}
+.card-base{border-top:4px solid var(--base);}
+.card-salt{border-top:4px solid var(--salt);}
+.card-green{border-top:4px solid var(--neutral);}
+
+/* REACTION BOXES */
+.rxn-box{background:var(--card);border-radius:12px;padding:1.5rem;margin:1rem 0;border-left:5px solid var(--neutral);box-shadow:var(--shadow);}
+.rxn-box.acid{border-left-color:var(--acid);}
+.rxn-box.base{border-left-color:var(--base);}
+.rxn-box.salt{border-left-color:var(--salt);}
+.rxn-label{font-family:var(--font-mono);font-size:.7rem;color:var(--text3);letter-spacing:.15em;margin-bottom:.6rem;font-weight:600;}
+.rxn-eq{font-family:var(--font-mono);font-size:1rem;color:var(--neutral);font-weight:600;margin-bottom:.4rem;line-height:1.6;}
+.rxn-eq.acid{color:var(--acid);}
+.rxn-eq.base{color:var(--base);}
+.rxn-eq.salt{color:var(--salt);}
+.rxn-note{font-size:.85rem;color:var(--text3);font-style:italic;}
+
+/* HIGHLIGHT */
+.highlight{background:linear-gradient(135deg,var(--neutral-l),#fff0f6);border:1px solid #f9a8d4;border-radius:10px;padding:1rem 1.2rem;margin:.8rem 0;}
+.highlight p{font-size:.95rem;color:var(--text2);}
+.highlight strong{color:var(--neutral);}
+.highlight.acid-hl{background:var(--acid-l);border-color:#fca5a5;}
+.highlight.acid-hl strong{color:var(--acid-d);}
+.highlight.base-hl{background:var(--base-l);border-color:#93c5fd;}
+.highlight.base-hl strong{color:var(--base-d);}
+.highlight.salt-hl{background:var(--salt-l);border-color:#c4b5fd;}
+.highlight.salt-hl strong{color:var(--salt-d);}
+
+/* TWO-COLUMN */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.full-card{background:var(--card);border-radius:16px;padding:1.8rem;box-shadow:var(--shadow);border:1px solid var(--border);}
+.full-card h3{font-family:var(--font-head);font-size:1.2rem;margin-bottom:1rem;}
+
+/* INDICATOR TABLE */
+.ind-table{width:100%;border-collapse:collapse;font-size:.9rem;}
+.ind-table thead tr{background:#9d174d;color:white;}
+.ind-table th{padding:.7rem 1rem;text-align:left;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;}
+.ind-table tbody tr:nth-child(even){background:var(--bg2);}
+.ind-table td{padding:.7rem 1rem;border-bottom:1px solid var(--border);}
+.colour-dot{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:.4rem;vertical-align:middle;border:1px solid rgba(0,0,0,0.1);}
+
+/* NEUTRALISATION ANIMATION */
+.neut-demo{background:var(--card);border-radius:16px;padding:2rem;box-shadow:var(--shadow);border:1px solid var(--border);margin:1.5rem 0;}
+.neut-title{font-family:var(--font-mono);font-size:.72rem;color:var(--neutral);letter-spacing:.15em;margin-bottom:1.5rem;font-weight:600;}
+.neut-beakers{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+.beaker-wrap{display:flex;flex-direction:column;align-items:center;gap:.5rem;}
+.beaker{width:80px;height:100px;border:3px solid #374151;border-top:none;border-radius:0 0 12px 12px;position:relative;overflow:hidden;background:white;}
+.beaker-liquid{position:absolute;bottom:0;left:0;right:0;border-radius:0 0 9px 9px;transition:height .5s;}
+.acid-liquid{background:rgba(220,38,38,0.25);height:70%;}
+.base-liquid{background:rgba(29,78,216,0.25);height:70%;}
+.neutral-liquid{background:rgba(157,23,77,0.20);height:70%;}
+.beaker-label{font-family:var(--font-mono);font-size:.7rem;font-weight:600;text-align:center;}
+.beaker-label.a{color:var(--acid);}
+.beaker-label.b{color:var(--base);}
+.beaker-label.n{color:var(--neutral);}
+.plus-sign{font-size:2rem;color:var(--text3);align-self:center;}
+.arrow-sign{font-size:1.5rem;color:var(--neutral);align-self:center;}
+.bubbles-anim span{display:inline-block;width:8px;height:8px;background:rgba(255,255,255,0.7);border-radius:50%;position:absolute;animation:bubble-rise 1.5s ease-in infinite;}
+.bubbles-anim span:nth-child(1){left:20%;animation-delay:0s;}
+.bubbles-anim span:nth-child(2){left:50%;animation-delay:.5s;}
+.bubbles-anim span:nth-child(3){left:70%;animation-delay:1s;}
+@keyframes bubble-rise{0%{bottom:5%;opacity:1;}100%{bottom:95%;opacity:0;}}
+
+/* pH SCALE INTERACTIVE */
+.ph-scale-section{background:var(--card);border-radius:16px;padding:2rem;box-shadow:var(--shadow);border:1px solid var(--border);margin:1.5rem 0;}
+.ph-scale-bar{width:100%;height:40px;border-radius:8px;background:linear-gradient(90deg,#ff0000,#ff6600,#ffcc00,#00aa44,#0055ff,#660066);margin:1rem 0;position:relative;cursor:pointer;}
+.ph-marker{position:absolute;top:-8px;width:4px;height:56px;background:#111;border-radius:2px;pointer-events:none;transition:left .3s;}
+.ph-arrow{position:absolute;top:-24px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:.8rem;background:#111;color:white;padding:.2rem .4rem;border-radius:4px;white-space:nowrap;}
+.ph-examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.8rem;margin-top:1rem;}
+.ph-example{display:flex;align-items:center;gap:.6rem;padding:.5rem .8rem;border-radius:8px;font-size:.85rem;}
+.ph-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+
+/* SALTS SECTION */
+.salts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin:1.5rem 0;}
+.salt-card{border-radius:12px;padding:1.2rem;border:1px solid;text-align:center;}
+.salt-card h4{font-family:var(--font-mono);font-size:.85rem;font-weight:600;margin-bottom:.4rem;}
+.salt-card p{font-size:.8rem;line-height:1.5;}
+.salt-card .formula{font-family:var(--font-mono);font-size:1.1rem;font-weight:700;margin:.4rem 0;}
+.sc-nahco3{background:#fef3c7;border-color:#fcd34d;color:#92400e;}
+.sc-na2co3{background:#dbeafe;border-color:#93c5fd;color:#1e3a8a;}
+.sc-caoh2{background:#fce7f3;border-color:#f9a8d4;color:#9d174d;}
+.sc-caclo2{background:#fce7f3;border-color:#f9a8d4;color:#9d174d;}
+.sc-cuso4{background:#e0f2fe;border-color:#7dd3fc;color:#075985;}
+
+/* KEYWORD TABLE */
+.kw-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+.kw-table thead tr{background:linear-gradient(135deg,#9d174d,#db2777);}
+.kw-table th{padding:.8rem 1rem;text-align:left;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;color:white;}
+.kw-table tbody tr{border-bottom:1px solid var(--border);transition:background .2s;}
+.kw-table tbody tr:hover{background:var(--bg2);}
+.kw-table td{padding:.7rem 1rem;font-size:.9rem;}
+.kw-table td:first-child{font-family:var(--font-mono);color:var(--neutral);font-weight:600;}
+
+/* STEP-BY-STEP */
+.steps{counter-reset:s;}
+.step{display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--card);border-radius:10px;margin-bottom:.8rem;border:1px solid var(--border);counter-increment:s;}
+.step-n{width:32px;height:32px;background:#db2777;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.75rem;font-weight:700;flex-shrink:0;}
+.step-n.acid{background:var(--acid);}
+.step-n.base{background:var(--base);}
+.step-n.salt{background:var(--salt);}
+.step-body{flex:1;}
+.step-body strong{display:block;font-size:.95rem;margin-bottom:.2rem;}
+.step-body p{font-size:.88rem;color:var(--text2);}
+.step-eq{font-family:var(--font-mono);font-size:.85rem;color:#9d174d;margin-top:.4rem;padding:.4rem .7rem;background:#fce7f3;border-radius:6px;display:inline-block;}
+
+/* TICKER */
+.ticker-wrap{overflow:hidden;background:linear-gradient(135deg,#9d174d,#db2777);padding:.5rem 0;margin:2rem 0;}
+.ticker{display:flex;gap:4rem;animation:tick 20s linear infinite;white-space:nowrap;}
+.ticker span{font-family:var(--font-mono);font-size:.75rem;color:white;letter-spacing:.1em;}
+.ticker span strong{color:#fbcfe8;}
+@keyframes tick{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* REVEAL */
+.reveal{opacity:1;transform:translateY(0);transition:opacity .6s,transform .6s;}
+.reveal.visible{opacity:1;transform:translateY(0);} /* already visible */
+
+/* SECTION BG ALTERNATES */
+.section-alt{background:linear-gradient(180deg,#fce7f3,#fff0f6);}
+
+/* SUMMARY TABLE */
+.sum-table{width:100%;border-collapse:collapse;}
+.sum-table thead tr{background:#9d174d;color:white;}
+.sum-table th{padding:.8rem 1rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-align:left;}
+.sum-table tbody tr:nth-child(odd){background:var(--card);}
+.sum-table tbody tr:nth-child(even){background:var(--bg2);}
+.sum-table td{padding:.75rem 1rem;font-size:.9rem;border-bottom:1px solid var(--border);}
+.sum-table td:first-child{font-weight:700;color:#9d174d;}
+
+/* REAL WORLD */
+.rw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin:1.5rem 0;}
+.rw-card{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);transition:transform .3s;}
+.rw-card:hover{transform:translateY(-4px);}
+.rw-header{padding:1.2rem 1.5rem;display:flex;align-items:center;gap:.8rem;}
+.rw-icon{font-size:2rem;}
+.rw-name{font-family:var(--font-head);font-size:1.1rem;font-weight:700;}
+.rw-body{padding:1rem 1.5rem 1.5rem;}
+.rw-body p{font-size:.88rem;color:var(--text2);margin-bottom:.6rem;}
+.rw-chem{font-family:var(--font-mono);font-size:.8rem;background:#fce7f3;padding:.5rem .8rem;border-radius:6px;color:#9d174d;}
+.rw-acid{background:linear-gradient(135deg,var(--acid-l),#fff5f5);}
+.rw-base{background:linear-gradient(135deg,var(--base-l),#f0f5ff);}
+.rw-green{background:linear-gradient(135deg,var(--neutral-l),#fff5fa);}
+.rw-salt{background:linear-gradient(135deg,var(--salt-l),#faf5ff);}
+
+@media(max-width:768px){
+  .two-col{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .neut-beakers{gap:.8rem;}
+}
+
+/* ===== NCERT QUESTIONS — Biology Ch13 Pattern ===== */
+.exercise-list{counter-reset:ex;list-style:none;padding:0;}
+.exercise-list li{counter-increment:ex;display:flex;gap:1rem;padding:.9rem 1rem;background:var(--card);border-radius:10px;border:1px solid var(--border);margin-bottom:.7rem;}
+.exercise-list li::before{content:counter(ex);font-family:var(--font-mono);font-size:.8rem;font-weight:700;color:white;background:var(--neutral);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ex-text{font-size:.92rem;color:var(--text2);flex:1;}
+.ex-options{margin-top:.5rem;display:flex;flex-direction:column;gap:.3rem;}
+.ex-opt{font-size:.85rem;padding:.3rem .7rem;border-radius:6px;cursor:pointer;border:1px solid transparent;transition:all .2s;}
+.ex-opt:hover{background:var(--neutral-l);border-color:var(--neutral);}
+.ex-opt.correct{background:var(--neutral-l);border-color:var(--neutral);color:var(--neutral);font-weight:600;}
+.ex-opt.wrong{background:var(--acid-l);border-color:var(--acid);color:var(--acid);}
+.ans-wrap{margin-top:.8rem;}
+.show-ans-btn{font-family:var(--font-mono);font-size:.75rem;font-weight:600;color:var(--neutral);background:var(--neutral-l);border:1.5px solid var(--neutral);border-radius:6px;padding:.35rem .9rem;cursor:pointer;transition:all .2s;letter-spacing:.05em;}
+.show-ans-btn:hover{background:var(--neutral);color:white;}
+.show-ans-btn.open{background:var(--neutral);color:white;}
+.ans-box{margin-top:.7rem;background:linear-gradient(135deg,#fce7f3,#fff0f6);border-left:4px solid #db2777;border-radius:0 8px 8px 0;padding:.9rem 1.1rem;font-size:.9rem;color:var(--text2);line-height:1.8;animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+
+/* In-text question blocks */
+.intext-block{background:var(--card);border-radius:14px;padding:1.5rem 1.8rem;margin-bottom:1.5rem;box-shadow:var(--shadow);border:1px solid var(--border);}
+.intext-header{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:2px solid var(--border);}
+.intext-badge{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.15em;padding:.3rem .8rem;border-radius:20px;font-weight:600;}
+.ib-green{background:var(--neutral-l);color:var(--neutral);border:1px solid #f9a8d4;}
+.ib-salt{background:var(--salt-l);color:var(--salt-d);border:1px solid #c4b5fd;}
+.ib-acid{background:var(--acid-l);color:var(--acid-d);border:1px solid #fca5a5;}
+.ib-base{background:var(--base-l);color:var(--base-d);border:1px solid #93c5fd;}
+.intext-title{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--text);}
+.intext-divider{background:linear-gradient(135deg,var(--neutral),#047857);padding:1.2rem 1.8rem;border-radius:12px;margin-bottom:1.5rem;color:white;display:flex;align-items:center;gap:1rem;}
+.intext-divider .id-icon{font-size:1.8rem;}
+.intext-divider h3{font-family:var(--font-head);font-size:1.1rem;margin-bottom:.1rem;}
+.intext-divider p{font-size:.82rem;opacity:.85;}
+.intext-divider.id-salt{background:linear-gradient(135deg,var(--salt),var(--salt-d));}
+.intext-divider.id-acid{background:linear-gradient(135deg,var(--acid-d),#991b1b);}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">CBSE · CLASS 10 · CHEMISTRY</div>
+  <div class="nav-links">
+    <a href="#properties">Properties</a>
+    <a href="#ions">Ions</a>
+    <a href="#ph">pH Scale</a>
+    <a href="#salts">Salts</a>
+    <a href="#chemicals">Chemicals</a>
+    <a href="#keywords">Keywords</a>
+    <a href="#exercises">Questions</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <canvas class="chem2-canvas" id="chem2Canvas"></canvas>
+  <div class="hero-content">
+    <div class="chapter-badge">CHAPTER 02 · CBSE CLASS 10 SCIENCE · CHEMISTRY</div>
+    <h1><em>Acids,</em> <span>Bases</span><br>and Salts</h1>
+    <p class="hero-sub">Indicators · Reactions · pH Scale · Neutralisation · Salts · Everyday Chemistry</p>
+    <div class="hero-tags">
+      <span class="tag tag-acid">ACIDS — H⁺ ions</span>
+      <span class="tag tag-base">BASES — OH⁻ ions</span>
+      <span class="tag tag-salt">NEUTRALISATION</span>
+      <span class="tag tag-green">pH SCALE 0–14</span>
+    </div>
+    <!-- pH Strip -->
+    <div class="ph-strip" title="The pH colour scale">
+      <div class="ph-cell ph0"><span>0</span>H⁺↑↑</div>
+      <div class="ph-cell ph1"><span>1</span></div>
+      <div class="ph-cell ph2"><span>2</span></div>
+      <div class="ph-cell ph3"><span>3</span></div>
+      <div class="ph-cell ph4"><span>4</span></div>
+      <div class="ph-cell ph5"><span>5</span></div>
+      <div class="ph-cell ph6"><span>6</span></div>
+      <div class="ph-cell ph7"><span>7</span>★</div>
+      <div class="ph-cell ph8"><span>8</span></div>
+      <div class="ph-cell ph9"><span>9</span></div>
+      <div class="ph-cell ph10"><span>10</span></div>
+      <div class="ph-cell ph11"><span>11</span></div>
+      <div class="ph-cell ph12"><span>12</span></div>
+      <div class="ph-cell ph13"><span>13</span></div>
+      <div class="ph-cell ph14"><span>14</span>OH⁻↑↑</div>
+    </div>
+    <p class="ph-label">← Acidic &nbsp;&nbsp;&nbsp; Neutral (7) &nbsp;&nbsp;&nbsp; Basic →</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span><strong>Acid + Metal →</strong> Salt + H₂↑</span>
+    <span><strong>Acid + Base →</strong> Salt + Water (Neutralisation)</span>
+    <span><strong>Acid + Metal Carbonate →</strong> Salt + CO₂ + Water</span>
+    <span><strong>pH &lt; 7</strong> = Acidic &nbsp;|&nbsp; <strong>pH = 7</strong> = Neutral &nbsp;|&nbsp; <strong>pH &gt; 7</strong> = Basic</span>
+    <span><strong>HCl + H₂O →</strong> H₃O⁺ + Cl⁻ &nbsp;(Hydronium ion)</span>
+    <span><strong>NaOH →</strong> Na⁺ + OH⁻ &nbsp;(Hydroxide ion)</span>
+    <span><strong>Acid + Metal →</strong> Salt + H₂↑</span>
+    <span><strong>Acid + Base →</strong> Salt + Water (Neutralisation)</span>
+    <span><strong>Acid + Metal Carbonate →</strong> Salt + CO₂ + Water</span>
+    <span><strong>pH &lt; 7</strong> = Acidic &nbsp;|&nbsp; <strong>pH = 7</strong> = Neutral &nbsp;|&nbsp; <strong>pH &gt; 7</strong> = Basic</span>
+  </div>
+</div>
+
+<!-- SECTION 1: PROPERTIES -->
+<section class="section" id="properties">
+  <div class="section-header reveal">
+    <span class="section-num">01 · CHEMICAL PROPERTIES</span>
+    <h2 class="section-title">Properties of <span class="acid">Acids</span> and <span class="base">Bases</span></h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="card-grid reveal">
+    <div class="card card-acid">
+      <div class="card-icon">🍋</div>
+      <h3 style="color:var(--acid)">Acids</h3>
+      <p>Sour in taste. Turn <strong>blue litmus red</strong>. Produce <strong>H⁺(aq)</strong> ions in water. Conduct electricity in aqueous solution.</p>
+      <p style="margin-top:.5rem;font-size:.85rem;color:var(--text3)">Examples: HCl, H₂SO₄, HNO₃, CH₃COOH (acetic acid)</p>
+    </div>
+    <div class="card card-base">
+      <div class="card-icon">🧼</div>
+      <h3 style="color:var(--base)">Bases</h3>
+      <p>Bitter in taste, soapy to touch. Turn <strong>red litmus blue</strong>. Produce <strong>OH⁻(aq)</strong> ions in water. Bases soluble in water are called <strong>alkalis</strong>.</p>
+      <p style="margin-top:.5rem;font-size:.85rem;color:var(--text3)">Examples: NaOH, KOH, Ca(OH)₂, Mg(OH)₂</p>
+    </div>
+    <div class="card card-green">
+      <div class="card-icon">🔬</div>
+      <h3 style="color:var(--neutral)">Indicators</h3>
+      <p>Substances that change colour in acidic or basic media. <strong>Litmus</strong> (natural), <strong>phenolphthalein</strong> and <strong>methyl orange</strong> (synthetic) are common indicators.</p>
+      <p style="margin-top:.5rem;font-size:.85rem;color:var(--text3)">Olfactory indicators: Onion, clove oil, vanilla</p>
+    </div>
+  </div>
+
+  <!-- Indicator Table -->
+  <div class="full-card reveal" style="margin-top:1.5rem;">
+    <h3 style="margin-bottom:1rem;">📊 Colour Changes with Indicators</h3>
+    <table class="ind-table">
+      <thead><tr><th>Indicator</th><th>In Acid</th><th>In Base</th><th>Neutral</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Red Litmus</strong></td>
+          <td><span class="colour-dot" style="background:#dc2626"></span>No change (Red)</td>
+          <td><span class="colour-dot" style="background:#1d4ed8"></span>Turns Blue</td>
+          <td><span class="colour-dot" style="background:#dc2626"></span>Red</td>
+        </tr>
+        <tr>
+          <td><strong>Blue Litmus</strong></td>
+          <td><span class="colour-dot" style="background:#dc2626"></span>Turns Red</td>
+          <td><span class="colour-dot" style="background:#1d4ed8"></span>No change (Blue)</td>
+          <td><span class="colour-dot" style="background:#1d4ed8"></span>Blue</td>
+        </tr>
+        <tr>
+          <td><strong>Phenolphthalein</strong></td>
+          <td><span class="colour-dot" style="background:#f9fafb;border:1px solid #d1d5db"></span>Colourless</td>
+          <td><span class="colour-dot" style="background:#ec4899"></span>Pink</td>
+          <td><span class="colour-dot" style="background:#f9fafb;border:1px solid #d1d5db"></span>Colourless</td>
+        </tr>
+        <tr>
+          <td><strong>Methyl Orange</strong></td>
+          <td><span class="colour-dot" style="background:#dc2626"></span>Red</td>
+          <td><span class="colour-dot" style="background:#f59e0b"></span>Yellow</td>
+          <td><span class="colour-dot" style="background:#f59e0b"></span>Orange</td>
+        </tr>
+        <tr>
+          <td><strong>Turmeric</strong></td>
+          <td><span class="colour-dot" style="background:#f59e0b"></span>Yellow (no change)</td>
+          <td><span class="colour-dot" style="background:#dc2626"></span>Reddish-brown</td>
+          <td><span class="colour-dot" style="background:#f59e0b"></span>Yellow</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight" style="margin-top:1rem;">
+      <p>💡 <strong>Olfactory indicators</strong> are substances whose odour changes in acidic or basic media. Example: Onion loses its smell in base (NaOH). Clove oil loses its smell in base. Vanilla loses its smell in base.</p>
+    </div>
+  </div>
+
+  <!-- Reactions with Metals -->
+  <div class="section-header reveal" style="margin-top:3rem;margin-bottom:1rem;">
+    <span class="section-num">01.1 · REACTIONS OF ACIDS</span>
+    <h2 class="section-title" style="font-size:1.8rem;">Acids React with <span class="acid">Metals, Carbonates</span> & Bases</h2>
+  </div>
+
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-n acid">1</div>
+      <div class="step-body">
+        <strong>Acid + Metal → Salt + Hydrogen gas ↑</strong>
+        <p>The metal displaces hydrogen from the acid. Hydrogen gas burns with a pop sound.</p>
+        <div class="step-eq">Zn(s) + H₂SO₄(aq) → ZnSO₄(aq) + H₂(g)↑</div>
+        <div class="step-eq">2Na(s) + 2HCl(aq) → 2NaCl(aq) + H₂(g)↑</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n acid">2</div>
+      <div class="step-body">
+        <strong>Acid + Metal Carbonate → Salt + CO₂ + Water</strong>
+        <p>CO₂ gas turns lime water milky. This is used to test for CO₂.</p>
+        <div class="step-eq">Na₂CO₃(s) + 2HCl(aq) → 2NaCl(aq) + H₂O(l) + CO₂(g)↑</div>
+        <div class="step-eq">NaHCO₃(s) + HCl(aq) → NaCl(aq) + H₂O(l) + CO₂(g)↑</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n acid">3</div>
+      <div class="step-body">
+        <strong>Acid + Base → Salt + Water (Neutralisation)</strong>
+        <p>The effect of an acid is nullified by a base and vice versa. H⁺ + OH⁻ → H₂O</p>
+        <div class="step-eq">NaOH(aq) + HCl(aq) → NaCl(aq) + H₂O(l)</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n acid">4</div>
+      <div class="step-body">
+        <strong>Metal Oxide + Acid → Salt + Water</strong>
+        <p>Metallic oxides are basic oxides. Copper oxide + HCl gives blue-green copper chloride solution.</p>
+        <div class="step-eq">CuO(s) + 2HCl(aq) → CuCl₂(aq) + H₂O(l)</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n base">5</div>
+      <div class="step-body">
+        <strong>Base + Metal → Salt + Hydrogen gas ↑</strong>
+        <p>Not all metals react with bases. Zinc reacts with NaOH to form sodium zincate.</p>
+        <div class="step-eq">2NaOH(aq) + Zn(s) → Na₂ZnO₂(aq) + H₂(g)↑</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n base">6</div>
+      <div class="step-body">
+        <strong>Non-metallic Oxide + Base → Salt + Water</strong>
+        <p>Non-metallic oxides are acidic in nature. CO₂ reacts with Ca(OH)₂ (lime water).</p>
+        <div class="step-eq">Ca(OH)₂(aq) + CO₂(g) → CaCO₃(s)↓ + H₂O(l)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Neutralisation Animation -->
+  <div class="neut-demo reveal">
+    <div class="neut-title">🧪 ANIMATION · NEUTRALISATION REACTION</div>
+    <div class="neut-beakers">
+      <div class="beaker-wrap">
+        <div class="beaker" id="acidBeaker">
+          <div class="beaker-liquid acid-liquid"></div>
+          <div class="bubbles-anim"><span></span><span></span><span></span></div>
+        </div>
+        <div class="beaker-label a">HCl<br>(Acid)</div>
+        <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--acid)">H⁺ ions</div>
+      </div>
+      <div class="plus-sign">+</div>
+      <div class="beaker-wrap">
+        <div class="beaker">
+          <div class="beaker-liquid base-liquid"></div>
+        </div>
+        <div class="beaker-label b">NaOH<br>(Base)</div>
+        <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--base)">OH⁻ ions</div>
+      </div>
+      <div class="arrow-sign">→</div>
+      <div class="beaker-wrap">
+        <div class="beaker">
+          <div class="beaker-liquid neutral-liquid"></div>
+        </div>
+        <div class="beaker-label n">NaCl + H₂O<br>(Salt + Water)</div>
+        <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--neutral)">pH = 7</div>
+      </div>
+    </div>
+    <div class="highlight" style="margin-top:1rem;text-align:center;">
+      <p><strong>H⁺(aq) + OH⁻(aq) → H₂O(l)</strong><br>
+      <span style="font-size:.85rem;color:var(--text3)">The reaction between an acid and a base to give a salt and water is known as a <strong>neutralisation reaction</strong>.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: IONS & WATER -->
+<section class="section section-alt" id="ions" style="background:linear-gradient(180deg,var(--bg2),var(--bg));">
+  <div class="section-header reveal">
+    <span class="section-num">02 · IONS IN SOLUTION</span>
+    <h2 class="section-title">What do Acids and Bases have <span class="base">in Common?</span></h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="two-col reveal">
+    <div class="full-card" style="border-top:4px solid var(--acid);">
+      <h3 style="color:var(--acid);">🔴 Acids produce H⁺(aq) ions</h3>
+      <p style="color:var(--text2);margin-bottom:1rem;font-size:.95rem;">All acids dissociate in water to produce hydronium ions (H₃O⁺). This is what makes them acidic.</p>
+      <div class="rxn-box acid">
+        <div class="rxn-label">DISSOCIATION IN WATER</div>
+        <div class="rxn-eq acid">HCl + H₂O → H₃O⁺ + Cl⁻</div>
+        <div class="rxn-eq acid">H₂SO₄ + 2H₂O → 2H₃O⁺ + SO₄²⁻</div>
+        <div class="rxn-note">H⁺ ions cannot exist alone — they always exist as H₃O⁺ (hydronium ion)</div>
+      </div>
+      <div class="highlight acid-hl">
+        <p>⚠ <strong>Key NCERT point:</strong> Dry HCl gas does NOT show acidic behaviour because H⁺ ions are produced only in the presence of water.</p>
+      </div>
+      <div class="highlight acid-hl" style="margin-top:.5rem;">
+        <p>⚠ <strong>Why dilute acid in water?</strong> Always add acid to water (not water to acid). Dissolving acid is highly exothermic — adding water to acid can cause splashing and burns.</p>
+      </div>
+    </div>
+    <div class="full-card" style="border-top:4px solid var(--base);">
+      <h3 style="color:var(--base);">🔵 Bases produce OH⁻(aq) ions</h3>
+      <p style="color:var(--text2);margin-bottom:1rem;font-size:.95rem;">All bases dissociate in water to produce hydroxide ions. Bases soluble in water are called <strong>alkalis</strong>.</p>
+      <div class="rxn-box base">
+        <div class="rxn-label">DISSOCIATION IN WATER</div>
+        <div class="rxn-eq base">NaOH → Na⁺(aq) + OH⁻(aq)</div>
+        <div class="rxn-eq base">KOH → K⁺(aq) + OH⁻(aq)</div>
+        <div class="rxn-eq base">Mg(OH)₂ → Mg²⁺(aq) + 2OH⁻(aq)</div>
+      </div>
+      <div class="highlight base-hl">
+        <p>💡 <strong>Alkali</strong> = a base that dissolves in water. They are soapy to touch, bitter and corrosive. <strong>All alkalis are bases, but not all bases are alkalis.</strong></p>
+      </div>
+      <div class="highlight base-hl" style="margin-top:.5rem;">
+        <p>🧪 <strong>Dilution:</strong> Mixing an acid or base with water decreases the concentration of H₃O⁺/OH⁻ ions per unit volume. This process is called <strong>dilution</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: pH SCALE -->
+<section class="section" id="ph">
+  <div class="section-header reveal">
+    <span class="section-num">03 · pH SCALE</span>
+    <h2 class="section-title">The <span class="base">pH Scale</span> — Measuring Strength</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="card-grid reveal">
+    <div class="card card-acid">
+      <div class="card-icon">📉</div>
+      <h3 style="color:var(--acid)">pH &lt; 7</h3>
+      <p><strong>Acidic solution.</strong> Higher the H⁺ concentration, lower the pH. pH = 1 is very strongly acidic.</p>
+    </div>
+    <div class="card card-green">
+      <div class="card-icon">⚖️</div>
+      <h3 style="color:var(--neutral)">pH = 7</h3>
+      <p><strong>Neutral solution.</strong> Pure water has pH = 7. Equal concentrations of H⁺ and OH⁻.</p>
+    </div>
+    <div class="card card-base">
+      <div class="card-icon">📈</div>
+      <h3 style="color:var(--base)">pH &gt; 7</h3>
+      <p><strong>Basic (alkaline) solution.</strong> Higher the OH⁻ concentration, higher the pH. pH = 14 is very strongly basic.</p>
+    </div>
+  </div>
+
+  <div class="highlight reveal" style="margin-top:1rem;">
+    <p>💡 <strong>What is pH?</strong> pH stands for <em>'potenz'</em> (German for power). The pH scale (0–14) measures hydrogen ion concentration. A <strong>universal indicator</strong> shows different colours at different pH values. <strong>Higher H₃O⁺ concentration → lower pH value.</strong></p>
+  </div>
+
+  <!-- Interactive pH scale -->
+  <div class="ph-scale-section reveal">
+    <div class="neut-title">INTERACTIVE · CLICK ON THE pH SCALE</div>
+    <div class="ph-scale-bar" id="phBar" onclick="clickPH(event)">
+      <div class="ph-marker" id="phMarker" style="left:46.4%;">
+        <div class="ph-arrow" id="phArrow">pH 7 — Neutral</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.7rem;color:var(--text3);margin-top:.3rem;">
+      <span>0 (Strongly Acid)</span><span>7 (Neutral)</span><span>14 (Strongly Basic)</span>
+    </div>
+    <div class="ph-examples">
+      <div class="ph-example" style="background:#fee2e2;"><div class="ph-dot" style="background:#dc2626;"></div><span>Gastric juice: pH ~1.2</span></div>
+      <div class="ph-example" style="background:#fef3c7;"><div class="ph-dot" style="background:#f59e0b;"></div><span>Lemon juice: pH ~2.2</span></div>
+      <div class="ph-example" style="background:#fef9c3;"><div class="ph-dot" style="background:#ca8a04;"></div><span>Saliva (before meal): pH ~6.5</span></div>
+      <div class="ph-example" style="background:#dcfce7;"><div class="ph-dot" style="background:#16a34a;"></div><span>Pure water: pH = 7</span></div>
+      <div class="ph-example" style="background:#dbeafe;"><div class="ph-dot" style="background:#2563eb;"></div><span>Blood: pH 7.4</span></div>
+      <div class="ph-example" style="background:#ede9fe;"><div class="ph-dot" style="background:#7c3aed;"></div><span>Milk of magnesia: pH ~10</span></div>
+      <div class="ph-example" style="background:#f3e8ff;"><div class="ph-dot" style="background:#9333ea;"></div><span>NaOH solution: pH ~14</span></div>
+    </div>
+  </div>
+
+  <!-- pH in everyday life -->
+  <div class="section-header reveal" style="margin-top:2.5rem;margin-bottom:1rem;">
+    <span class="section-num">03.1 · IMPORTANCE</span>
+    <h2 class="section-title" style="font-size:1.8rem;">pH in <span class="base">Everyday Life</span></h2>
+  </div>
+
+  <div class="rw-grid reveal">
+    <div class="rw-card">
+      <div class="rw-header rw-acid"><div class="rw-icon">🦷</div><div class="rw-name" style="color:var(--acid)">Tooth Decay</div></div>
+      <div class="rw-body">
+        <p>Tooth decay starts when the pH of the mouth falls below <strong>5.5</strong>. Bacteria present in the mouth produce acids by degradation of sugar and food particles.</p>
+        <p>Tooth enamel is made of <strong>calcium hydroxyapatite</strong> — the hardest substance in the body. It does not dissolve in water but is corroded at pH below 5.5.</p>
+        <div class="rw-chem">Remedy: Use basic toothpastes to neutralise excess acid.</div>
+      </div>
+    </div>
+    <div class="rw-card">
+      <div class="rw-header rw-green"><div class="rw-icon">🌧️</div><div class="rw-name" style="color:var(--neutral)">Acid Rain</div></div>
+      <div class="rw-body">
+        <p>When the pH of rain water is <strong>less than 5.6</strong>, it is called <strong>acid rain</strong>. It flows into rivers, lowering their pH and making survival of aquatic life difficult.</p>
+        <p>Our body works within the pH range of <strong>7.0 to 7.8</strong>. Living organisms can survive only in a narrow range of pH change.</p>
+        <div class="rw-chem">Normal rain: pH ~5.6 | Acid rain: pH &lt; 5.6</div>
+      </div>
+    </div>
+    <div class="rw-card">
+      <div class="rw-header rw-acid"><div class="rw-icon">🍽️</div><div class="rw-name" style="color:var(--acid)">Indigestion</div></div>
+      <div class="rw-body">
+        <p>Our stomach produces <strong>hydrochloric acid</strong> which helps in digestion. During indigestion, the stomach produces too much acid causing pain and irritation.</p>
+        <p>People use <strong>antacids</strong> (bases) to neutralise the excess acid. <strong>Magnesium hydroxide (Milk of magnesia)</strong> is a mild base commonly used.</p>
+        <div class="rw-chem">Mg(OH)₂ + 2HCl → MgCl₂ + 2H₂O</div>
+      </div>
+    </div>
+    <div class="rw-card">
+      <div class="rw-header rw-base"><div class="rw-icon">🐝</div><div class="rw-name" style="color:var(--base)">Bee Sting</div></div>
+      <div class="rw-body">
+        <p>A <strong>bee sting</strong> injects an acid (methanoic acid/formic acid) which causes pain and irritation. Applying a mild base like <strong>baking soda</strong> gives relief.</p>
+        <p>Stinging hair of <strong>nettle leaves</strong> also inject methanoic acid causing burning pain. The traditional remedy is rubbing with the <strong>dock plant</strong> leaf (basic in nature).</p>
+        <div class="rw-chem">Bee sting: Methanoic acid (HCOOH)</div>
+      </div>
+    </div>
+    <div class="rw-card">
+      <div class="rw-header rw-green"><div class="rw-icon">🌱</div><div class="rw-name" style="color:var(--neutral)">Soil pH</div></div>
+      <div class="rw-body">
+        <p>Plants require a <strong>specific pH range</strong> for healthy growth. If the soil is too acidic, farmers treat it with <strong>quick lime (CaO)</strong>, <strong>slaked lime Ca(OH)₂</strong> or <strong>chalk (CaCO₃)</strong>.</p>
+        <p>The universal indicator paper is used to measure soil pH.</p>
+        <div class="rw-chem">Ideal soil pH for most crops: 6.0 – 7.0</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: SALTS -->
+<section class="section" id="salts" style="background:linear-gradient(180deg,var(--bg2),var(--bg));">
+  <div class="section-header reveal">
+    <span class="section-num">04 · SALTS</span>
+    <h2 class="section-title">More About <span class="salt">Salts</span></h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="two-col reveal">
+    <div class="full-card">
+      <h3 style="color:var(--salt)">pH of Salts</h3>
+      <p style="color:var(--text2);margin-bottom:1rem;font-size:.9rem;">The pH of a salt depends on the strength of the acid and base used to make it.</p>
+      <div class="rxn-box">
+        <div class="rxn-label">SALT OF STRONG ACID + STRONG BASE</div>
+        <div class="rxn-eq">NaCl (from HCl + NaOH) → pH = 7 (Neutral)</div>
+      </div>
+      <div class="rxn-box acid">
+        <div class="rxn-label">SALT OF STRONG ACID + WEAK BASE</div>
+        <div class="rxn-eq acid">NH₄Cl (from HCl + NH₄OH) → pH &lt; 7 (Acidic)</div>
+      </div>
+      <div class="rxn-box base">
+        <div class="rxn-label">SALT OF WEAK ACID + STRONG BASE</div>
+        <div class="rxn-eq base">Na₂CO₃ (from H₂CO₃ + NaOH) → pH &gt; 7 (Basic)</div>
+      </div>
+    </div>
+    <div class="full-card">
+      <h3 style="color:var(--salt)">Family of Salts</h3>
+      <p style="color:var(--text2);margin-bottom:1rem;font-size:.9rem;">Salts having the same positive or negative radicals are said to belong to a family.</p>
+      <div class="highlight salt-hl">
+        <p>🧂 <strong>Sodium family:</strong> NaCl, Na₂SO₄, Na₂CO₃, NaHCO₃ (all have Na⁺)</p>
+      </div>
+      <div class="highlight salt-hl" style="margin-top:.5rem;">
+        <p>🧂 <strong>Chloride family:</strong> NaCl, KCl, MgCl₂, CaCl₂ (all have Cl⁻)</p>
+      </div>
+      <div class="highlight salt-hl" style="margin-top:.5rem;">
+        <p>🧂 <strong>Sulphate family:</strong> Na₂SO₄, CuSO₄, ZnSO₄, MgSO₄ (all have SO₄²⁻)</p>
+      </div>
+      <div class="highlight" style="margin-top:.5rem;">
+        <p>💡 <strong>Water of Crystallisation:</strong> The fixed number of water molecules present in one formula unit of a salt. E.g., CuSO₄·5H₂O (blue crystals → white on heating)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="salts-grid reveal" style="margin-top:1.5rem;">
+    <div class="salt-card sc-nahco3">
+      <div class="formula">NaHCO₃</div>
+      <h4>Baking Soda</h4>
+      <p>Sodium Hydrogencarbonate. Mild, non-corrosive basic salt. Used in cooking, antacids, fire extinguishers.</p>
+    </div>
+    <div class="salt-card sc-na2co3">
+      <div class="formula">Na₂CO₃·10H₂O</div>
+      <h4>Washing Soda</h4>
+      <p>Sodium Carbonate decahydrate. Basic salt. Used in glass, soap, paper industries. Removes hardness of water.</p>
+    </div>
+    <div class="salt-card sc-caoh2">
+      <div class="formula">Ca(OH)₂</div>
+      <h4>Slaked Lime</h4>
+      <p>Calcium Hydroxide. Used for whitewashing walls, making cement. Reacts slowly with CO₂ to form CaCO₃.</p>
+    </div>
+    <div class="salt-card sc-caclo2">
+      <div class="formula">Ca(ClO)₂</div>
+      <h4>Bleaching Powder</h4>
+      <p>Calcium hypochlorite. Used for bleaching textiles, disinfecting water, oxidising agent.</p>
+    </div>
+    <div class="salt-card sc-cuso4">
+      <div class="formula">CuSO₄·5H₂O</div>
+      <h4>Blue Vitriol</h4>
+      <p>Hydrated copper sulphate. Blue crystals. Turns white (anhydrous) on heating. Blue colour restored on adding water.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: CHEMICALS FROM COMMON SALT -->
+<section class="section" id="chemicals">
+  <div class="section-header reveal">
+    <span class="section-num">05 · CHEMICALS FROM COMMON SALT</span>
+    <h2 class="section-title">NaCl — The <span class="salt">Raw Material</span></h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="highlight reveal">
+    <p>🧂 <strong>Common salt (NaCl)</strong> is an important raw material for sodium hydroxide, baking soda, washing soda, bleaching powder and many more chemicals of daily use.</p>
+  </div>
+
+  <div class="steps reveal" style="margin-top:1.5rem;">
+    <div class="step">
+      <div class="step-n salt">1</div>
+      <div class="step-body">
+        <strong>Chlor-Alkali Process → NaOH + Cl₂ + H₂</strong>
+        <p>When electricity is passed through an aqueous solution of NaCl (brine), it decomposes. This is called the <strong>chlor-alkali process</strong>. Cl₂ at anode, H₂ at cathode, NaOH near cathode.</p>
+        <div class="step-eq">2NaCl(aq) + 2H₂O(l) → 2NaOH(aq) + Cl₂(g)↑ + H₂(g)↑</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n salt">2</div>
+      <div class="step-body">
+        <strong>Bleaching Powder → Ca(ClO)₂</strong>
+        <p>Chlorine gas from chlor-alkali process reacts with dry slaked lime Ca(OH)₂ to form bleaching powder. Used for bleaching cotton/linen, disinfecting water.</p>
+        <div class="step-eq">2Ca(OH)₂ + 2Cl₂ → Ca(ClO)₂ + CaCl₂ + 2H₂O</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n salt">3</div>
+      <div class="step-body">
+        <strong>Baking Soda → NaHCO₃</strong>
+        <p>Sodium hydrogencarbonate. Produced from NaCl. On heating → Na₂CO₃ + H₂O + CO₂. Used in cooking (CO₂ makes bread soft and spongy), antacids, fire extinguishers.</p>
+        <div class="step-eq">NaCl + H₂O + CO₂ + NH₃ → NH₄Cl + NaHCO₃</div>
+        <div class="step-eq">2NaHCO₃ →(heat) Na₂CO₃ + H₂O + CO₂</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n salt">4</div>
+      <div class="step-body">
+        <strong>Washing Soda → Na₂CO₃·10H₂O</strong>
+        <p>Recrystallisation of sodium carbonate gives washing soda. Basic salt. Used in glass, soap, paper industries; to remove permanent hardness of water.</p>
+        <div class="step-eq">Na₂CO₃ + 10H₂O → Na₂CO₃·10H₂O (Washing soda)</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n salt">5</div>
+      <div class="step-body">
+        <strong>Plaster of Paris → CaSO₄·½H₂O</strong>
+        <p>Gypsum (CaSO₄·2H₂O) heated at 373 K → Plaster of Paris. On mixing with water, it sets hard (reverts to gypsum). Used for fractured bones, toys, smooth surfaces.</p>
+        <div class="step-eq">CaSO₄·2H₂O →(373K) CaSO₄·½H₂O + 1½H₂O</div>
+        <div class="step-eq">CaSO₄·½H₂O + 1½H₂O → CaSO₄·2H₂O (Gypsum)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: KEYWORDS -->
+<section class="section" id="keywords" style="background:linear-gradient(180deg,var(--bg2),var(--bg));">
+  <div class="section-header reveal">
+    <span class="section-num">06 · IMPORTANT KEYWORDS</span>
+    <h2 class="section-title">Keywords & <span class="base">Definitions</span> <small style="font-size:.6em;color:var(--text3)">(as per NCERT)</small></h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="full-card reveal">
+    <table class="kw-table">
+      <thead><tr><th>KEYWORD</th><th>NCERT DEFINITION</th></tr></thead>
+      <tbody>
+        <tr><td>Indicator</td><td>A dye or mixture of dyes used to indicate the presence of acids or bases by a change in colour (or odour for olfactory indicators).</td></tr>
+        <tr><td>Olfactory Indicator</td><td>Substances whose odour changes in acidic or basic media. Examples: onion, clove oil, vanilla essence.</td></tr>
+        <tr><td>Neutralisation</td><td>The reaction between an acid and a base to give a salt and water. H⁺(aq) + OH⁻(aq) → H₂O(l).</td></tr>
+        <tr><td>Alkali</td><td>A base that dissolves in water. All alkalis are bases, but not all bases are alkalis.</td></tr>
+        <tr><td>Hydronium ion</td><td>H₃O⁺ ion formed when H⁺ combines with water (H⁺ + H₂O → H₃O⁺). Hydrogen ions must always be shown as H⁺(aq) or H₃O⁺.</td></tr>
+        <tr><td>pH scale</td><td>A scale for measuring hydrogen ion concentration in a solution, generally from 0 (very acidic) to 14 (very alkaline). 'p' stands for 'potenz' (German for power).</td></tr>
+        <tr><td>Universal Indicator</td><td>A mixture of several indicators that shows different colours at different concentrations of hydrogen ions in a solution.</td></tr>
+        <tr><td>Strong acid/base</td><td>Acids that give rise to more H⁺ ions are strong acids. Bases giving more OH⁻ ions are strong bases.</td></tr>
+        <tr><td>Weak acid/base</td><td>Acids that give less H⁺ ions are weak acids. Example: acetic acid (CH₃COOH). Bases giving fewer OH⁻ ions are weak bases.</td></tr>
+        <tr><td>Dilution</td><td>Mixing an acid or base with water decreases the concentration of H₃O⁺/OH⁻ ions per unit volume. The acid or base is said to be diluted.</td></tr>
+        <tr><td>Water of Crystallisation</td><td>The fixed number of water molecules present in one formula unit of a salt. Example: CuSO₄·5H₂O has 5 water molecules.</td></tr>
+        <tr><td>Chlor-alkali process</td><td>The process of passing electricity through brine (aqueous NaCl) to produce NaOH, Cl₂ and H₂. Named because of products — 'chlor' for chlorine, 'alkali' for NaOH.</td></tr>
+        <tr><td>Bleaching powder</td><td>Ca(ClO)₂ — produced by the action of chlorine on dry slaked lime. Used for bleaching cotton/linen, disinfecting water.</td></tr>
+        <tr><td>Baking soda</td><td>Sodium hydrogencarbonate (NaHCO₃). A mild non-corrosive basic salt. On heating produces CO₂ which makes bread/cake soft and spongy.</td></tr>
+        <tr><td>Washing soda</td><td>Sodium carbonate decahydrate (Na₂CO₃·10H₂O). A basic salt used in glass, soap, paper industries and for removing permanent hardness of water.</td></tr>
+        <tr><td>Plaster of Paris</td><td>CaSO₄·½H₂O — calcium sulphate hemihydrate. Obtained by heating gypsum (CaSO₄·2H₂O) at 373 K. Sets hard with water to form gypsum again.</td></tr>
+        <tr><td>Gypsum</td><td>CaSO₄·2H₂O — calcium sulphate dihydrate. Has 2 water molecules of crystallisation.</td></tr>
+        <tr><td>Antacid</td><td>A mild base used to neutralise excess acid in the stomach and provide relief during indigestion. Example: Milk of magnesia — Mg(OH)₂.</td></tr>
+        <tr><td>Brine</td><td>An aqueous solution of sodium chloride (NaCl). Used in the chlor-alkali process.</td></tr>
+        <tr><td>Acid rain</td><td>Rain water with pH less than 5.6. Caused by dissolved acidic gases. Harms aquatic life by lowering river pH.</td></tr>
+        <tr><td>Basic oxides</td><td>Metallic oxides that react with acids to give salts and water, similar to the reaction of a base with an acid.</td></tr>
+        <tr><td>Acidic oxides</td><td>Non-metallic oxides (e.g. CO₂) that react with bases to give salts and water. Non-metallic oxides are acidic in nature.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Summary Table -->
+  <div class="full-card reveal" style="margin-top:1.5rem;">
+    <h3 style="margin-bottom:1rem;font-family:var(--font-head);">📋 Complete Reactions Summary</h3>
+    <table class="sum-table">
+      <thead><tr><th>Reaction Type</th><th>General Equation</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Acid + Metal</td><td>→ Salt + H₂↑</td><td>Zn + H₂SO₄ → ZnSO₄ + H₂↑</td></tr>
+        <tr><td>Base + Metal</td><td>→ Salt + H₂↑</td><td>2NaOH + Zn → Na₂ZnO₂ + H₂↑</td></tr>
+        <tr><td>Acid + Metal Carbonate</td><td>→ Salt + CO₂ + H₂O</td><td>Na₂CO₃ + 2HCl → 2NaCl + H₂O + CO₂↑</td></tr>
+        <tr><td>Acid + Metal Hydrogencarbonate</td><td>→ Salt + CO₂ + H₂O</td><td>NaHCO₃ + HCl → NaCl + H₂O + CO₂↑</td></tr>
+        <tr><td>Acid + Base (Neutralisation)</td><td>→ Salt + H₂O</td><td>NaOH + HCl → NaCl + H₂O</td></tr>
+        <tr><td>Metal Oxide + Acid</td><td>→ Salt + H₂O</td><td>CuO + 2HCl → CuCl₂ + H₂O</td></tr>
+        <tr><td>Non-metallic Oxide + Base</td><td>→ Salt + H₂O</td><td>Ca(OH)₂ + CO₂ → CaCO₃ + H₂O</td></tr>
+        <tr><td>Chlor-alkali process</td><td>Brine → NaOH + Cl₂ + H₂</td><td>2NaCl + 2H₂O → 2NaOH + Cl₂ + H₂</td></tr>
+        <tr><td>Bleaching powder</td><td>Cl₂ + slaked lime → Ca(ClO)₂</td><td>2Ca(OH)₂ + 2Cl₂ → Ca(ClO)₂ + CaCl₂ + 2H₂O</td></tr>
+        <tr><td>Baking soda heated</td><td>NaHCO₃ → Na₂CO₃ + H₂O + CO₂</td><td>2NaHCO₃ → Na₂CO₃ + H₂O + CO₂</td></tr>
+        <tr><td>Plaster of Paris formation</td><td>Gypsum →(373K) POP</td><td>CaSO₄·2H₂O → CaSO₄·½H₂O + 1½H₂O</td></tr>
+        <tr><td>POP sets hard</td><td>POP + water → Gypsum</td><td>CaSO₄·½H₂O + 1½H₂O → CaSO₄·2H₂O</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div style="height:3rem;"></div>
+
+
+
+<!-- ========== NCERT QUESTIONS — Biology Ch13 Pattern ========== -->
+<section class="section" id="exercises" style="background:linear-gradient(180deg,var(--bg2),var(--bg));">
+  <div class="section-header reveal">
+    <span class="section-num">07 · NCERT QUESTIONS</span>
+    <h2 class="section-title">In-Text Questions &amp; <span class="salt">Exercises</span></h2>
+    <div class="divider"></div>
+  </div>
+  <p style="color:var(--text2);margin-bottom:2rem;font-size:.92rem;">All questions as per NCERT Class 10 Science — Chapter 2: Acids, Bases and Salts (Reprint 2026-27). Click <strong>Show Answer</strong> to reveal. Click MCQ options to check your answer.</p>
+
+  <!-- ══════════ IN-TEXT Q SET 1 ══════════ -->
+  <div class="intext-divider reveal">
+    <div class="id-icon">🧪</div>
+    <div><h3>In-Text Questions — Section 2.1 (After Indicators)</h3><p>Page 18</p></div>
+  </div>
+  <div class="intext-block reveal">
+    <div class="intext-header">
+      <span class="intext-badge ib-green">IN-TEXT · PAGE 18</span>
+      <span class="intext-title">Olfactory Indicators</span>
+    </div>
+    <ol class="exercise-list">
+      <li>
+        <div class="ex-text">
+          You have been provided with three test tubes. One of them contains distilled water and the other two contain an acidic solution and a basic solution, respectively. If you are given only red litmus paper, how will you identify the contents of each test tube?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              Dip the red litmus paper into each test tube one by one.<br>
+              • The test tube in which the red litmus turns <strong>blue</strong> → contains the <strong>basic solution</strong> (base).<br>
+              • The test tube in which the red litmus shows <strong>no change</strong> (stays red) → could be the <strong>acidic solution</strong> or distilled water.<br><br>
+              To differentiate the remaining two: take a drop from the identified base and put it on a fresh red litmus strip — it turns blue. Now use the base-soaked (blue) litmus paper as a blue litmus: dip it into each of the remaining two solutions.<br>
+              • The one that turns the blue litmus <strong>red</strong> → <strong>acidic solution</strong>.<br>
+              • The one that causes <strong>no change</strong> → <strong>distilled water</strong>.
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- ══════════ IN-TEXT Q SET 2 ══════════ -->
+  <div class="intext-divider reveal">
+    <div class="id-icon">⚗️</div>
+    <div><h3>In-Text Questions — Sections 2.1.2 to 2.1.6 (Reactions of Acids &amp; Bases)</h3><p>Page 22</p></div>
+  </div>
+  <div class="intext-block reveal">
+    <div class="intext-header">
+      <span class="intext-badge ib-acid">IN-TEXT · PAGE 22</span>
+      <span class="intext-title">Reactions of Acids &amp; Bases</span>
+    </div>
+    <ol class="exercise-list">
+      <li>
+        <div class="ex-text">
+          Why should curd and sour substances not be kept in brass and copper vessels?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              Curd and sour substances contain acids (e.g. lactic acid, citric acid, tartaric acid). Brass and copper are metals. Acids react with metals to form salts and hydrogen gas:<br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">Acid + Metal → Salt + H₂↑</span><br><br>
+              The reaction between the acid in curd/sour substances and the metal of the vessel:<br>
+              (i) Dissolves the metal, damaging the vessel.<br>
+              (ii) Forms <strong>copper or zinc salts</strong> which are harmful and can make the food <strong>toxic</strong>.<br>
+              (iii) Changes the taste of the food stored in it.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          Which gas is usually liberated when an acid reacts with a metal? Illustrate with an example. How will you test for the presence of this gas?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              <strong>Hydrogen gas (H₂)</strong> is liberated when an acid reacts with a metal.<br><br>
+              <strong>Example:</strong><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">Zn(s) + H₂SO₄(aq) → ZnSO₄(aq) + H₂(g)↑</span><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g)↑</span><br><br>
+              <strong>Test for hydrogen gas:</strong> Bring a burning candle near the gas. If the gas burns with a <strong>pop sound</strong>, it confirms the presence of hydrogen gas.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          Metal compound A reacts with dilute hydrochloric acid to produce effervescence. The gas evolved extinguishes a burning candle. Write a balanced chemical equation for the reaction if one of the compounds formed is calcium chloride.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              The gas evolved extinguishes a burning candle → it is <strong>carbon dioxide (CO₂)</strong>.<br>
+              One product is calcium chloride (CaCl₂) → the metal compound A must contain calcium.<br>
+              Therefore, <strong>metal compound A = Calcium carbonate (CaCO₃)</strong>.<br><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">CaCO₃(s) + 2HCl(aq) → CaCl₂(aq) + H₂O(l) + CO₂(g)↑</span><br><br>
+              CO₂ is heavier than air and extinguishes fire, which is why it extinguishes the burning candle.
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- ══════════ IN-TEXT Q SET 3 ══════════ -->
+  <div class="intext-divider reveal">
+    <div class="id-icon">💧</div>
+    <div><h3>In-Text Questions — Section 2.2 (Acids &amp; Bases in Common)</h3><p>Page 25</p></div>
+  </div>
+  <div class="intext-block reveal">
+    <div class="intext-header">
+      <span class="intext-badge ib-base">IN-TEXT · PAGE 25</span>
+      <span class="intext-title">Ions in Solution &amp; Water</span>
+    </div>
+    <ol class="exercise-list">
+      <li>
+        <div class="ex-text">
+          Why do HCl, HNO₃, etc., show acidic characters in aqueous solutions while solutions of compounds like alcohol and glucose do not show acidic character?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              HCl, HNO₃, etc., when dissolved in water, <strong>ionise completely</strong> to produce <strong>H⁺(aq) ions</strong> (hydronium ions, H₃O⁺). It is these H⁺ ions that are responsible for their acidic character.<br><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">HCl + H₂O → H₃O⁺ + Cl⁻</span><br><br>
+              Alcohol and glucose also contain hydrogen but they do <strong>not ionise</strong> in water to produce H⁺ ions. Since they do not produce H⁺(aq) ions in solution, they do not show acidic character.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          Why does an aqueous solution of an acid conduct electricity?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              When an acid is dissolved in water, it ionises to produce <strong>ions</strong> — positively charged H⁺ (or H₃O⁺) ions and negatively charged anions (Cl⁻, NO₃⁻, SO₄²⁻, etc.).<br><br>
+              These ions are free to move in the solution. The flow of these charged particles (ions) constitutes an <strong>electric current</strong>. Hence, an aqueous solution of an acid is a good conductor of electricity.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          Why does dry HCl gas not change the colour of the dry litmus paper?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              Acidic behaviour is due to the production of <strong>H⁺(aq) ions</strong>. H⁺ ions are produced only in the presence of water:<br><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">HCl + H₂O → H₃O⁺ + Cl⁻</span><br><br>
+              In dry HCl gas, there is no water. Without water, HCl cannot ionise to form H⁺ ions. Since no H⁺(aq) ions are produced, dry HCl gas does not show acidic properties and does <strong>not change the colour of dry litmus paper</strong>.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          While diluting an acid, why is it recommended that the acid should be added to water and not water to the acid?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              The process of dissolving an acid in water is highly <strong>exothermic</strong> (releases a large amount of heat).<br><br>
+              If water is added to a concentrated acid, the small amount of water heats up very rapidly and may <strong>boil</strong>, causing the hot acid mixture to <strong>splash out</strong> and cause serious burns. The glass container may also break due to excessive local heating.<br><br>
+              If the acid is added slowly to a large volume of water, the heat generated is easily absorbed and dissipated by the large amount of water, making the process safe. So, acid is always added to water and not the other way around.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          How is the concentration of hydronium ions (H₃O⁺) affected when a solution of an acid is diluted?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              When a solution of an acid is diluted, the <strong>concentration of H₃O⁺ ions decreases</strong> per unit volume. The volume of the solution increases while the number of H⁺/H₃O⁺ ions remains the same, so there are fewer ions per unit volume.<br><br>
+              This process is called <strong>dilution</strong> — the acid is said to be diluted. Dilution increases the pH of the acid (moves it closer to 7), making it less acidic.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          How is the concentration of hydroxide ions (OH⁻) affected when excess base is dissolved in a solution of sodium hydroxide?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              When excess base is dissolved in a solution of sodium hydroxide (NaOH), more base ionises to produce more <strong>OH⁻ ions</strong>.<br><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">NaOH → Na⁺(aq) + OH⁻(aq)</span><br><br>
+              Therefore, the <strong>concentration of OH⁻ ions increases</strong>. The solution becomes more basic (more alkaline), and its pH value increases (moves further above 7).
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- ══════════ IN-TEXT Q SET 4 ══════════ -->
+  <div class="intext-divider reveal">
+    <div class="id-icon">📊</div>
+    <div><h3>In-Text Questions — Section 2.3 (pH Scale)</h3><p>Page 28</p></div>
+  </div>
+  <div class="intext-block reveal">
+    <div class="intext-header">
+      <span class="intext-badge ib-base">IN-TEXT · PAGE 28</span>
+      <span class="intext-title">pH Scale &amp; Everyday Life</span>
+    </div>
+    <ol class="exercise-list">
+      <li>
+        <div class="ex-text">
+          You have two solutions, A and B. The pH of solution A is 6 and pH of solution B is 8. Which solution has more hydrogen ion concentration? Which of this is acidic and which one is basic?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              <strong>Solution A (pH 6)</strong> has more hydrogen ion (H⁺) concentration because lower pH means higher H⁺ concentration.<br><br>
+              • Solution A (pH 6) → pH &lt; 7 → <strong>Acidic</strong><br>
+              • Solution B (pH 8) → pH &gt; 7 → <strong>Basic (Alkaline)</strong>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          What effect does the concentration of H⁺(aq) ions have on the nature of the solution?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              • Higher concentration of H⁺(aq) ions → solution is more <strong>acidic</strong> → lower pH value (closer to 0).<br>
+              • Lower concentration of H⁺(aq) ions → solution is less acidic or <strong>neutral or basic</strong> → higher pH value (closer to 14).<br><br>
+              In short: <strong>Higher [H⁺] → More acidic → Lower pH.</strong>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          Do basic solutions also have H⁺(aq) ions? If yes, then why are these basic?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              <strong>Yes</strong>, basic solutions do contain H⁺(aq) ions, but in very small concentrations.<br><br>
+              A solution is basic because the <strong>concentration of OH⁻(aq) ions is greater than the concentration of H⁺(aq) ions</strong> in it. The excess OH⁻ ions are responsible for the basic character, even though H⁺ ions are present in small amounts.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          Under what soil condition do you think a farmer would treat the soil of his fields with quick lime (calcium oxide) or slaked lime (calcium hydroxide) or chalk (calcium carbonate)?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              A farmer would treat the soil with quick lime (CaO), slaked lime [Ca(OH)₂] or chalk (CaCO₃) when the <strong>soil is too acidic</strong> (has a low pH).<br><br>
+              These substances are basic in nature. When they are added to acidic soil, they <strong>neutralise the excess acid</strong> in the soil, raising its pH to a level suitable for crop growth. Plants require a specific pH range for healthy growth.
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- ══════════ IN-TEXT Q SET 5 ══════════ -->
+  <div class="intext-divider id-salt reveal">
+    <div class="id-icon">🧂</div>
+    <div><h3>In-Text Questions — Section 2.4 (More About Salts)</h3><p>Page 33</p></div>
+  </div>
+  <div class="intext-block reveal">
+    <div class="intext-header">
+      <span class="intext-badge ib-salt">IN-TEXT · PAGE 33</span>
+      <span class="intext-title">Chemicals from Common Salt</span>
+    </div>
+    <ol class="exercise-list">
+      <li>
+        <div class="ex-text">
+          What is the common name of the compound Ca(ClO)₂?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              The common name of Ca(ClO)₂ is <strong>Bleaching powder</strong> (also called calcium oxychloride or calcium hypochlorite).<br><br>
+              It is produced by the action of chlorine on dry slaked lime [Ca(OH)₂]:<br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">2Ca(OH)₂ + 2Cl₂ → Ca(ClO)₂ + CaCl₂ + 2H₂O</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          Name the substance which on treatment with chlorine yields bleaching powder.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              <strong>Dry slaked lime — Ca(OH)₂</strong> (calcium hydroxide) on treatment with chlorine yields bleaching powder.<br><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">2Ca(OH)₂ + 2Cl₂ → Ca(ClO)₂ + CaCl₂ + 2H₂O</span><br><br>
+              The chlorine used here is produced during the chlor-alkali process (electrolysis of brine).
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          Name the sodium compound which is used for softening hard water.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              <strong>Washing soda — Sodium carbonate (Na₂CO₃·10H₂O)</strong> is used for softening hard water.<br><br>
+              Hard water contains dissolved salts of calcium and magnesium. Washing soda (Na₂CO₃) reacts with these salts to form insoluble carbonates which can be filtered off, thus removing the hardness of water.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          What will happen if a solution of sodium hydrogencarbonate is heated? Give the equation of the reaction involved.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              When sodium hydrogencarbonate (NaHCO₃) solution is heated, it <strong>decomposes</strong> to give sodium carbonate (Na₂CO₃), water and carbon dioxide gas. Brisk effervescence is observed due to the evolution of CO₂.<br><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">2NaHCO₃ →(heat) Na₂CO₃ + H₂O + CO₂↑</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          Write an equation to show the reaction between Plaster of Paris and water.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              When Plaster of Paris (CaSO₄·½H₂O) is mixed with water, it reacts to form gypsum (CaSO₄·2H₂O) and becomes hard (sets).<br><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">CaSO₄·½H₂O + 1½H₂O → CaSO₄·2H₂O (Gypsum)</span><br><br>
+              This property of setting hard is used in making casts for fractured bones, toys and smooth surfaces.
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- ══════════ END EXERCISES ══════════ -->
+  <div class="intext-divider id-acid reveal">
+    <div class="id-icon">📝</div>
+    <div><h3>End Chapter Exercises</h3><p>Pages 34–35 · NCERT Class 10 Science</p></div>
+  </div>
+  <div class="full-card reveal">
+    <p style="font-size:.85rem;color:var(--text3);margin-bottom:.4rem;font-family:var(--font-mono);">MCQs — CLICK AN OPTION TO CHECK YOUR ANSWER</p>
+    <p style="font-size:.82rem;color:var(--text3);margin-bottom:1.4rem;font-family:var(--font-mono);">LONG ANSWERS — CLICK "SHOW ANSWER" TO REVEAL</p>
+    <ol class="exercise-list">
+
+      <!-- Q1 MCQ -->
+      <li>
+        <div class="ex-text">
+          A solution turns red litmus blue, its pH is likely to be
+          <div class="ex-options">
+            <div class="ex-opt" data-correct="false">(a) 1</div>
+            <div class="ex-opt" data-correct="false">(b) 4</div>
+            <div class="ex-opt" data-correct="false">(c) 5</div>
+            <div class="ex-opt" data-correct="true">(d) 10</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q2 MCQ -->
+      <li>
+        <div class="ex-text">
+          A solution reacts with crushed egg-shells to give a gas that turns lime-water milky. The solution contains
+          <div class="ex-options">
+            <div class="ex-opt" data-correct="false">(a) NaCl</div>
+            <div class="ex-opt" data-correct="true">(b) HCl</div>
+            <div class="ex-opt" data-correct="false">(c) LiCl</div>
+            <div class="ex-opt" data-correct="false">(d) KCl</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q3 MCQ -->
+      <li>
+        <div class="ex-text">
+          10 mL of a solution of NaOH is found to be completely neutralised by 8 mL of a given solution of HCl. If we take 20 mL of the same solution of NaOH, the amount of HCl solution required to neutralise it will be
+          <div class="ex-options">
+            <div class="ex-opt" data-correct="false">(a) 4 mL</div>
+            <div class="ex-opt" data-correct="false">(b) 8 mL</div>
+            <div class="ex-opt" data-correct="false">(c) 12 mL</div>
+            <div class="ex-opt" data-correct="true">(d) 16 mL</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q4 MCQ -->
+      <li>
+        <div class="ex-text">
+          Which one of the following types of medicines is used for treating indigestion?
+          <div class="ex-options">
+            <div class="ex-opt" data-correct="false">(a) Antibiotic</div>
+            <div class="ex-opt" data-correct="false">(b) Analgesic</div>
+            <div class="ex-opt" data-correct="true">(c) Antacid</div>
+            <div class="ex-opt" data-correct="false">(d) Antiseptic</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q5 Long -->
+      <li>
+        <div class="ex-text">
+          Write word equations and then balanced equations for the reaction taking place when — (a) dilute sulphuric acid reacts with zinc granules, (b) dilute hydrochloric acid reacts with magnesium ribbon, (c) dilute sulphuric acid reacts with aluminium powder, (d) dilute hydrochloric acid reacts with iron filings.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              <strong>(a)</strong> Zinc + Sulphuric acid → Zinc sulphate + Hydrogen<br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">Zn(s) + H₂SO₄(aq) → ZnSO₄(aq) + H₂(g)↑</span><br><br>
+              <strong>(b)</strong> Magnesium + Hydrochloric acid → Magnesium chloride + Hydrogen<br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g)↑</span><br><br>
+              <strong>(c)</strong> Aluminium + Sulphuric acid → Aluminium sulphate + Hydrogen<br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">2Al(s) + 3H₂SO₄(aq) → Al₂(SO₄)₃(aq) + 3H₂(g)↑</span><br><br>
+              <strong>(d)</strong> Iron + Hydrochloric acid → Ferrous chloride + Hydrogen<br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">Fe(s) + 2HCl(aq) → FeCl₂(aq) + H₂(g)↑</span>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q6 Long -->
+      <li>
+        <div class="ex-text">
+          Compounds such as alcohols and glucose also contain hydrogen but are not categorised as acids. Describe an Activity to prove it.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              <strong>Activity (as per NCERT Activity 2.8):</strong><br>
+              Fix two nails on a cork and place it in a 100 mL beaker. Connect the nails to the two terminals of a 6 volt battery through a bulb and a switch.<br><br>
+              <strong>Procedure:</strong><br>
+              1. Pour dilute HCl in the beaker and switch on the current → <strong>bulb glows</strong> (HCl ionises to give H⁺ and Cl⁻ ions that conduct electricity).<br>
+              2. Repeat with dilute H₂SO₄ → <strong>bulb glows</strong>.<br>
+              3. Now try with glucose solution → <strong>bulb does NOT glow</strong>.<br>
+              4. Try with alcohol solution → <strong>bulb does NOT glow</strong>.<br><br>
+              <strong>Conclusion:</strong> Acids (HCl, H₂SO₄) produce H⁺(aq) ions in water which conduct electricity. Alcohol and glucose do not ionise in water, produce no H⁺ ions, and hence are not acids despite containing hydrogen.
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q7 Long -->
+      <li>
+        <div class="ex-text">
+          Why does distilled water not conduct electricity, whereas rain water does?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              <strong>Distilled water</strong> is pure water — it contains no dissolved salts, acids or bases, and therefore has no free ions. Without ions, electric current cannot flow through it. Hence, distilled water is a <strong>poor conductor of electricity</strong>.<br><br>
+              <strong>Rain water</strong>, as it falls through the atmosphere, dissolves carbon dioxide (CO₂) and other gases present in the air. CO₂ dissolved in water forms <strong>carbonic acid (H₂CO₃)</strong>, which ionises to give H⁺ and HCO₃⁻ ions. These ions can carry electric current. Hence, rain water <strong>conducts electricity</strong>.
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q8 Long -->
+      <li>
+        <div class="ex-text">
+          Why does dry HCl gas not show acidic behaviour in the absence of water?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              The acidic behaviour of HCl is due to the production of <strong>H⁺(aq) ions</strong>. H⁺ ions are produced only when HCl dissolves in water:<br><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">HCl + H₂O → H₃O⁺ + Cl⁻</span><br><br>
+              In the absence of water, HCl molecules cannot ionise to form H⁺ ions. Without H⁺(aq) ions, HCl cannot show acidic behaviour such as changing the colour of litmus paper or reacting with metals. Therefore, dry HCl gas does <strong>not show acidic behaviour</strong>.
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q9 Long -->
+      <li>
+        <div class="ex-text">
+          Five solutions A, B, C, D and E when tested with universal indicator showed pH as 4, 1, 11, 7 and 9, respectively. Which solution is (a) neutral? (b) strongly alkaline? (c) strongly acidic? (d) weakly acidic? (e) weakly alkaline? Arrange the pH in increasing order of hydrogen-ion concentration.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              (a) <strong>Neutral</strong> → Solution D (pH = 7)<br>
+              (b) <strong>Strongly alkaline</strong> → Solution C (pH = 11)<br>
+              (c) <strong>Strongly acidic</strong> → Solution B (pH = 1)<br>
+              (d) <strong>Weakly acidic</strong> → Solution A (pH = 4)<br>
+              (e) <strong>Weakly alkaline</strong> → Solution E (pH = 9)<br><br>
+              <strong>Increasing order of H⁺ ion concentration</strong> (higher pH = less H⁺):<br>
+              C (pH 11) &lt; E (pH 9) &lt; D (pH 7) &lt; A (pH 4) &lt; B (pH 1)
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q10 Long -->
+      <li>
+        <div class="ex-text">
+          Equal lengths of magnesium ribbons are taken in test tubes A and B. Hydrochloric acid (HCl) is added to test tube A, while acetic acid (CH₃COOH) is added to test tube B. Amount and concentration taken for both the acids are same. In which test tube will the fizzing occur more vigorously and why?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              <strong>Test tube A (HCl)</strong> will show more vigorous fizzing.<br><br>
+              <strong>Reason:</strong> HCl is a <strong>strong acid</strong> — it ionises almost completely in water to produce a high concentration of H⁺(aq) ions. Acetic acid (CH₃COOH) is a <strong>weak acid</strong> — it ionises only partially in water, producing fewer H⁺(aq) ions.<br><br>
+              Since more H⁺ ions are available in test tube A, the reaction with magnesium is faster and more vigorous, producing H₂ gas (fizzing) at a higher rate.<br><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g)↑ (vigorous)</span><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">Mg(s) + 2CH₃COOH → (CH₃COO)₂Mg + H₂(g)↑ (slow)</span>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q11 Long -->
+      <li>
+        <div class="ex-text">
+          Fresh milk has a pH of 6. How do you think the pH will change as it turns into curd? Explain your answer.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              The pH of milk will <strong>decrease</strong> (become more acidic) as it turns into curd.<br><br>
+              <strong>Reason:</strong> When milk turns into curd, bacteria (mainly <em>Lactobacillus</em>) act on the lactose (sugar) in milk and produce <strong>lactic acid</strong>. As lactic acid accumulates in the milk, the concentration of H⁺ ions increases, causing the pH to fall below 6. The sour taste of curd is due to this increase in acidity.
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q12 Long -->
+      <li>
+        <div class="ex-text">
+          A milkman adds a very small amount of baking soda to fresh milk. (a) Why does he shift the pH of the fresh milk from 6 to slightly alkaline? (b) Why does this milk take a long time to set as curd?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              <strong>(a)</strong> The milkman shifts the pH to slightly alkaline to <strong>prevent the milk from turning sour quickly</strong>. Fresh milk has a pH of 6 (slightly acidic). As bacteria act on it, they produce lactic acid, lowering the pH further and making the milk sour. By adding baking soda (NaHCO₃, a mild base), the milkman neutralises the slight acidity and makes the milk slightly alkaline, which <strong>delays the souring process</strong>, allowing the milk to last longer.<br><br>
+              <strong>(b)</strong> Milk turns into curd when its pH drops sufficiently (due to lactic acid production by bacteria) for the proteins to coagulate. Since baking soda has made the milk slightly alkaline, the bacteria need to produce <strong>more lactic acid</strong> to lower the pH to the required level. This takes more time. Hence, this milk takes a <strong>longer time to set as curd</strong>.
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q13 Long -->
+      <li>
+        <div class="ex-text">
+          Plaster of Paris should be stored in a moisture-proof container. Explain why?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              Plaster of Paris (CaSO₄·½H₂O) readily absorbs moisture (water) from the atmosphere and reacts with it to form <strong>gypsum (CaSO₄·2H₂O)</strong>, which is a hard solid:<br><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">CaSO₄·½H₂O + 1½H₂O → CaSO₄·2H₂O (Gypsum)</span><br><br>
+              If moisture enters the container, Plaster of Paris will prematurely set and <strong>harden in the container</strong>, making it completely useless for any future application. To prevent this, it must be stored in a <strong>moisture-proof (airtight) container</strong>.
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q14 Long -->
+      <li>
+        <div class="ex-text">
+          What is a neutralisation reaction? Give two examples.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              The reaction between an acid and a base to give a salt and water is called a <strong>neutralisation reaction</strong>. The effect of an acid is nullified by the base and vice-versa. In ionic terms:<br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">H⁺(aq) + OH⁻(aq) → H₂O(l)</span><br><br>
+              <strong>Example 1:</strong><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">NaOH(aq) + HCl(aq) → NaCl(aq) + H₂O(l)</span><br>
+              (Sodium hydroxide + Hydrochloric acid → Sodium chloride + Water)<br><br>
+              <strong>Example 2:</strong><br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--neutral);">Mg(OH)₂ + 2HCl → MgCl₂ + 2H₂O</span><br>
+              (Milk of magnesia neutralises excess HCl in stomach — antacid action)
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q15 Long -->
+      <li>
+        <div class="ex-text">
+          Give two important uses of washing soda and baking soda.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              <strong>Washing soda (Na₂CO₃·10H₂O — Sodium carbonate decahydrate):</strong><br>
+              1. Used in glass, soap and paper industries.<br>
+              2. Used for removing permanent hardness of water (reacts with Ca²⁺ and Mg²⁺ salts to form insoluble carbonates).<br>
+              (Also used as a cleaning agent for domestic purposes and in the manufacture of sodium compounds such as borax.)<br><br>
+              <strong>Baking soda (NaHCO₃ — Sodium hydrogencarbonate):</strong><br>
+              1. Used in baking — when heated or mixed in water it releases CO₂ which makes bread and cake soft and spongy.<br>
+              2. Used as an antacid — being alkaline, it neutralises excess acid in the stomach and provides relief from indigestion.<br>
+              (Also used in soda-acid fire extinguishers.)
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ol>
+  </div>
+
+</section>
+
+<script>
+// Scroll reveal
+// All content visible by default; subtle scroll animation added
+document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+
+// MCQ checker — Biology Ch13 pattern
+document.querySelectorAll('.ex-opt').forEach(opt=>{
+  opt.addEventListener('click', function(){
+    const parent = this.closest('.ex-options');
+    if(parent.dataset.answered) return;
+    parent.dataset.answered = '1';
+    const isCorrect = this.dataset.correct === 'true';
+    this.classList.add(isCorrect ? 'correct' : 'wrong');
+    if(!isCorrect){
+      parent.querySelectorAll('.ex-opt').forEach(o=>{
+        if(o.dataset.correct==='true') o.classList.add('correct');
+      });
+    }
+    parent.querySelectorAll('.ex-opt').forEach(o=>o.style.cursor='default');
+  });
+});
+
+// Show/hide answer — Biology Ch13 pattern
+function toggleAns(btn){
+  const box = btn.nextElementSibling;
+  if(box.hidden){
+    box.hidden = false;
+    btn.textContent = 'Hide Answer ▲';
+    btn.classList.add('open');
+  } else {
+    box.hidden = true;
+    btn.textContent = 'Show Answer ▼';
+    btn.classList.remove('open');
+  }
+}
+
+// pH scale click
+const phLabels={
+  0:"pH 0 — Battery acid (very strongly acidic)",1:"pH 1 — Gastric juice",
+  2:"pH 2 — Lemon juice / Vinegar",3:"pH 3 — Carbonated drinks",
+  4:"pH 4 — Tomato juice",5:"pH 5 — Rainwater",
+  6:"pH 6 — Saliva / Fresh milk",7:"pH 7 — Pure water (Neutral)",
+  8:"pH 8 — Sea water",9:"pH 9 — Baking soda solution",
+  10:"pH 10 — Milk of magnesia",11:"pH 11 — Ammonia solution",
+  12:"pH 12 — Soapy water",13:"pH 13 — Bleach",
+  14:"pH 14 — NaOH solution (very strongly basic)"
+};
+function clickPH(e){
+  const bar=document.getElementById('phBar');
+  const rect=bar.getBoundingClientRect();
+  const pct=(e.clientX-rect.left)/rect.width;
+  const ph=Math.round(pct*14);
+  const marker=document.getElementById('phMarker');
+  const arrow=document.getElementById('phArrow');
+  marker.style.left=(pct*100)+'%';
+  arrow.textContent=phLabels[ph]||'pH '+ph;
+}
+</script>
+
+<script>
+// Chemistry Ch2 canvas — 6 acid/base themed element types
+(function(){
+  const canvas = document.getElementById('chem2Canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  function resize(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Ch2 palette: acid red, base blue, salt purple, neutral teal
+  const acid  = ['#ef4444','#dc2626','#f87171','#fca5a5'];
+  const base  = ['#3b82f6','#1d4ed8','#60a5fa','#93c5fd'];
+  const salt  = ['#f472b6','#db2777','#fbcfe8','#ec4899'];
+  const pink  = ['#ec4899','#db2777','#f472b6','#fbcfe8'];
+
+  function rand(a,b){return a+Math.random()*(b-a);}
+  function pick(arr){return arr[Math.floor(Math.random()*arr.length)];}
+
+  const items=[];
+
+  // 1. H⁺/OH⁻ ion spheres with charge label (8)
+  const ionLabels=['H⁺','OH⁻','H⁺','H₃O⁺','OH⁻','Cl⁻','Na⁺','OH⁻'];
+  const ionColors=[acid,base,acid,acid,base,acid,base,base];
+  for(let i=0;i<8;i++){
+    items.push({type:'ion', x:rand(60,window.innerWidth-60), y:rand(60,window.innerHeight-60),
+      r:rand(14,24), vx:rand(-.28,.28), vy:rand(-.25,.25),
+      color:pick(ionColors[i]), opacity:rand(.18,.28),
+      label:ionLabels[i], pulse:rand(0,6.28), pulseSpeed:rand(.03,.06)});
+  }
+  // 2. pH meter / indicator strip (5)
+  for(let i=0;i<5;i++){
+    const hue=Math.floor(rand(0,14)); // pH 0-14
+    const col=hue<7?pick(acid):hue>7?pick(base):pick(pink);
+    items.push({type:'phmeter', x:rand(60,window.innerWidth-60), y:rand(60,window.innerHeight-60),
+      vx:rand(-.2,.2), vy:rand(-.18,.18),
+      rot:rand(0,6.28), vrot:rand(.001,.004),
+      color:col, opacity:rand(.16,.24), ph:hue});
+  }
+  // 3. Beakers (4)
+  const beakerColors=[pick(acid),pick(base),pick(pink),pick(salt)];
+  const beakerLabels=['HCl','NaOH','NaCl','H₂SO₄'];
+  for(let i=0;i<4;i++){
+    items.push({type:'beaker', x:rand(60,window.innerWidth-60), y:rand(60,window.innerHeight-60),
+      vx:rand(-.18,.18), vy:rand(-.15,.15),
+      rot:rand(-.2,.2), vrot:rand(-.002,.002),
+      color:beakerColors[i], opacity:rand(.17,.25),
+      label:beakerLabels[i], bubblePhase:rand(0,6.28), bubbleSpeed:rand(.04,.07)});
+  }
+  // 4. Litmus strip (5)
+  for(let i=0;i<5;i++){
+    const isAcid=Math.random()>.5;
+    items.push({type:'litmus', x:rand(60,window.innerWidth-60), y:rand(60,window.innerHeight-60),
+      vx:rand(-.22,.22), vy:rand(-.2,.2),
+      rot:rand(-.4,.4), vrot:rand(-.003,.003),
+      color:isAcid?pick(acid):pick(base), opacity:rand(.16,.24),
+      isAcid});
+  }
+  // 5. Neutralisation collision sparks (6)
+  for(let i=0;i<6;i++){
+    items.push({type:'neutral', x:rand(60,window.innerWidth-60), y:rand(60,window.innerHeight-60),
+      vx:rand(-.25,.25), vy:rand(-.22,.22),
+      r:rand(16,28), opacity:rand(.14,.22),
+      phase:rand(0,6.28), phaseSpeed:rand(.04,.08)});
+  }
+  // 6. Salt crystal (6)
+  for(let i=0;i<6;i++){
+    items.push({type:'saltcrystal', x:rand(60,window.innerWidth-60), y:rand(60,window.innerHeight-60),
+      size:rand(13,24), vx:rand(-.2,.2), vy:rand(-.18,.18),
+      rot:rand(0,1.57), vrot:rand(.001,.004),
+      color:pick(salt), opacity:rand(.16,.24)});
+  }
+
+  function drawIon(c,it){
+    it.pulse+=it.pulseSpeed;
+    const r=it.r*(1+.08*Math.sin(it.pulse));
+    c.save();c.translate(it.x,it.y);
+    c.globalAlpha=it.opacity;c.strokeStyle=it.color;c.lineWidth=2;
+    c.beginPath();c.arc(0,0,r,0,Math.PI*2);c.stroke();
+    c.globalAlpha=it.opacity*.25;c.fillStyle=it.color;
+    c.beginPath();c.arc(0,0,r,0,Math.PI*2);c.fill();
+    c.globalAlpha=it.opacity*.9;c.fillStyle=it.color;
+    c.font='bold '+(r*.75)+'px monospace';
+    c.textAlign='center';c.textBaseline='middle';
+    c.fillText(it.label,0,0);
+    c.restore();
+  }
+
+  function drawPhmeter(c,it){
+    c.save();c.translate(it.x,it.y);c.rotate(it.rot);
+    c.globalAlpha=it.opacity;c.strokeStyle=it.color;c.lineWidth=2;
+    const w=36,h=14;
+    // strip body
+    c.beginPath();c.roundRect(-w/2,-h/2,w,h,3);c.stroke();
+    c.globalAlpha=it.opacity*.3;c.fillStyle=it.color;
+    c.beginPath();c.roundRect(-w/2,-h/2,w,h,3);c.fill();
+    // pH number
+    c.globalAlpha=it.opacity;c.fillStyle=it.color;
+    c.font='bold 9px monospace';c.textAlign='center';c.textBaseline='middle';
+    c.fillText('pH '+it.ph,0,0);
+    // handle
+    c.globalAlpha=it.opacity*.7;c.strokeStyle=it.color;c.lineWidth=1.5;
+    c.beginPath();c.moveTo(0,h/2);c.lineTo(0,h/2+10);c.stroke();
+    c.restore();
+  }
+
+  function drawBeaker(c,it){
+    it.bubblePhase+=it.bubbleSpeed;
+    c.save();c.translate(it.x,it.y);c.rotate(it.rot);
+    c.globalAlpha=it.opacity;c.strokeStyle=it.color;c.lineWidth=1.8;
+    // body trapezoid
+    c.beginPath();c.moveTo(-10,-18);c.lineTo(-13,14);c.quadraticCurveTo(-14,18,-10,18);
+    c.lineTo(10,18);c.quadraticCurveTo(14,18,13,14);c.lineTo(10,-18);c.stroke();
+    // top lip
+    c.beginPath();c.moveTo(-12,-18);c.lineTo(12,-18);c.stroke();
+    // liquid fill
+    c.globalAlpha=it.opacity*.2;c.fillStyle=it.color;
+    c.beginPath();c.moveTo(-13,4);c.lineTo(-13,14);c.quadraticCurveTo(-14,18,-10,18);
+    c.lineTo(10,18);c.quadraticCurveTo(14,18,13,14);c.lineTo(13,4);c.closePath();c.fill();
+    // label
+    c.globalAlpha=it.opacity*.85;c.fillStyle=it.color;
+    c.font='bold 7px monospace';c.textAlign='center';c.textBaseline='middle';
+    c.fillText(it.label,0,11);
+    // bubble
+    const by=-2+4*Math.sin(it.bubblePhase);
+    c.globalAlpha=it.opacity*.5;c.strokeStyle=it.color;c.lineWidth=1;
+    c.beginPath();c.arc(-3,by,2.5,0,Math.PI*2);c.stroke();
+    c.restore();
+  }
+
+  function drawLitmus(c,it){
+    c.save();c.translate(it.x,it.y);c.rotate(it.rot);
+    c.globalAlpha=it.opacity;c.strokeStyle=it.color;c.lineWidth=2;
+    // strip
+    c.beginPath();c.roundRect(-5,-20,10,28,2);c.stroke();
+    c.globalAlpha=it.opacity*.25;c.fillStyle=it.color;
+    c.beginPath();c.roundRect(-5,-20,10,28,2);c.fill();
+    // label
+    c.globalAlpha=it.opacity*.9;c.fillStyle=it.color;
+    c.font='bold 7px monospace';c.textAlign='center';c.textBaseline='middle';
+    c.fillText(it.isAcid?'R':'B',0,-6);
+    // handle
+    c.globalAlpha=it.opacity*.6;c.strokeStyle='#fff';c.lineWidth=1.5;
+    c.beginPath();c.moveTo(0,8);c.lineTo(0,18);c.stroke();
+    c.restore();
+  }
+
+  function drawNeutral(c,it){
+    it.phase+=it.phaseSpeed;
+    const r=it.r*(1+.1*Math.sin(it.phase));
+    c.save();c.translate(it.x,it.y);
+    // acid half
+    c.globalAlpha=it.opacity;c.strokeStyle='#ef4444';c.lineWidth=1.8;
+    c.beginPath();c.arc(0,0,r,Math.PI/2,Math.PI*3/2);c.stroke();
+    c.globalAlpha=it.opacity*.15;c.fillStyle='#ef4444';
+    c.beginPath();c.arc(0,0,r,Math.PI/2,Math.PI*3/2);c.fill();
+    // base half
+    c.globalAlpha=it.opacity;c.strokeStyle='#3b82f6';c.lineWidth=1.8;
+    c.beginPath();c.arc(0,0,r,-Math.PI/2,Math.PI/2);c.stroke();
+    c.globalAlpha=it.opacity*.15;c.fillStyle='#3b82f6';
+    c.beginPath();c.arc(0,0,r,-Math.PI/2,Math.PI/2);c.fill();
+    // centre H₂O
+    c.globalAlpha=it.opacity*.8;c.fillStyle='#34d399';
+    c.font='bold 8px monospace';c.textAlign='center';c.textBaseline='middle';
+    c.fillText('H₂O',0,0);
+    c.restore();
+  }
+
+  function drawSaltCrystal(c,it){
+    c.save();c.translate(it.x,it.y);c.rotate(it.rot);
+    c.globalAlpha=it.opacity;c.strokeStyle=it.color;c.lineWidth=2;
+    const s=it.size;
+    // hexagon
+    c.beginPath();
+    for(let i=0;i<6;i++){const a=(i/6)*Math.PI*2-Math.PI/6;if(i===0)c.moveTo(s*Math.cos(a),s*Math.sin(a));else c.lineTo(s*Math.cos(a),s*Math.sin(a));}
+    c.closePath();c.stroke();
+    // inner star lines
+    c.beginPath();c.moveTo(-s*.5,0);c.lineTo(s*.5,0);c.stroke();
+    c.beginPath();c.moveTo(0,-s*.5);c.lineTo(0,s*.5);c.stroke();
+    // nodes
+    c.fillStyle=it.color;
+    [[0,0],[s*.5,0],[-s*.5,0],[0,s*.5],[0,-s*.5]].forEach(([nx,ny])=>{
+      c.beginPath();c.arc(nx,ny,3,0,Math.PI*2);c.fill();
+    });
+    c.restore();
+  }
+
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    const W=canvas.width,H=canvas.height;
+    items.forEach(it=>{
+      it.x+=(it.vx||0);it.y+=(it.vy||0);
+      if(it.rot!==undefined)it.rot+=(it.vrot||0);
+      if(it.x<-120)it.x=W+120;if(it.x>W+120)it.x=-120;
+      if(it.y<-120)it.y=H+120;if(it.y>H+120)it.y=-120;
+      if(it.type==='ion')drawIon(ctx,it);
+      else if(it.type==='phmeter')drawPhmeter(ctx,it);
+      else if(it.type==='beaker')drawBeaker(ctx,it);
+      else if(it.type==='litmus')drawLitmus(ctx,it);
+      else if(it.type==='neutral')drawNeutral(ctx,it);
+      else if(it.type==='saltcrystal')drawSaltCrystal(ctx,it);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>

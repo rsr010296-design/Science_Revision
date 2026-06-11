@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 10 Physics — Chapter 10: The Human Eye and the Colourful World</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff7ed;--bg2:#ffedd5;--bg3:#fed7aa;
+  --card:#ffffff;--card2:#fff7f0;
+  --coral:#ea580c;--coral-l:#fff7ed;--coral-d:#7c2d12;
+  --amber:#d97706;--amber-l:#fef3c7;--amber-d:#78350f;
+  --violet:#7c3aed;--violet-l:#ede9fe;--violet-d:#4c1d95;
+  --sky:#0369a1;--sky-l:#e0f2fe;--sky-d:#0c4a6e;
+  --text:#111827;--text2:#374151;--text3:#6b7280;
+  --border:#fed7aa;--shadow:0 4px 24px rgba(0,0,0,0.07);
+  --font-head:'Playfair Display',serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --font-body:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.75;overflow-x:hidden;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg2);}::-webkit-scrollbar-thumb{background:var(--coral);border-radius:3px;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.7rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(255,247,237,0.96);backdrop-filter:blur(16px);border-bottom:2px solid var(--border);}
+.nav-logo{font-family:var(--font-mono);font-size:.78rem;color:var(--coral);font-weight:600;letter-spacing:.1em;}
+.nav-links{display:flex;gap:1rem;flex-wrap:wrap;}
+.nav-links a{font-size:.72rem;color:var(--text3);text-decoration:none;font-family:var(--font-mono);padding:.2rem .55rem;border-radius:4px;transition:all .2s;}
+.nav-links a:hover{background:var(--coral-l);color:var(--coral);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;padding:6rem 2rem 3rem;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#fff7ed 0%,#ffedd5 45%,#fed7aa 75%,#fdba74 100%);}
+.ch10-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:940px;}
+.chapter-badge{display:inline-block;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.2em;color:var(--coral);border:2px solid var(--coral);padding:.4rem 1.2rem;border-radius:4px;margin-bottom:1.5rem;background:rgba(255,255,255,0.8);}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.6rem,6.5vw,5rem);font-weight:700;line-height:1.1;margin-bottom:.8rem;color:var(--coral-d);}
+.hero h1 em{font-style:italic;color:var(--coral);}
+.hero h1 span{color:var(--violet);}
+.hero-sub{font-size:1.05rem;color:var(--text2);margin-bottom:2rem;}
+.hero-tags{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;}
+.tag{font-family:var(--font-mono);font-size:.68rem;padding:.3rem .8rem;border-radius:20px;letter-spacing:.08em;font-weight:600;}
+.tag-coral{background:var(--coral-l);color:var(--coral-d);border:1px solid #fdba74;}
+.tag-amber{background:var(--amber-l);color:var(--amber-d);border:1px solid #fcd34d;}
+.tag-violet{background:var(--violet-l);color:var(--violet-d);border:1px solid #c4b5fd;}
+.tag-sky{background:var(--sky-l);color:var(--sky-d);border:1px solid #7dd3fc;}
+
+/* SPECTRUM STRIP */
+.spectrum-strip{display:flex;border-radius:12px;overflow:hidden;height:50px;width:100%;max-width:560px;margin:0 auto 1.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.15);}
+.sc{flex:1;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.65rem;font-weight:700;color:white;letter-spacing:.05em;}
+.sc-v{background:#7c3aed;}
+.sc-i{background:#4338ca;}
+.sc-b{background:#2563eb;}
+.sc-g{background:#16a34a;}
+.sc-y{background:#ca8a04;color:#fff;}
+.sc-o{background:#ea580c;}
+.sc-r{background:#dc2626;}
+.spectrum-label{font-family:var(--font-body);font-size:.85rem;color:var(--coral);margin-top:.5rem;}
+
+/* SECTIONS */
+.section{padding:5rem 2rem;max-width:1100px;margin:0 auto;}
+.section-header{margin-bottom:2.5rem;}
+.section-num{font-family:var(--font-mono);font-size:.72rem;color:var(--coral);letter-spacing:.2em;display:block;margin-bottom:.4rem;font-weight:600;}
+.section-title{font-family:var(--font-head);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.15;color:var(--text);}
+.section-title .c{color:var(--coral);}
+.section-title .a{color:var(--amber);}
+.section-title .v{color:var(--violet);}
+.section-title .s{color:var(--sky);}
+.divider{width:50px;height:4px;background:var(--coral);margin-top:.8rem;border-radius:2px;}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
+.card{background:var(--card);border-radius:16px;padding:1.8rem;box-shadow:var(--shadow);border:1px solid var(--border);transition:transform .3s,box-shadow .3s;}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,0.11);}
+.card-icon{font-size:2.2rem;margin-bottom:.8rem;}
+.card h3{font-family:var(--font-head);font-size:1.15rem;margin-bottom:.5rem;}
+.card p{color:var(--text2);font-size:.93rem;}
+.card-coral{border-top:4px solid var(--coral);}
+.card-amber{border-top:4px solid var(--amber);}
+.card-violet{border-top:4px solid var(--violet);}
+.card-sky{border-top:4px solid var(--sky);}
+
+/* TWO-COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.full-card{background:var(--card);border-radius:16px;padding:1.8rem;box-shadow:var(--shadow);border:1px solid var(--border);}
+.full-card h3{font-family:var(--font-head);font-size:1.2rem;margin-bottom:1rem;}
+
+/* HIGHLIGHT */
+.highlight{background:linear-gradient(135deg,var(--coral-l),#fff7ed);border:1px solid #fdba74;border-radius:10px;padding:1rem 1.2rem;margin:.8rem 0;}
+.highlight p{font-size:.95rem;color:var(--text2);}
+.highlight strong{color:var(--coral);}
+.highlight.amber-hl{background:var(--amber-l);border-color:#fcd34d;}
+.highlight.amber-hl strong{color:var(--amber-d);}
+.highlight.violet-hl{background:var(--violet-l);border-color:#c4b5fd;}
+.highlight.violet-hl strong{color:var(--violet-d);}
+.highlight.sky-hl{background:var(--sky-l);border-color:#7dd3fc;}
+.highlight.sky-hl strong{color:var(--sky-d);}
+
+/* STEPS */
+.steps{counter-reset:s;}
+.step{display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--card);border-radius:10px;margin-bottom:.8rem;border:1px solid var(--border);}
+.step-n{width:32px;height:32px;background:var(--coral);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.75rem;font-weight:700;flex-shrink:0;}
+.step-n.amber{background:var(--amber);}
+.step-n.violet{background:var(--violet);}
+.step-n.sky{background:var(--sky);}
+.step-body{flex:1;}
+.step-body strong{display:block;font-size:.95rem;margin-bottom:.2rem;}
+.step-body p{font-size:.88rem;color:var(--text2);}
+.step-eq{font-family:var(--font-mono);font-size:.83rem;color:var(--coral-d);margin-top:.4rem;padding:.4rem .7rem;background:var(--coral-l);border-radius:6px;display:inline-block;}
+.step-eq.amber{color:var(--amber-d);background:var(--amber-l);}
+.step-eq.violet{color:var(--violet-d);background:var(--violet-l);}
+
+/* KEYWORD TABLE */
+.kw-table{width:100%;border-collapse:collapse;margin:1.5rem 0;}
+.kw-table thead tr{background:linear-gradient(135deg,var(--coral),var(--coral-d));}
+.kw-table th{padding:.8rem 1rem;text-align:left;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;color:white;}
+.kw-table tbody tr{border-bottom:1px solid var(--border);transition:background .2s;}
+.kw-table tbody tr:hover{background:var(--bg2);}
+.kw-table td{padding:.7rem 1rem;font-size:.9rem;}
+.kw-table td:first-child{font-family:var(--font-mono);color:var(--coral);font-weight:600;}
+
+/* SUMMARY TABLE */
+.sum-table{width:100%;border-collapse:collapse;}
+.sum-table thead tr{background:var(--coral);color:white;}
+.sum-table th{padding:.8rem 1rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-align:left;}
+.sum-table tbody tr:nth-child(odd){background:var(--card);}
+.sum-table tbody tr:nth-child(even){background:var(--bg2);}
+.sum-table td{padding:.75rem 1rem;font-size:.9rem;border-bottom:1px solid var(--border);}
+.sum-table td:first-child{font-weight:700;color:var(--coral);}
+
+/* TICKER */
+.ticker-wrap{overflow:hidden;background:var(--coral-d);padding:.5rem 0;margin:2rem 0;}
+.ticker{display:flex;gap:4rem;animation:tick 25s linear infinite;white-space:nowrap;}
+.ticker span{font-family:var(--font-mono);font-size:.75rem;color:white;letter-spacing:.1em;}
+.ticker span strong{color:#fdba74;}
+@keyframes tick{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .6s,transform .6s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.section-alt{background:linear-gradient(180deg,var(--bg2),var(--bg));}
+
+/* EXERCISES */
+.exercise-list{counter-reset:ex;list-style:none;padding:0;}
+.exercise-list li{counter-increment:ex;display:flex;gap:1rem;padding:.9rem 1rem;background:var(--card);border-radius:10px;border:1px solid var(--border);margin-bottom:.7rem;}
+.exercise-list li::before{content:counter(ex);font-family:var(--font-mono);font-size:.8rem;font-weight:700;color:white;background:var(--coral);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ex-text{font-size:.92rem;color:var(--text2);flex:1;}
+.ex-options{margin-top:.5rem;display:flex;flex-direction:column;gap:.3rem;}
+.ex-opt{font-size:.85rem;padding:.3rem .7rem;border-radius:6px;cursor:pointer;border:1px solid transparent;transition:all .2s;}
+.ex-opt:hover{background:var(--coral-l);border-color:var(--coral);}
+.ex-opt.correct{background:var(--coral-l);border-color:var(--coral);color:var(--coral-d);font-weight:600;}
+.ex-opt.wrong{background:#fee2e2;border-color:#dc2626;color:#dc2626;}
+.ans-wrap{margin-top:.8rem;}
+.show-ans-btn{font-family:var(--font-mono);font-size:.75rem;font-weight:600;color:var(--coral);background:var(--coral-l);border:1.5px solid var(--coral);border-radius:6px;padding:.35rem .9rem;cursor:pointer;transition:all .2s;letter-spacing:.05em;}
+.show-ans-btn:hover{background:var(--coral);color:white;}
+.show-ans-btn.open{background:var(--coral);color:white;}
+.ans-box{margin-top:.7rem;background:linear-gradient(135deg,var(--coral-l),#fff7ed);border-left:4px solid var(--coral);border-radius:0 8px 8px 0;padding:.9rem 1.1rem;font-size:.9rem;color:var(--text2);line-height:1.8;animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+
+/* IN-TEXT BLOCKS */
+.intext-block{background:var(--card);border-radius:14px;padding:1.5rem 1.8rem;margin-bottom:1.5rem;box-shadow:var(--shadow);border:1px solid var(--border);}
+.intext-header{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:2px solid var(--border);}
+.intext-badge{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.15em;padding:.3rem .8rem;border-radius:20px;font-weight:600;}
+.ib-coral{background:var(--coral-l);color:var(--coral-d);border:1px solid #fdba74;}
+.ib-amber{background:var(--amber-l);color:var(--amber-d);border:1px solid #fcd34d;}
+.ib-violet{background:var(--violet-l);color:var(--violet-d);border:1px solid #c4b5fd;}
+.ib-sky{background:var(--sky-l);color:var(--sky-d);border:1px solid #7dd3fc;}
+.intext-title{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--text);}
+.intext-divider{background:linear-gradient(135deg,var(--coral-d),#9a3412);padding:1.2rem 1.8rem;border-radius:12px;margin-bottom:1.5rem;color:white;display:flex;align-items:center;gap:1rem;}
+.intext-divider .id-icon{font-size:1.8rem;}
+.intext-divider h3{font-family:var(--font-head);font-size:1.1rem;margin-bottom:.1rem;}
+.intext-divider p{font-size:.82rem;opacity:.85;}
+.intext-divider.id-amber{background:linear-gradient(135deg,var(--amber),var(--amber-d));}
+.intext-divider.id-violet{background:linear-gradient(135deg,var(--violet),var(--violet-d));}
+.intext-divider.id-end{background:linear-gradient(135deg,#9a3412,#7c3aed);}
+
+/* DIAGRAM WRAP */
+.diag-wrap{background:var(--card);border-radius:14px;padding:1.4rem;box-shadow:var(--shadow);border:1px solid var(--border);margin:1rem 0;overflow:hidden;}
+.diag-title{font-family:var(--font-mono);font-size:.7rem;color:var(--coral);letter-spacing:.15em;font-weight:600;margin-bottom:.8rem;}
+.diag-sub{font-size:.78rem;color:var(--text3);text-align:center;margin-top:.5rem;font-family:var(--font-mono);}
+
+/* DEFECT CARDS */
+.defect-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin:1.5rem 0;}
+.defect-card{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);transition:transform .3s;}
+.defect-card:hover{transform:translateY(-4px);}
+.defect-header{padding:1.2rem 1.5rem;display:flex;align-items:center;gap:.8rem;}
+.defect-icon{font-size:2rem;}
+.defect-name{font-family:var(--font-head);font-size:1.1rem;font-weight:700;}
+.defect-body{padding:1rem 1.5rem 1.5rem;font-size:.87rem;color:var(--text2);}
+.defect-body p{margin-bottom:.5rem;}
+.defect-fix{font-family:var(--font-mono);font-size:.78rem;background:var(--bg2);padding:.4rem .7rem;border-radius:6px;margin-top:.5rem;}
+.dh-coral{background:linear-gradient(135deg,var(--coral-l),#fff7f0);}
+.dh-amber{background:linear-gradient(135deg,var(--amber-l),#fffbeb);}
+.dh-violet{background:linear-gradient(135deg,var(--violet-l),#faf5ff);}
+
+@media(max-width:768px){
+  .two-col{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">CBSE · CLASS 10 · PHYSICS</div>
+  <div class="nav-links">
+    <a href="#humaneye">Human Eye</a>
+    <a href="#defects">Defects</a>
+    <a href="#prism">Prism</a>
+    <a href="#dispersion">Dispersion</a>
+    <a href="#atmosphere">Atmosphere</a>
+    <a href="#scattering">Scattering</a>
+    <a href="#keywords">Keywords</a>
+    <a href="#exercises">Questions</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <canvas class="ch10-canvas" id="ch10Canvas"></canvas>
+  <div class="hero-content">
+    <div class="chapter-badge">CHAPTER 10 · CBSE CLASS 10 SCIENCE · PHYSICS</div>
+    <h1>The Human <em>Eye</em> and<br>the <span>Colourful</span> World</h1>
+    <p class="hero-sub">Accommodation · Vision Defects · Prism · Dispersion · Atmospheric Refraction · Scattering</p>
+    <div class="hero-tags">
+      <span class="tag tag-coral">👁️ HUMAN EYE</span>
+      <span class="tag tag-amber">🔭 DEFECTS OF VISION</span>
+      <span class="tag tag-violet">🌈 DISPERSION · VIBGYOR</span>
+      <span class="tag tag-sky">🌤️ SKY &amp; ATMOSPHERE</span>
+    </div>
+    <!-- Spectrum Strip -->
+    <div class="spectrum-strip" title="VIBGYOR — Visible spectrum">
+      <div class="sc sc-v">V</div>
+      <div class="sc sc-i">I</div>
+      <div class="sc sc-b">B</div>
+      <div class="sc sc-g">G</div>
+      <div class="sc sc-y">Y</div>
+      <div class="sc sc-o">O</div>
+      <div class="sc sc-r">R</div>
+    </div>
+    <p class="spectrum-label">← Violet bends most &nbsp;&nbsp; VIBGYOR &nbsp;&nbsp; Red bends least →</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span><strong>Near Point (Normal Eye):</strong> 25 cm</span>
+    <span><strong>Far Point (Normal Eye):</strong> Infinity</span>
+    <span><strong>Myopia →</strong> Corrected by Concave Lens</span>
+    <span><strong>Hypermetropia →</strong> Corrected by Convex Lens</span>
+    <span><strong>VIBGYOR:</strong> Violet · Indigo · Blue · Green · Yellow · Orange · Red</span>
+    <span><strong>Tyndall Effect →</strong> Scattering by colloidal particles</span>
+    <span><strong>Blue Sky →</strong> Shorter wavelengths scattered more strongly</span>
+    <span><strong>Near Point (Normal Eye):</strong> 25 cm</span>
+    <span><strong>Far Point (Normal Eye):</strong> Infinity</span>
+    <span><strong>Myopia →</strong> Corrected by Concave Lens</span>
+  </div>
+</div>
+
+<!-- SECTION 1: THE HUMAN EYE -->
+<section class="section" id="humaneye">
+  <div class="section-header reveal">
+    <span class="section-num">01 · THE HUMAN EYE</span>
+    <h2 class="section-title">The <span class="c">Human Eye</span> — Structure &amp; Function</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="card-grid reveal">
+    <div class="card card-coral">
+      <div class="card-icon">👁️</div>
+      <h3 style="color:var(--coral)">The Eye — A Camera</h3>
+      <p>The human eye is like a camera. Its lens system forms an image on a light-sensitive screen called the <strong>retina</strong>. The eyeball is approximately spherical with a diameter of about <strong>2.3 cm</strong>.</p>
+    </div>
+    <div class="card card-amber">
+      <div class="card-icon">🔬</div>
+      <h3 style="color:var(--amber)">Cornea</h3>
+      <p>Light enters through a thin membrane called the <strong>cornea</strong> — the transparent bulge on the front surface. <strong>Most refraction</strong> for entering light rays occurs at the outer surface of the cornea.</p>
+    </div>
+    <div class="card card-violet">
+      <div class="card-icon">⚙️</div>
+      <h3 style="color:var(--violet)">Crystalline Lens</h3>
+      <p>The crystalline lens provides <strong>finer adjustment of focal length</strong> to focus objects at different distances on the retina. It is composed of a <strong>fibrous, jelly-like material</strong>.</p>
+    </div>
+    <div class="card card-sky">
+      <div class="card-icon">💡</div>
+      <h3 style="color:var(--sky)">Retina &amp; Optic Nerve</h3>
+      <p>The retina is a delicate membrane with enormous light-sensitive cells. These generate <strong>electrical signals</strong> sent to the brain via the <strong>optic nerve</strong>. The brain interprets these signals.</p>
+    </div>
+  </div>
+
+  <!-- Figure 10.1 — Human Eye SVG -->
+  <div class="diag-wrap reveal" style="margin-top:1.5rem;">
+    <div class="diag-title">FIGURE 10.1 — THE HUMAN EYE (CROSS-SECTION)</div>
+    <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:660px;display:block;margin:0 auto;">
+      <!-- Eyeball outline -->
+      <ellipse cx="370" cy="180" rx="140" ry="148" fill="#e0f2fe" stroke="#0369a1" stroke-width="2.5"/>
+      <!-- Vitreous humour fill -->
+      <ellipse cx="380" cy="180" rx="118" ry="126" fill="#bae6fd" opacity=".5"/>
+      <!-- Cornea (front bulge) -->
+      <path d="M230,180 Q210,145 230,110" fill="none" stroke="#0369a1" stroke-width="3"/>
+      <path d="M230,180 Q210,215 230,250" fill="none" stroke="#0369a1" stroke-width="3"/>
+      <path d="M230,110 Q195,145 195,180 Q195,215 230,250" fill="rgba(186,230,253,0.6)" stroke="#0ea5e9" stroke-width="2"/>
+      <!-- Iris -->
+      <ellipse cx="252" cy="180" rx="22" ry="40" fill="#7c3aed" opacity=".7"/>
+      <!-- Pupil -->
+      <ellipse cx="252" cy="180" rx="9" ry="16" fill="#111"/>
+      <!-- Crystalline lens -->
+      <ellipse cx="278" cy="180" rx="18" ry="32" fill="rgba(254,215,170,.7)" stroke="#ea580c" stroke-width="1.5"/>
+      <!-- Aqueous humour label area -->
+      <ellipse cx="262" cy="155" rx="10" ry="6" fill="rgba(186,230,253,.5)"/>
+      <!-- Ciliary muscles -->
+      <path d="M276,148 Q300,140 320,148" fill="none" stroke="#374151" stroke-width="2" stroke-dasharray="3,2"/>
+      <path d="M276,212 Q300,220 320,212" fill="none" stroke="#374151" stroke-width="2" stroke-dasharray="3,2"/>
+      <!-- Retina arc -->
+      <path d="M375,55 Q510,90 510,180 Q510,270 375,305" fill="none" stroke="#dc2626" stroke-width="3.5"/>
+      <!-- Optic nerve -->
+      <line x1="510" y1="180" x2="560" y2="200" stroke="#374151" stroke-width="3"/>
+      <line x1="560" y1="200" x2="600" y2="205" stroke="#374151" stroke-width="3"/>
+      <!-- Macula / yellow spot area -->
+      <circle cx="470" cy="180" r="8" fill="#fbbf24" opacity=".7"/>
+
+      <!-- Labels -->
+      <!-- Cornea -->
+      <line x1="195" y1="145" x2="130" y2="110" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="60" y="107" font-family="'JetBrains Mono',monospace" font-size="11" fill="#111827">Cornea</text>
+      <!-- Pupil -->
+      <line x1="250" y1="164" x2="180" y2="148" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="100" y="145" font-family="'JetBrains Mono',monospace" font-size="11" fill="#111827">Pupil</text>
+      <!-- Iris -->
+      <line x1="252" y1="140" x2="185" y2="125" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="108" y="122" font-family="'JetBrains Mono',monospace" font-size="11" fill="#111827">Iris</text>
+      <!-- Aqueous humour -->
+      <line x1="245" y1="195" x2="155" y2="215" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="30" y="212" font-family="'JetBrains Mono',monospace" font-size="10" fill="#111827">Aqueous</text>
+      <text x="30" y="225" font-family="'JetBrains Mono',monospace" font-size="10" fill="#111827">humour</text>
+      <!-- Crystalline lens -->
+      <line x1="278" y1="148" x2="270" y2="75" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="170" y="68" font-family="'JetBrains Mono',monospace" font-size="11" fill="#111827">Crystalline lens</text>
+      <!-- Ciliary muscles -->
+      <line x1="300" y1="141" x2="310" y2="60" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="308" y="55" font-family="'JetBrains Mono',monospace" font-size="11" fill="#111827">Ciliary muscles</text>
+      <!-- Retina -->
+      <line x1="480" y1="130" x2="540" y2="80" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="538" y="75" font-family="'JetBrains Mono',monospace" font-size="11" fill="#dc2626" font-weight="bold">Retina</text>
+      <!-- Optic nerve -->
+      <line x1="570" y1="200" x2="590" y2="240" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="558" y="255" font-family="'JetBrains Mono',monospace" font-size="11" fill="#111827">Optic nerve</text>
+      <!-- Vitreous humour -->
+      <text x="355" y="200" font-family="'JetBrains Mono',monospace" font-size="11" fill="#0369a1" text-anchor="middle">Vitreous</text>
+      <text x="355" y="215" font-family="'JetBrains Mono',monospace" font-size="11" fill="#0369a1" text-anchor="middle">humour</text>
+    </svg>
+    <div class="diag-sub">Cross-section of the human eye showing all major structures</div>
+  </div>
+
+  <!-- Power of Accommodation -->
+  <div class="section-header reveal" style="margin-top:3rem;margin-bottom:1rem;">
+    <span class="section-num">01.1 · POWER OF ACCOMMODATION</span>
+    <h2 class="section-title" style="font-size:1.8rem;">Power of <span class="c">Accommodation</span></h2>
+  </div>
+
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-body">
+        <strong>Distant Objects — Ciliary Muscles Relax</strong>
+        <p>When muscles are relaxed, the lens becomes <strong>thin</strong>. Focal length <strong>increases</strong>. This enables clear vision of distant objects.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-body">
+        <strong>Near Objects — Ciliary Muscles Contract</strong>
+        <p>Looking at objects closer to the eye, ciliary muscles <strong>contract</strong>. Curvature of eye lens increases — lens becomes <strong>thicker</strong>. Focal length <strong>decreases</strong>. Enables clear near vision.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n amber">3</div>
+      <div class="step-body">
+        <strong>Near Point — Least Distance of Distinct Vision</strong>
+        <p>The minimum distance at which objects can be seen most distinctly without strain. For a young adult with normal vision: <strong>25 cm</strong>. Also called the <strong>near point</strong> of the eye.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n amber">4</div>
+      <div class="step-body">
+        <strong>Far Point of the Eye</strong>
+        <p>The farthest point up to which the eye can see objects clearly. It is <strong>infinity</strong> for a normal eye. A normal eye sees objects clearly between <strong>25 cm and infinity</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight reveal" style="margin-top:1rem;">
+    <p>⚠️ <strong>Cataract:</strong> Sometimes the crystalline lens of people at old age becomes milky and cloudy. This condition is called <strong>cataract</strong>. It causes partial or complete loss of vision. Vision can be restored through <strong>cataract surgery</strong>.</p>
+  </div>
+</section>
+
+<!-- SECTION 2: DEFECTS OF VISION -->
+<section class="section section-alt" id="defects">
+  <div class="section-header reveal">
+    <span class="section-num">02 · DEFECTS OF VISION</span>
+    <h2 class="section-title">Defects of Vision &amp; <span class="a">Their Correction</span></h2>
+    <div class="divider" style="background:var(--amber);"></div>
+  </div>
+
+  <div class="defect-grid reveal">
+    <!-- Myopia -->
+    <div class="defect-card">
+      <div class="defect-header dh-coral">
+        <div class="defect-icon">🔴</div>
+        <div class="defect-name" style="color:var(--coral-d)">Myopia (Near-sightedness)</div>
+      </div>
+      <div class="defect-body">
+        <p><strong>What:</strong> Can see nearby objects clearly but cannot see distant objects distinctly.</p>
+        <p><strong>Cause 1:</strong> Excessive curvature of the eye lens.</p>
+        <p><strong>Cause 2:</strong> Elongation of the eyeball.</p>
+        <p><strong>Effect:</strong> Image of distant object formed <strong>in front of</strong> the retina.</p>
+        <p><strong>Far point:</strong> Nearer than infinity.</p>
+        <div class="defect-fix">✅ Correction: Concave lens (diverging) of suitable power</div>
+      </div>
+    </div>
+    <!-- Hypermetropia -->
+    <div class="defect-card">
+      <div class="defect-header dh-amber">
+        <div class="defect-icon">🟡</div>
+        <div class="defect-name" style="color:var(--amber-d)">Hypermetropia (Far-sightedness)</div>
+      </div>
+      <div class="defect-body">
+        <p><strong>What:</strong> Can see distant objects clearly but cannot see nearby objects distinctly.</p>
+        <p><strong>Cause 1:</strong> Focal length of eye lens too long.</p>
+        <p><strong>Cause 2:</strong> Eyeball has become too small.</p>
+        <p><strong>Effect:</strong> Image of near object formed <strong>behind</strong> the retina.</p>
+        <p><strong>Near point:</strong> Farther than normal 25 cm.</p>
+        <div class="defect-fix">✅ Correction: Convex lens (converging) of suitable power</div>
+      </div>
+    </div>
+    <!-- Presbyopia -->
+    <div class="defect-card">
+      <div class="defect-header dh-violet">
+        <div class="defect-icon">🟣</div>
+        <div class="defect-name" style="color:var(--violet-d)">Presbyopia</div>
+      </div>
+      <div class="defect-body">
+        <p><strong>What:</strong> Power of accommodation decreases with ageing. Near point gradually recedes.</p>
+        <p><strong>Cause:</strong> Gradual weakening of ciliary muscles and diminishing flexibility of the eye lens.</p>
+        <p><strong>Effect:</strong> Difficulty seeing nearby objects without corrective eye-glasses.</p>
+        <p><strong>Note:</strong> A person may suffer from both myopia and hypermetropia → requires <strong>bi-focal lenses</strong>.</p>
+        <div class="defect-fix">✅ Correction: Bi-focal lenses (concave upper + convex lower)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Myopia SVG Diagram -->
+  <div class="diag-wrap reveal" style="margin-top:1.5rem;">
+    <div class="diag-title">FIGURE 10.2 — MYOPIA: DEFECT AND CORRECTION</div>
+    <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;">
+      <!-- (a) Normal eye for reference: top row -->
+      <text x="10" y="22" font-family="'JetBrains Mono',monospace" font-size="11" fill="#374151" font-weight="bold">(a) Far point of a myopic eye — image forms before retina</text>
+      <!-- Eye outline (a) -->
+      <ellipse cx="530" cy="70" rx="90" ry="55" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.8"/>
+      <!-- Cornea (a) -->
+      <path d="M440,50 Q425,70 440,90" fill="rgba(186,230,253,.6)" stroke="#0ea5e9" stroke-width="1.5"/>
+      <!-- Lens (a) -->
+      <ellipse cx="458" cy="70" rx="10" ry="20" fill="rgba(254,215,170,.7)" stroke="#ea580c" stroke-width="1.2"/>
+      <!-- Retina (a) -->
+      <path d="M585,30 Q620,55 620,70 Q620,85 585,110" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+      <!-- Image point (a) — BEFORE retina -->
+      <circle cx="560" cy="70" r="5" fill="#ea580c"/>
+      <text x="548" y="60" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ea580c">Image</text>
+      <!-- Incident rays (a) -->
+      <line x1="340" y1="60" x2="438" y2="62" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow1)"/>
+      <line x1="340" y1="80" x2="438" y2="78" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow1)"/>
+      <!-- Converging rays to image point -->
+      <line x1="458" y1="55" x2="560" y2="70" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <line x1="458" y1="85" x2="560" y2="70" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <text x="340" y="58" font-family="'JetBrains Mono',monospace" font-size="10" fill="#374151">O</text>
+
+      <!-- (b) Myopic eye: middle row -->
+      <text x="10" y="155" font-family="'JetBrains Mono',monospace" font-size="11" fill="#374151" font-weight="bold">(b) Correction for myopia — concave lens</text>
+      <!-- Eye (b) -->
+      <ellipse cx="530" cy="205" rx="90" ry="55" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.8"/>
+      <path d="M440,185 Q425,205 440,225" fill="rgba(186,230,253,.6)" stroke="#0ea5e9" stroke-width="1.5"/>
+      <ellipse cx="458" cy="205" rx="10" ry="20" fill="rgba(254,215,170,.7)" stroke="#ea580c" stroke-width="1.2"/>
+      <path d="M585,165 Q620,190 620,205 Q620,220 585,245" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+      <!-- Image now ON retina -->
+      <circle cx="595" cy="205" r="5" fill="#16a34a"/>
+      <text x="583" y="196" font-family="'JetBrains Mono',monospace" font-size="9" fill="#16a34a">Image</text>
+      <!-- Concave corrective lens -->
+      <path d="M400,185 Q390,205 400,225" fill="rgba(196,181,253,.4)" stroke="#7c3aed" stroke-width="2"/>
+      <path d="M408,185 Q398,205 408,225" fill="rgba(196,181,253,.4)" stroke="#7c3aed" stroke-width="2"/>
+      <text x="385" y="245" font-family="'JetBrains Mono',monospace" font-size="9" fill="#7c3aed">Concave</text>
+      <text x="388" y="257" font-family="'JetBrains Mono',monospace" font-size="9" fill="#7c3aed">lens</text>
+      <!-- rays -->
+      <line x1="340" y1="195" x2="398" y2="197" stroke="#374151" stroke-width="1.5"/>
+      <line x1="340" y1="215" x2="398" y2="213" stroke="#374151" stroke-width="1.5"/>
+      <!-- diverged by concave lens, then converge at retina -->
+      <line x1="410" y1="198" x2="458" y2="192" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <line x1="410" y1="212" x2="458" y2="218" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <line x1="458" y1="192" x2="595" y2="205" stroke="#16a34a" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <line x1="458" y1="218" x2="595" y2="205" stroke="#16a34a" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <text x="340" y="193" font-family="'JetBrains Mono',monospace" font-size="10" fill="#374151">O</text>
+      <defs>
+        <marker id="arrow1" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#374151"/></marker>
+      </defs>
+    </svg>
+    <div class="diag-sub">Myopia: image forms in front of retina — corrected by concave lens</div>
+  </div>
+
+  <!-- Hypermetropia SVG Diagram -->
+  <div class="diag-wrap reveal" style="margin-top:1rem;">
+    <div class="diag-title">FIGURE 10.3 — HYPERMETROPIA: DEFECT AND CORRECTION</div>
+    <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;">
+      <!-- (a) Hypermetropic eye -->
+      <text x="10" y="22" font-family="'JetBrains Mono',monospace" font-size="11" fill="#374151" font-weight="bold">(a) Hypermetropic eye — image behind retina</text>
+      <ellipse cx="510" cy="70" rx="80" ry="52" fill="#fff7ed" stroke="#d97706" stroke-width="1.8"/>
+      <path d="M430,52 Q415,70 430,88" fill="rgba(254,243,199,.6)" stroke="#fbbf24" stroke-width="1.5"/>
+      <ellipse cx="448" cy="70" rx="9" ry="18" fill="rgba(254,215,170,.7)" stroke="#ea580c" stroke-width="1.2"/>
+      <path d="M556,33 Q590,55 590,70 Q590,85 556,107" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+      <!-- N and N' labels -->
+      <text x="360" y="68" font-family="'JetBrains Mono',monospace" font-size="12" fill="#ea580c" font-weight="bold">N</text>
+      <text x="396" y="68" font-family="'JetBrains Mono',monospace" font-size="12" fill="#374151" font-weight="bold">N′</text>
+      <!-- Near point rays from N -->
+      <line x1="370" y1="62" x2="428" y2="65" stroke="#d97706" stroke-width="1.5"/>
+      <line x1="370" y1="78" x2="428" y2="75" stroke="#d97706" stroke-width="1.5"/>
+      <!-- image beyond retina -->
+      <circle cx="625" cy="70" r="5" fill="#ea580c"/>
+      <line x1="448" y1="56" x2="625" y2="70" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <line x1="448" y1="84" x2="625" y2="70" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <text x="618" y="62" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ea580c">Image</text>
+
+      <!-- (b) Correction -->
+      <text x="10" y="155" font-family="'JetBrains Mono',monospace" font-size="11" fill="#374151" font-weight="bold">(b) Correction for hypermetropia — convex lens</text>
+      <ellipse cx="510" cy="205" rx="80" ry="52" fill="#fff7ed" stroke="#d97706" stroke-width="1.8"/>
+      <path d="M430,187 Q415,205 430,223" fill="rgba(254,243,199,.6)" stroke="#fbbf24" stroke-width="1.5"/>
+      <ellipse cx="448" cy="205" rx="9" ry="18" fill="rgba(254,215,170,.7)" stroke="#ea580c" stroke-width="1.2"/>
+      <path d="M556,168 Q590,190 590,205 Q590,220 556,242" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+      <!-- image now ON retina -->
+      <circle cx="568" cy="205" r="5" fill="#16a34a"/>
+      <text x="556" y="196" font-family="'JetBrains Mono',monospace" font-size="9" fill="#16a34a">Image</text>
+      <!-- Convex lens -->
+      <path d="M385,187 Q400,205 385,223" fill="rgba(253,230,138,.5)" stroke="#d97706" stroke-width="2"/>
+      <path d="M392,187 Q407,205 392,223" fill="rgba(253,230,138,.5)" stroke="#d97706" stroke-width="2"/>
+      <text x="373" y="245" font-family="'JetBrains Mono',monospace" font-size="9" fill="#d97706">Convex</text>
+      <text x="376" y="257" font-family="'JetBrains Mono',monospace" font-size="9" fill="#d97706">lens</text>
+      <!-- N labels -->
+      <text x="340" y="203" font-family="'JetBrains Mono',monospace" font-size="12" fill="#ea580c" font-weight="bold">N</text>
+      <text x="362" y="203" font-family="'JetBrains Mono',monospace" font-size="12" fill="#374151" font-weight="bold">N′</text>
+      <!-- rays from N through convex lens -->
+      <line x1="352" y1="197" x2="383" y2="199" stroke="#d97706" stroke-width="1.5"/>
+      <line x1="352" y1="213" x2="383" y2="211" stroke="#d97706" stroke-width="1.5"/>
+      <line x1="395" y1="198" x2="448" y2="193" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <line x1="395" y1="212" x2="448" y2="217" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <line x1="448" y1="193" x2="568" y2="205" stroke="#16a34a" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <line x1="448" y1="217" x2="568" y2="205" stroke="#16a34a" stroke-width="1.2" stroke-dasharray="4,2"/>
+      <text x="280" y="258" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#374151">N = Near point of hypermetropic eye &nbsp;&nbsp; N′ = Near point of normal eye</text>
+    </svg>
+    <div class="diag-sub">Hypermetropia: image forms behind retina — corrected by convex lens</div>
+  </div>
+
+  <div class="highlight amber-hl reveal" style="margin-top:1rem;">
+    <p>💡 <strong>Bi-focal Lenses:</strong> A person suffering from both myopia and hypermetropia requires bi-focal lenses. The upper portion is a <strong>concave lens</strong> (facilitates distant vision) and the lower portion is a <strong>convex lens</strong> (facilitates near vision). Contact lenses and surgical interventions are also options today.</p>
+  </div>
+</section>
+
+<!-- SECTION 3: REFRACTION THROUGH A PRISM -->
+<section class="section" id="prism">
+  <div class="section-header reveal">
+    <span class="section-num">03 · REFRACTION THROUGH A PRISM</span>
+    <h2 class="section-title">Refraction of Light Through <span class="v">a Prism</span></h2>
+    <div class="divider" style="background:var(--violet);"></div>
+  </div>
+
+  <div class="two-col reveal">
+    <div class="full-card" style="border-top:4px solid var(--violet);">
+      <h3 style="color:var(--violet)">🔷 Structure of a Prism</h3>
+      <p style="color:var(--text2);margin-bottom:1rem;font-size:.95rem;">A triangular glass prism has <strong>two triangular bases</strong> and three rectangular lateral surfaces. These surfaces are inclined to each other.</p>
+      <div class="highlight violet-hl">
+        <p>📐 <strong>Angle of the Prism (∠A):</strong> The angle between its two lateral refracting faces.</p>
+      </div>
+      <div class="highlight" style="margin-top:.5rem;">
+        <p>📌 <strong>Key difference from glass slab:</strong> In a glass slab, the emergent ray is parallel to the incident ray (parallel surfaces). In a prism, the emergent ray bends at an angle — the <strong>angle of deviation (∠D)</strong>.</p>
+      </div>
+    </div>
+    <div class="full-card" style="border-top:4px solid var(--coral);">
+      <h3 style="color:var(--coral)">🔺 Ray Path Through Prism</h3>
+      <div class="steps" style="margin-top:.5rem;">
+        <div class="step">
+          <div class="step-n violet">1</div>
+          <div class="step-body"><strong>PE → E (Incident Ray)</strong><p>Ray enters face AB from air to glass. Bends <strong>towards the normal</strong> (rarer to denser).</p></div>
+        </div>
+        <div class="step">
+          <div class="step-n violet">2</div>
+          <div class="step-body"><strong>EF (Refracted Ray)</strong><p>Ray travels inside the glass prism from E to F.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-n violet">3</div>
+          <div class="step-body"><strong>FS (Emergent Ray)</strong><p>Ray exits face AC from glass to air. Bends <strong>away from the normal</strong> (denser to rarer). The emergent ray makes angle ∠D with incident ray direction.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Figure 10.4 — Prism refraction SVG -->
+  <div class="diag-wrap reveal" style="margin-top:1.5rem;">
+    <div class="diag-title">FIGURE 10.4 — REFRACTION OF LIGHT THROUGH A TRIANGULAR GLASS PRISM</div>
+    <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:660px;display:block;margin:0 auto;">
+      <!-- Prism triangle -->
+      <polygon points="350,50 180,330 520,330" fill="rgba(196,181,253,0.25)" stroke="#7c3aed" stroke-width="2.5"/>
+      <!-- Vertex labels -->
+      <text x="344" y="42" font-family="'JetBrains Mono',monospace" font-size="13" fill="#7c3aed" font-weight="bold">A</text>
+      <text x="163" y="348" font-family="'JetBrains Mono',monospace" font-size="13" fill="#7c3aed" font-weight="bold">B</text>
+      <text x="524" y="348" font-family="'JetBrains Mono',monospace" font-size="13" fill="#7c3aed" font-weight="bold">C</text>
+      <!-- Angle A arc -->
+      <path d="M339,68 Q350,75 361,68" fill="none" stroke="#7c3aed" stroke-width="1.5"/>
+      <text x="342" y="88" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7c3aed">∠A</text>
+
+      <!-- Point E on face AB -->
+      <circle cx="252" cy="215" r="4" fill="#ea580c"/>
+      <text x="236" y="212" font-family="'JetBrains Mono',monospace" font-size="11" fill="#374151">E</text>
+      <!-- Point F on face AC -->
+      <circle cx="452" cy="215" r="4" fill="#ea580c"/>
+      <text x="456" y="212" font-family="'JetBrains Mono',monospace" font-size="11" fill="#374151">F</text>
+
+      <!-- Normal at E (perpendicular to AB) -->
+      <line x1="220" y1="155" x2="290" y2="285" stroke="#374151" stroke-width="1" stroke-dasharray="5,3"/>
+      <text x="196" y="150" font-family="'JetBrains Mono',monospace" font-size="10" fill="#374151">N</text>
+      <text x="286" y="300" font-family="'JetBrains Mono',monospace" font-size="10" fill="#374151">N′</text>
+
+      <!-- Normal at F (perpendicular to AC) -->
+      <line x1="414" y1="155" x2="495" y2="285" stroke="#374151" stroke-width="1" stroke-dasharray="5,3"/>
+      <text x="418" y="150" font-family="'JetBrains Mono',monospace" font-size="10" fill="#374151">M</text>
+      <text x="495" y="300" font-family="'JetBrains Mono',monospace" font-size="10" fill="#374151">M′</text>
+
+      <!-- Incident ray PE -->
+      <line x1="100" y1="270" x2="252" y2="215" stroke="#374151" stroke-width="2.2" marker-end="url(#arrowb)"/>
+      <text x="85" y="285" font-family="'JetBrains Mono',monospace" font-size="11" fill="#374151" font-weight="bold">P</text>
+      <!-- P · Q on incident ray -->
+      <circle cx="148" cy="252" r="3" fill="#374151"/>
+      <text x="135" y="248" font-family="'JetBrains Mono',monospace" font-size="10" fill="#374151">Q</text>
+
+      <!-- Refracted ray EF inside prism -->
+      <line x1="252" y1="215" x2="452" y2="215" stroke="#ea580c" stroke-width="2" stroke-dasharray="6,3"/>
+
+      <!-- Emergent ray FS -->
+      <line x1="452" y1="215" x2="610" y2="270" stroke="#374151" stroke-width="2.2" marker-end="url(#arrowb)"/>
+      <text x="612" y="278" font-family="'JetBrains Mono',monospace" font-size="11" fill="#374151" font-weight="bold">S</text>
+      <!-- R on emergent ray -->
+      <circle cx="554" cy="248" r="3" fill="#374151"/>
+      <text x="558" y="244" font-family="'JetBrains Mono',monospace" font-size="10" fill="#374151">R</text>
+
+      <!-- Extension of incident ray (dashed, showing direction) -->
+      <line x1="252" y1="215" x2="460" y2="140" stroke="#374151" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+
+      <!-- Angle of deviation D arc -->
+      <path d="M490,200 Q505,210 490,225" fill="none" stroke="#16a34a" stroke-width="2"/>
+      <text x="508" y="218" font-family="'JetBrains Mono',monospace" font-size="11" fill="#16a34a" font-weight="bold">∠D</text>
+
+      <!-- Angle i at E -->
+      <text x="204" y="192" font-family="'JetBrains Mono',monospace" font-size="11" fill="#0369a1" font-weight="bold">∠i</text>
+      <!-- Angle r at E -->
+      <text x="262" y="202" font-family="'JetBrains Mono',monospace" font-size="11" fill="#0369a1" font-weight="bold">∠r</text>
+      <!-- Angle e at F -->
+      <text x="456" y="196" font-family="'JetBrains Mono',monospace" font-size="11" fill="#d97706" font-weight="bold">∠e</text>
+
+      <!-- G point inside prism -->
+      <circle cx="352" cy="215" r="3" fill="#7c3aed" opacity=".5"/>
+      <text x="354" y="210" font-family="'JetBrains Mono',monospace" font-size="9" fill="#7c3aed">G</text>
+
+      <!-- Legend -->
+      <rect x="30" y="360" width="640" height="50" fill="rgba(255,255,255,.8)" rx="6"/>
+      <text x="50" y="378" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#374151">PE – Incident ray   EF – Refracted ray   FS – Emergent ray   ∠A – Angle of prism   ∠i – Angle of incidence</text>
+      <text x="50" y="394" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#374151">∠r – Angle of refraction   ∠e – Angle of emergence   ∠D – Angle of deviation</text>
+      <defs>
+        <marker id="arrowb" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#374151"/></marker>
+      </defs>
+    </svg>
+    <div class="diag-sub">The peculiar shape of the prism makes the emergent ray bend at angle ∠D to the direction of the incident ray</div>
+  </div>
+</section>
+
+<!-- SECTION 4: DISPERSION -->
+<section class="section section-alt" id="dispersion">
+  <div class="section-header reveal">
+    <span class="section-num">04 · DISPERSION OF WHITE LIGHT</span>
+    <h2 class="section-title">Dispersion by a Glass <span class="c">Prism</span></h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="card-grid reveal">
+    <div class="card card-coral">
+      <div class="card-icon">🌈</div>
+      <h3 style="color:var(--coral)">Dispersion</h3>
+      <p>The splitting of white light into its component colours is called <strong>dispersion</strong>. A prism splits white light into seven colours — VIBGYOR.</p>
+    </div>
+    <div class="card card-amber">
+      <div class="card-icon">🔴</div>
+      <h3 style="color:var(--amber)">Why Colours Separate</h3>
+      <p>Different colours bend through <strong>different angles</strong>. <strong>Red bends least</strong>, <strong>violet bends most</strong>. Each colour emerges along a different path — they become distinct.</p>
+    </div>
+    <div class="card card-violet">
+      <div class="card-icon">🔬</div>
+      <h3 style="color:var(--violet)">Newton's Experiment</h3>
+      <p>Isaac Newton was first to use a glass prism to obtain the spectrum of sunlight. He recombined the spectrum using a second <strong>inverted prism</strong> to get white light back — proving white light is made of 7 colours.</p>
+    </div>
+    <div class="card card-sky">
+      <div class="card-icon">🌧️</div>
+      <h3 style="color:var(--sky)">Rainbow</h3>
+      <p>A rainbow is a natural spectrum in the sky after rain. Tiny water droplets act like <strong>small prisms</strong> — they refract, disperse, internally reflect and refract again. Always formed <strong>opposite to the Sun</strong>.</p>
+    </div>
+  </div>
+
+  <!-- Figure 10.5 — Prism Dispersion SVG -->
+  <div class="diag-wrap reveal" style="margin-top:1.5rem;">
+    <div class="diag-title">FIGURE 10.5 — DISPERSION OF WHITE LIGHT BY A GLASS PRISM (VIBGYOR)</div>
+    <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:660px;display:block;margin:0 auto;">
+      <!-- Prism -->
+      <polygon points="280,40 130,260 430,260" fill="rgba(196,181,253,0.2)" stroke="#7c3aed" stroke-width="2.5"/>
+      <text x="274" y="33" font-family="'JetBrains Mono',monospace" font-size="12" fill="#7c3aed">A</text>
+      <text x="113" y="275" font-family="'JetBrains Mono',monospace" font-size="12" fill="#7c3aed">B</text>
+      <text x="432" y="275" font-family="'JetBrains Mono',monospace" font-size="12" fill="#7c3aed">C</text>
+      <!-- Glass prism label -->
+      <text x="255" y="200" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7c3aed" text-anchor="middle">Glass prism</text>
+
+      <!-- Incident white light beam -->
+      <line x1="20" y1="150" x2="180" y2="175" stroke="#d1d5db" stroke-width="8" opacity=".8"/>
+      <line x1="20" y1="150" x2="180" y2="175" stroke="white" stroke-width="4" opacity=".6"/>
+      <text x="5" y="146" font-family="'JetBrains Mono',monospace" font-size="10" fill="#374151">White light</text>
+      <text x="8" y="158" font-family="'JetBrains Mono',monospace" font-size="10" fill="#374151">beam</text>
+
+      <!-- Entry point on AB -->
+      <circle cx="180" cy="175" r="4" fill="#374151"/>
+
+      <!-- Dispersed rays from prism exit face (AC) — VIBGYOR from top(violet) to bottom(red) -->
+      <!-- Violet -->
+      <line x1="340" y1="185" x2="680" y2="115" stroke="#7c3aed" stroke-width="2.5"/>
+      <!-- Indigo -->
+      <line x1="340" y1="190" x2="680" y2="130" stroke="#4338ca" stroke-width="2.5"/>
+      <!-- Blue -->
+      <line x1="340" y1="194" x2="680" y2="148" stroke="#2563eb" stroke-width="2.5"/>
+      <!-- Green -->
+      <line x1="340" y1="198" x2="680" y2="166" stroke="#16a34a" stroke-width="2.5"/>
+      <!-- Yellow -->
+      <line x1="340" y1="202" x2="680" y2="184" stroke="#ca8a04" stroke-width="2.5"/>
+      <!-- Orange -->
+      <line x1="340" y1="206" x2="680" y2="202" stroke="#ea580c" stroke-width="2.5"/>
+      <!-- Red -->
+      <line x1="340" y1="210" x2="680" y2="220" stroke="#dc2626" stroke-width="2.5"/>
+
+      <!-- Labels on screen side -->
+      <text x="684" y="119" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#7c3aed">V — Violet</text>
+      <text x="684" y="134" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#4338ca">I — Indigo</text>
+      <text x="684" y="152" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#2563eb">B — Blue</text>
+      <text x="684" y="170" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#16a34a">G — Green</text>
+      <text x="684" y="188" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#ca8a04">Y — Yellow</text>
+      <text x="684" y="206" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#ea580c">O — Orange</text>
+      <text x="684" y="224" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#dc2626">R — Red</text>
+
+      <!-- Screen line -->
+      <line x1="678" y1="100" x2="678" y2="240" stroke="#d1d5db" stroke-width="2"/>
+      <text x="650" y="252" font-family="'JetBrains Mono',monospace" font-size="9" fill="#6b7280">Screen</text>
+
+      <!-- Inside prism: refracted ray path dashed -->
+      <line x1="180" y1="175" x2="340" y2="200" stroke="white" stroke-width="3" stroke-dasharray="5,3"/>
+    </svg>
+    <div class="diag-sub">White light splits into VIBGYOR — violet bends most, red bends least</div>
+  </div>
+
+  <!-- Figure 10.6 — Newton's recombination -->
+  <div class="diag-wrap reveal" style="margin-top:1rem;">
+    <div class="diag-title">FIGURE 10.6 — RECOMBINATION OF SPECTRUM OF WHITE LIGHT (NEWTON'S EXPERIMENT)</div>
+    <svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:660px;display:block;margin:0 auto;">
+      <!-- Prism 1 -->
+      <polygon points="200,30 80,200 320,200" fill="rgba(196,181,253,0.2)" stroke="#7c3aed" stroke-width="2"/>
+      <text x="194" y="24" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7c3aed">A</text>
+      <text x="64" y="212" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7c3aed">P₁</text>
+      <text x="322" y="212" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7c3aed">A</text>
+
+      <!-- Prism 2 (inverted) -->
+      <polygon points="480,210 360,40 600,40" fill="rgba(196,181,253,0.2)" stroke="#7c3aed" stroke-width="2" transform=""/>
+      <text x="474" y="225" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7c3aed">P₂</text>
+      <text x="345" y="35" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7c3aed">A</text>
+      <text x="602" y="35" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7c3aed">A</text>
+
+      <!-- White light in -->
+      <line x1="10" y1="115" x2="135" y2="130" stroke="white" stroke-width="6" opacity=".8"/>
+      <line x1="10" y1="115" x2="135" y2="130" stroke="#d1d5db" stroke-width="3" opacity=".5"/>
+      <text x="5" y="110" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">White</text>
+      <text x="5" y="122" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">light</text>
+
+      <!-- VIBGYOR fan between prisms -->
+      <line x1="230" y1="118" x2="400" y2="70" stroke="#7c3aed" stroke-width="1.8"/>
+      <line x1="230" y1="120" x2="400" y2="80" stroke="#4338ca" stroke-width="1.8"/>
+      <line x1="230" y1="123" x2="400" y2="92" stroke="#2563eb" stroke-width="1.8"/>
+      <line x1="230" y1="126" x2="400" y2="105" stroke="#16a34a" stroke-width="1.8"/>
+      <line x1="230" y1="129" x2="400" y2="118" stroke="#ca8a04" stroke-width="1.8"/>
+      <line x1="230" y1="132" x2="400" y2="130" stroke="#ea580c" stroke-width="1.8"/>
+      <line x1="230" y1="135" x2="400" y2="143" stroke="#dc2626" stroke-width="1.8"/>
+      <!-- Labels R and V between prisms -->
+      <text x="310" y="60" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7c3aed">V</text>
+      <text x="310" y="155" font-family="'JetBrains Mono',monospace" font-size="10" fill="#dc2626">R</text>
+
+      <!-- Recombined white light out -->
+      <line x1="535" y1="118" x2="680" y2="118" stroke="white" stroke-width="7" opacity=".8"/>
+      <line x1="535" y1="118" x2="680" y2="118" stroke="#d1d5db" stroke-width="3" opacity=".5"/>
+      <text x="635" y="108" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">White</text>
+      <text x="635" y="120" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">light</text>
+
+      <!-- R labels on second prism -->
+      <text x="406" y="64" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7c3aed">V</text>
+      <text x="406" y="148" font-family="'JetBrains Mono',monospace" font-size="10" fill="#dc2626">R</text>
+      <!-- Screen -->
+      <line x1="690" y1="90" x2="690" y2="145" stroke="#d1d5db" stroke-width="2"/>
+      <text x="670" y="160" font-family="'JetBrains Mono',monospace" font-size="9" fill="#6b7280">Screen</text>
+    </svg>
+    <div class="diag-sub">Newton recombined the spectrum using a second inverted prism — white light emerged, proving sunlight consists of 7 colours</div>
+  </div>
+
+  <!-- Rainbow formation -->
+  <div class="diag-wrap reveal" style="margin-top:1rem;">
+    <div class="diag-title">FIGURE 10.8 — RAINBOW FORMATION (DISPERSION BY RAINDROPS)</div>
+    <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;display:block;margin:0 auto;">
+      <!-- Raindrop (circle) -->
+      <circle cx="380" cy="150" r="110" fill="rgba(186,230,253,0.35)" stroke="#0ea5e9" stroke-width="2.5"/>
+      <text x="318" y="38" font-family="'JetBrains Mono',monospace" font-size="11" fill="#0369a1">Raindrop</text>
+
+      <!-- Sunlight incident ray -->
+      <line x1="40" y1="100" x2="275" y2="115" stroke="#fbbf24" stroke-width="3" marker-end="url(#arrowc)"/>
+      <text x="20" y="96" font-family="'JetBrains Mono',monospace" font-size="11" fill="#d97706" font-weight="bold">Sunlight</text>
+
+      <!-- Refraction into drop (split into VIBGYOR) -->
+      <!-- Inside drop: going to back surface -->
+      <line x1="275" y1="115" x2="472" y2="125" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <line x1="275" y1="115" x2="472" y2="135" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+      <!-- Internal reflection at back -->
+      <circle cx="472" cy="130" r="5" fill="#ea580c"/>
+
+      <!-- After reflection, going to exit surface -->
+      <line x1="472" y1="125" x2="300" y2="210" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <line x1="472" y1="135" x2="295" y2="218" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+      <!-- Exit refraction — emerging VIBGYOR -->
+      <line x1="300" y1="210" x2="130" y2="170" stroke="#7c3aed" stroke-width="2"/>
+      <line x1="295" y1="218" x2="125" y2="195" stroke="#2563eb" stroke-width="2"/>
+      <line x1="292" y1="224" x2="122" y2="215" stroke="#16a34a" stroke-width="2"/>
+      <line x1="290" y1="228" x2="120" y2="230" stroke="#ca8a04" stroke-width="2"/>
+      <line x1="288" y1="232" x2="118" y2="248" stroke="#dc2626" stroke-width="2"/>
+
+      <!-- Observer eye -->
+      <ellipse cx="60" cy="210" rx="18" ry="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+      <circle cx="65" cy="210" r="5" fill="#374151"/>
+      <text x="28" y="232" font-family="'JetBrains Mono',monospace" font-size="10" fill="#374151">Observer</text>
+
+      <!-- Labels -->
+      <text x="480" y="118" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">Internal</text>
+      <text x="480" y="130" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">reflection</text>
+      <text x="98" y="162" font-family="'JetBrains Mono',monospace" font-size="9" fill="#7c3aed">V</text>
+      <text x="93" y="252" font-family="'JetBrains Mono',monospace" font-size="9" fill="#dc2626">R</text>
+
+      <!-- Arrow markers -->
+      <defs>
+        <marker id="arrowc" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#d97706"/></marker>
+      </defs>
+    </svg>
+    <div class="diag-sub">Water droplets refract, internally reflect, and refract again — dispersing sunlight into a rainbow. Rainbow always forms opposite to the Sun.</div>
+  </div>
+</section>
+
+<!-- SECTION 5: ATMOSPHERIC REFRACTION -->
+<section class="section" id="atmosphere">
+  <div class="section-header reveal">
+    <span class="section-num">05 · ATMOSPHERIC REFRACTION</span>
+    <h2 class="section-title">Atmospheric <span class="s">Refraction</span></h2>
+    <div class="divider" style="background:var(--sky);"></div>
+  </div>
+
+  <div class="highlight sky-hl reveal">
+    <p>💡 <strong>Atmospheric Refraction:</strong> Refraction of light by the earth's atmosphere. The atmosphere has layers of different densities — different refractive indices. Since physical conditions are not stationary, the apparent position of objects fluctuates.</p>
+  </div>
+
+  <div class="card-grid reveal" style="margin-top:1.5rem;">
+    <div class="card card-sky">
+      <div class="card-icon">✨</div>
+      <h3 style="color:var(--sky)">Twinkling of Stars</h3>
+      <p>Starlight undergoes <strong>continuous refraction</strong> as it passes through the atmosphere of changing refractive index. The apparent position of the star keeps <strong>fluctuating</strong> — the amount of light entering the eye flickers. Hence stars twinkle.</p>
+      <p style="margin-top:.5rem;font-size:.85rem;color:var(--text3)">Stars are very distant → point-sized sources → small variations in light path appear large.</p>
+    </div>
+    <div class="card card-coral">
+      <div class="card-icon">🪐</div>
+      <h3 style="color:var(--coral)">Planets Don't Twinkle</h3>
+      <p>Planets are much closer to earth — seen as <strong>extended sources</strong>. Total variation from all individual point-sized sources <strong>averages out to zero</strong> — nullifying the twinkling effect.</p>
+    </div>
+    <div class="card card-amber">
+      <div class="card-icon">🌅</div>
+      <h3 style="color:var(--amber)">Advance Sunrise &amp; Delayed Sunset</h3>
+      <p>The Sun is visible about <strong>2 minutes before actual sunrise</strong> and about <strong>2 minutes after actual sunset</strong> due to atmospheric refraction. The apparent flattening of the Sun's disc at sunrise/sunset is also due to this.</p>
+    </div>
+  </div>
+
+  <!-- Figure 10.9 — Atmospheric refraction star -->
+  <div class="two-col reveal" style="margin-top:1.5rem;">
+    <div class="diag-wrap">
+      <div class="diag-title">FIGURE 10.9 — APPARENT STAR POSITION</div>
+      <svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;display:block;margin:0 auto;">
+        <!-- Atmosphere layers (increasing density downward) -->
+        <rect x="0" y="0" width="320" height="280" fill="#f0f9ff" rx="6"/>
+        <rect x="0" y="220" width="320" height="60" fill="#bae6fd" opacity=".4"/>
+        <rect x="0" y="200" width="320" height="30" fill="#7dd3fc" opacity=".2"/>
+        <text x="220" y="240" font-family="'JetBrains Mono',monospace" font-size="9" fill="#0369a1">Atmosphere</text>
+        <!-- Refractive index arrow -->
+        <text x="8" y="115" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">Refractive</text>
+        <text x="8" y="127" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">index</text>
+        <text x="8" y="139" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">increasing</text>
+        <line x1="25" y1="145" x2="25" y2="220" stroke="#374151" stroke-width="1.5" marker-end="url(#arrowd)"/>
+        <!-- True star position -->
+        <text x="140" y="25" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">Star ✦</text>
+        <text x="185" y="25" font-family="'JetBrains Mono',monospace" font-size="9" fill="#6b7280">Apparent</text>
+        <text x="178" y="36" font-family="'JetBrains Mono',monospace" font-size="9" fill="#6b7280">star position ✦</text>
+        <!-- Actual ray path (curved due to refraction) -->
+        <path d="M155,30 Q170,80 190,130 Q205,170 215,220" fill="none" stroke="#374151" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <text x="175" y="70" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">Ray path</text>
+        <!-- Observer -->
+        <ellipse cx="215" cy="240" rx="14" ry="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+        <circle cx="219" cy="240" r="4" fill="#374151"/>
+        <text x="198" y="260" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">Observer</text>
+        <!-- Apparent direction (straight back) -->
+        <line x1="215" y1="220" x2="190" y2="35" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <defs>
+          <marker id="arrowd" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#374151"/></marker>
+        </defs>
+      </svg>
+      <div class="diag-sub">Atmosphere bends starlight — star appears slightly higher than actual position</div>
+    </div>
+
+    <!-- Figure 10.10 — Sunrise/Sunset -->
+    <div class="diag-wrap">
+      <div class="diag-title">FIGURE 10.10 — ADVANCE SUNRISE / DELAYED SUNSET</div>
+      <svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;display:block;margin:0 auto;">
+        <!-- Sky gradient -->
+        <rect x="0" y="0" width="320" height="280" fill="#fff7ed" rx="6"/>
+        <!-- Earth -->
+        <circle cx="160" cy="310" r="140" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+        <!-- Atmosphere arc -->
+        <path d="M20,180 Q160,-20 300,180" fill="rgba(186,230,253,.3)" stroke="#7dd3fc" stroke-width="1.5"/>
+        <text x="220" y="155" font-family="'JetBrains Mono',monospace" font-size="9" fill="#0369a1">Atmosphere</text>
+        <!-- Horizon line -->
+        <line x1="0" y1="195" x2="320" y2="195" stroke="#d1d5db" stroke-width="1" stroke-dasharray="5,3"/>
+        <text x="230" y="192" font-family="'JetBrains Mono',monospace" font-size="9" fill="#6b7280">Horizon</text>
+        <!-- Actual Sun position (below horizon) -->
+        <circle cx="260" cy="212" r="16" fill="#fbbf24" opacity=".5"/>
+        <text x="240" y="236" font-family="'JetBrains Mono',monospace" font-size="8" fill="#d97706">Actual Sun</text>
+        <!-- Apparent Sun position (above horizon) -->
+        <circle cx="248" cy="176" r="16" fill="#fbbf24"/>
+        <text x="222" y="168" font-family="'JetBrains Mono',monospace" font-size="8" fill="#ea580c">Apparent</text>
+        <text x="228" y="158" font-family="'JetBrains Mono',monospace" font-size="8" fill="#ea580c">position</text>
+        <!-- Refracted ray path -->
+        <path d="M260,212 Q258,198 248,176" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <!-- Observer -->
+        <ellipse cx="55" cy="220" rx="14" ry="9" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+        <circle cx="59" cy="220" r="4" fill="#374151"/>
+        <text x="36" y="240" font-family="'JetBrains Mono',monospace" font-size="9" fill="#374151">Observer</text>
+        <!-- Earth label -->
+        <text x="115" y="270" font-family="'JetBrains Mono',monospace" font-size="10" fill="#059669">Earth</text>
+      </svg>
+      <div class="diag-sub">Sun appears above horizon before actual sunrise due to atmospheric refraction</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: SCATTERING OF LIGHT -->
+<section class="section" id="scattering">
+  <div class="section-header reveal">
+    <span class="section-num">06 · SCATTERING OF LIGHT</span>
+    <h2 class="section-title">Scattering of Light &amp; <span class="c">Tyndall Effect</span></h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="two-col reveal">
+    <div class="full-card" style="border-top:4px solid var(--coral);">
+      <h3 style="color:var(--coral)">⚡ Tyndall Effect</h3>
+      <p style="color:var(--text2);margin-bottom:1rem;font-size:.9rem;">When a beam of light strikes fine particles in a heterogeneous medium (smoke, dust, water droplets), the path of the beam becomes visible. This is the <strong>Tyndall Effect</strong>.</p>
+      <div class="highlight">
+        <p>🔦 <strong>Examples:</strong> A fine beam of sunlight entering a smoke-filled room through a small hole. Sunlight through a canopy of a dense forest (water droplets in mist scatter light).</p>
+      </div>
+      <div class="highlight" style="margin-top:.5rem;">
+        <p>📏 <strong>Colour depends on particle size:</strong> Very fine particles scatter mainly <strong>blue light</strong> (shorter wavelengths). Larger particles scatter light of <strong>longer wavelengths</strong>. If particles are large enough, scattered light may appear <strong>white</strong>.</p>
+      </div>
+    </div>
+    <div class="full-card" style="border-top:4px solid var(--sky);">
+      <h3 style="color:var(--sky)">🌤️ Why is the Sky Blue?</h3>
+      <p style="color:var(--text2);margin-bottom:1rem;font-size:.9rem;">Molecules of air and fine particles in the atmosphere are smaller than the wavelength of visible light. They scatter <strong>shorter wavelengths (blue) more strongly</strong> than longer wavelengths (red).</p>
+      <div class="step"><div class="step-n sky">1</div><div class="step-body"><strong>Blue light scattered strongly</strong><p>Fine particles scatter blue (shorter wavelength) more strongly. Scattered blue light enters our eyes → sky appears blue.</p></div></div>
+      <div class="step"><div class="step-n sky">2</div><div class="step-body"><strong>No atmosphere → Dark sky</strong><p>If the earth had no atmosphere, there would be no scattering → sky would appear dark. This is why the sky appears dark to astronauts at very high altitudes.</p></div></div>
+      <div class="step"><div class="step-n amber">3</div><div class="step-body"><strong>Red — Danger signal colour</strong><p>Red light is least scattered by fog or smoke → can be seen at a distance in the same colour. Hence red is used for danger signals.</p></div></div>
+      <div class="step"><div class="step-n amber">4</div><div class="step-body"><strong>Reddening of Sun at sunrise/sunset</strong><p>At sunrise/sunset, sunlight travels through a greater thickness of atmosphere. Blue light is scattered away, leaving predominantly red/orange → Sun appears reddish.</p></div></div>
+    </div>
+  </div>
+
+  <!-- Summary Table -->
+  <div class="full-card reveal" style="margin-top:1.5rem;">
+    <h3 style="margin-bottom:1rem;font-family:var(--font-head);">📋 Optical Phenomena Summary</h3>
+    <table class="sum-table">
+      <thead><tr><th>Phenomenon</th><th>Cause</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Twinkling of stars</td><td>Atmospheric refraction of starlight (fluctuating refractive index)</td><td>Stars twinkle at night</td></tr>
+        <tr><td>Planets don't twinkle</td><td>Extended sources — variations average out</td><td>Jupiter, Mars appear steady</td></tr>
+        <tr><td>Advance sunrise</td><td>Atmospheric refraction bends sunlight</td><td>Sun visible 2 min before actual rise</td></tr>
+        <tr><td>Blue colour of sky</td><td>Scattering — blue (shorter λ) scattered most</td><td>Clear sky appears blue</td></tr>
+        <tr><td>Red/orange sunrise/sunset</td><td>Blue scattered away; red travels longer path</td><td>Sun appears red/orange at horizon</td></tr>
+        <tr><td>Rainbow</td><td>Dispersion by water droplets (refraction + internal reflection)</td><td>After rain shower</td></tr>
+        <tr><td>Tyndall Effect</td><td>Scattering by colloidal particles</td><td>Beam visible in dusty/smoky room</td></tr>
+        <tr><td>Red danger signals</td><td>Red least scattered by fog/smoke</td><td>Traffic signals, railways</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION 7: IMPORTANT KEYWORDS -->
+<section class="section section-alt" id="keywords">
+  <div class="section-header reveal">
+    <span class="section-num">07 · IMPORTANT KEYWORDS</span>
+    <h2 class="section-title">Keywords &amp; <span class="s">Definitions</span> <small style="font-size:.6em;color:var(--text3)">(as per NCERT)</small></h2>
+    <div class="divider" style="background:var(--sky);"></div>
+  </div>
+
+  <div class="full-card reveal">
+    <table class="kw-table">
+      <thead><tr><th>KEYWORD</th><th>NCERT DEFINITION</th></tr></thead>
+      <tbody>
+        <tr><td>Accommodation</td><td>The ability of the eye lens to adjust its focal length to focus objects at different distances on the retina.</td></tr>
+        <tr><td>Near Point</td><td>The minimum distance at which objects can be seen most distinctly without strain. Also called least distance of distinct vision. For a normal young adult: 25 cm.</td></tr>
+        <tr><td>Far Point</td><td>The farthest point up to which the eye can see objects clearly. It is infinity for a normal eye.</td></tr>
+        <tr><td>Myopia</td><td>Near-sightedness. A defect where distant objects cannot be seen clearly because their image is formed in front of the retina. Corrected by a concave lens.</td></tr>
+        <tr><td>Hypermetropia</td><td>Far-sightedness. A defect where nearby objects cannot be seen clearly because their image is formed behind the retina. Corrected by a convex lens.</td></tr>
+        <tr><td>Presbyopia</td><td>A defect of vision where the power of accommodation decreases with ageing due to weakening of ciliary muscles and diminishing flexibility of eye lens.</td></tr>
+        <tr><td>Cataract</td><td>A condition where the crystalline lens of the eye becomes milky and cloudy at old age, causing partial or complete loss of vision.</td></tr>
+        <tr><td>Bi-focal Lens</td><td>A lens used to correct both myopia and hypermetropia. Upper portion is concave (distant vision), lower portion is convex (near vision).</td></tr>
+        <tr><td>Dispersion</td><td>The splitting of white light into its component colours (VIBGYOR) when it passes through a prism. Different colours bend at different angles.</td></tr>
+        <tr><td>Spectrum</td><td>The band of coloured components of a light beam — Violet, Indigo, Blue, Green, Yellow, Orange, Red (VIBGYOR).</td></tr>
+        <tr><td>Angle of Deviation (∠D)</td><td>The angle between the emergent ray and the direction of the incident ray when light passes through a prism.</td></tr>
+        <tr><td>Angle of Prism (∠A)</td><td>The angle between the two lateral refracting faces of a glass prism.</td></tr>
+        <tr><td>Atmospheric Refraction</td><td>Refraction of light by the earth's atmosphere. Responsible for twinkling of stars, advance sunrise, and delayed sunset.</td></tr>
+        <tr><td>Twinkling of Stars</td><td>The flickering appearance of stars caused by atmospheric refraction as starlight passes through layers of different refractive index.</td></tr>
+        <tr><td>Tyndall Effect</td><td>The scattering of light by colloidal particles, making the path of the light beam visible. Named after John Tyndall.</td></tr>
+        <tr><td>Scattering of Light</td><td>The phenomenon where light interacts with fine particles and is redirected in various directions. Blue light is scattered more strongly by fine atmospheric particles.</td></tr>
+        <tr><td>VIBGYOR</td><td>Acronym for the seven colours of the visible spectrum: Violet, Indigo, Blue, Green, Yellow, Orange, Red — in order from most to least deviated by a prism.</td></tr>
+        <tr><td>Retina</td><td>A delicate light-sensitive membrane at the back of the eyeball where the eye lens forms an inverted real image of the object.</td></tr>
+        <tr><td>Iris</td><td>A dark muscular diaphragm behind the cornea that controls the size of the pupil, regulating the amount of light entering the eye.</td></tr>
+        <tr><td>Pupil</td><td>The opening in the centre of the iris that regulates and controls the amount of light entering the eye.</td></tr>
+        <tr><td>Ciliary Muscles</td><td>Muscles attached to the crystalline lens that change its curvature (and hence focal length) to enable accommodation.</td></tr>
+        <tr><td>Cornea</td><td>A thin transparent membrane forming the transparent bulge on the front surface of the eyeball. Site of most refraction of entering light.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- HEIGHT SPACER -->
+<div style="height:3rem;"></div>
+
+<!-- EXERCISES SECTION -->
+<section class="section" id="exercises" style="background:linear-gradient(180deg,var(--bg2),var(--bg));">
+  <div class="section-header reveal">
+    <span class="section-num">08 · NCERT QUESTIONS</span>
+    <h2 class="section-title">In-Text Questions &amp; <span class="c">Exercises</span></h2>
+    <div class="divider"></div>
+  </div>
+  <p style="color:var(--text2);margin-bottom:2rem;font-size:.92rem;">All questions as per NCERT Class 10 Science — Chapter 10: The Human Eye and the Colourful World (Reprint 2026-27). Click <strong>Show Answer</strong> to reveal. Click MCQ options to check your answer.</p>
+
+  <!-- IN-TEXT Q SET 1 — Page 164 -->
+  <div class="intext-divider reveal">
+    <div class="id-icon">👁️</div>
+    <div><h3>In-Text Questions — Section 10.1 &amp; 10.2 (Human Eye &amp; Defects)</h3><p>Page 164</p></div>
+  </div>
+  <div class="intext-block reveal">
+    <div class="intext-header">
+      <span class="intext-badge ib-coral">IN-TEXT · PAGE 164</span>
+      <span class="intext-title">Power of Accommodation &amp; Defects of Vision</span>
+    </div>
+    <ol class="exercise-list">
+      <li>
+        <div class="ex-text">
+          What is meant by power of accommodation of the eye?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              The <strong>power of accommodation</strong> is the ability of the eye lens to adjust its focal length to focus objects at different distances clearly on the retina.<br><br>
+              • When looking at <strong>distant objects</strong>: ciliary muscles relax → lens becomes thin → focal length increases.<br>
+              • When looking at <strong>nearby objects</strong>: ciliary muscles contract → lens becomes thick → focal length decreases.<br><br>
+              This adjustment allows us to see both near and distant objects clearly.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          A person with a myopic eye cannot see objects beyond 1.2 m distinctly. What should be the type of the corrective lens used to restore proper vision?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              The person should use a <strong>concave lens (diverging lens)</strong> of suitable power.<br><br>
+              In myopia, the image of distant objects is formed in front of the retina. A concave lens diverges the incoming rays so that the image falls exactly on the retina.<br><br>
+              The focal length required: The far point is 1.2 m, so the concave lens must form a virtual image of an object at infinity at 1.2 m.<br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--coral-d);">P = 1/f = 1/(−1.2) ≈ −0.83 D</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          What is the far point and near point of the human eye with normal vision?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              For a normal eye:<br>
+              • <strong>Near Point</strong> = <strong>25 cm</strong> (the least distance of distinct vision — closest point at which objects can be seen clearly without strain).<br>
+              • <strong>Far Point</strong> = <strong>Infinity</strong> (the farthest point up to which the eye can see objects clearly).<br><br>
+              A normal eye can see objects clearly at distances between <strong>25 cm and infinity</strong>.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="ex-text">
+          A student has difficulty reading the blackboard while sitting in the last row. What could be the defect the child is suffering from? How can it be corrected?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              The child is suffering from <strong>Myopia (near-sightedness)</strong>.<br><br>
+              <strong>Cause:</strong> The image of distant objects (the blackboard) is being formed in front of the retina instead of on it. This may be due to (i) excessive curvature of the eye lens, or (ii) elongation of the eyeball.<br><br>
+              <strong>Correction:</strong> By using a <strong>concave lens (diverging lens)</strong> of appropriate power. The concave lens diverges the rays from distant objects so that the image falls exactly on the retina.
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- END CHAPTER EXERCISES -->
+  <div class="intext-divider id-end reveal">
+    <div class="id-icon">📝</div>
+    <div><h3>End Chapter Exercises</h3><p>Page 170 · NCERT Class 10 Science</p></div>
+  </div>
+  <div class="full-card reveal">
+    <p style="font-size:.85rem;color:var(--text3);margin-bottom:.4rem;font-family:var(--font-mono);">MCQs — CLICK AN OPTION TO CHECK YOUR ANSWER</p>
+    <p style="font-size:.82rem;color:var(--text3);margin-bottom:1.4rem;font-family:var(--font-mono);">LONG ANSWERS — CLICK "SHOW ANSWER" TO REVEAL</p>
+    <ol class="exercise-list">
+
+      <!-- Q1 MCQ -->
+      <li>
+        <div class="ex-text">
+          The human eye can focus on objects at different distances by adjusting the focal length of the eye lens. This is due to
+          <div class="ex-options">
+            <div class="ex-opt" data-correct="false">(a) presbyopia</div>
+            <div class="ex-opt" data-correct="true">(b) accommodation</div>
+            <div class="ex-opt" data-correct="false">(c) near-sightedness</div>
+            <div class="ex-opt" data-correct="false">(d) far-sightedness</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q2 MCQ -->
+      <li>
+        <div class="ex-text">
+          The human eye forms the image of an object at its
+          <div class="ex-options">
+            <div class="ex-opt" data-correct="false">(a) cornea</div>
+            <div class="ex-opt" data-correct="false">(b) iris</div>
+            <div class="ex-opt" data-correct="false">(c) pupil</div>
+            <div class="ex-opt" data-correct="true">(d) retina</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q3 MCQ -->
+      <li>
+        <div class="ex-text">
+          The least distance of distinct vision for a young adult with normal vision is about
+          <div class="ex-options">
+            <div class="ex-opt" data-correct="false">(a) 25 m</div>
+            <div class="ex-opt" data-correct="false">(b) 2.5 cm</div>
+            <div class="ex-opt" data-correct="true">(c) 25 cm</div>
+            <div class="ex-opt" data-correct="false">(d) 2.5 m</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q4 MCQ -->
+      <li>
+        <div class="ex-text">
+          The change in focal length of an eye lens is caused by the action of the
+          <div class="ex-options">
+            <div class="ex-opt" data-correct="false">(a) pupil</div>
+            <div class="ex-opt" data-correct="false">(b) retina</div>
+            <div class="ex-opt" data-correct="true">(c) ciliary muscles</div>
+            <div class="ex-opt" data-correct="false">(d) iris</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q5 Long -->
+      <li>
+        <div class="ex-text">
+          A person needs a lens of power −5.5 dioptres for correcting his distant vision. For correcting his near vision he needs a lens of power +1.5 dioptre. What is the focal length of the lens required for correcting (i) distant vision, and (ii) near vision?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              Using <span style="font-family:var(--font-mono);">f = 1/P</span> (where P is power in dioptres and f is focal length in metres):<br><br>
+              <strong>(i) Distant vision:</strong><br>
+              P = −5.5 D<br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--coral-d);">f = 1/P = 1/(−5.5) = −0.182 m ≈ −18.2 cm</span><br>
+              The lens is <strong>concave</strong> (negative focal length).<br><br>
+              <strong>(ii) Near vision:</strong><br>
+              P = +1.5 D<br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--coral-d);">f = 1/P = 1/(+1.5) = +0.667 m ≈ +66.7 cm</span><br>
+              The lens is <strong>convex</strong> (positive focal length).
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q6 Long -->
+      <li>
+        <div class="ex-text">
+          The far point of a myopic person is 80 cm in front of the eye. What is the nature and power of the lens required to correct the problem?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              The far point is 80 cm = 0.80 m. The corrective lens must form a virtual image of an object at <strong>infinity</strong> at the far point (80 cm in front of the eye).<br><br>
+              Using lens formula with: u = ∞, v = −80 cm = −0.80 m (virtual image on same side as object):<br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--coral-d);">1/f = 1/v − 1/u = 1/(−0.80) − 1/∞ = −1.25 D</span><br><br>
+              <strong>Nature:</strong> Concave (diverging) lens<br>
+              <strong>Power:</strong> P = −1.25 D
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q7 Long -->
+      <li>
+        <div class="ex-text">
+          Make a diagram to show how hypermetropia is corrected. The near point of a hypermetropic eye is 1 m. What is the power of the lens required to correct this defect? Assume that the near point of the normal eye is 25 cm.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              A convex lens is used. The lens must form a virtual image of an object at the normal near point (25 cm) at the hypermetropic near point (1 m = 100 cm).<br><br>
+              Object distance: u = −25 cm = −0.25 m<br>
+              Image distance: v = −1 m (virtual image on same side as object, at hypermetropic near point)<br><br>
+              Using lens formula:<br>
+              <span style="font-family:var(--font-mono);font-size:.85rem;color:var(--coral-d);">1/f = 1/v − 1/u = 1/(−1) − 1/(−0.25) = −1 + 4 = +3 D</span><br><br>
+              <strong>Power required:</strong> P = +3 D (convex lens)
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q8 Long -->
+      <li>
+        <div class="ex-text">
+          Why is a normal eye not able to see clearly the objects placed closer than 25 cm?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              The focal length of the eye lens cannot be decreased below a certain minimum limit. When an object is placed closer than 25 cm, the ciliary muscles cannot increase the curvature of the lens beyond the maximum possible — so the lens cannot adjust its focal length enough to form a sharp image on the retina.<br><br>
+              The image would form <strong>behind the retina</strong>, causing blurring and eye strain. <strong>25 cm</strong> is therefore the least distance of distinct vision — the nearest point at which the eye can focus without strain.
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q9 Long -->
+      <li>
+        <div class="ex-text">
+          What happens to the image distance in the eye when we increase the distance of an object from the eye?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              When we increase the distance of an object from the eye, the <strong>image distance remains essentially constant</strong> at the retinal distance (approximately 2.3 cm for the normal eye).<br><br>
+              To maintain a sharp image on the retina as the object moves farther, the eye adjusts by <strong>decreasing the curvature of the lens</strong> (ciliary muscles relax) — making the lens thinner and <strong>increasing its focal length</strong>. This keeps the image precisely on the retina.
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q10 Long -->
+      <li>
+        <div class="ex-text">
+          Why do stars twinkle?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              Stars twinkle because of <strong>atmospheric refraction of starlight</strong>.<br><br>
+              When starlight enters the earth's atmosphere, it undergoes continuous refraction through layers of air with gradually changing refractive index. Since the physical conditions of the atmosphere are not stationary, the apparent position of the star keeps changing slightly.<br><br>
+              Since stars are very distant and approximate <strong>point-sized sources</strong>, even slight changes in the path of light cause:<br>
+              • The apparent position to fluctuate.<br>
+              • The amount of starlight entering the eye to flicker.<br>
+              → The star sometimes appears brighter and sometimes fainter — the <strong>twinkling effect</strong>.
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q11 Long -->
+      <li>
+        <div class="ex-text">
+          Explain why the planets do not twinkle.
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              Planets do not twinkle because they are much <strong>closer to the earth</strong> than stars, and are therefore seen as <strong>extended sources</strong> (having a disc-like appearance) rather than point sources.<br><br>
+              If we consider a planet as a collection of a large number of point-sized sources of light, the total variation in the amount of light entering our eye from all the individual point-sized sources will <strong>average out to zero</strong>, thereby nullifying the twinkling effect.<br><br>
+              Stars, being extremely distant, appear as point sources, so even tiny fluctuations become significant.
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Q12 Long -->
+      <li>
+        <div class="ex-text">
+          Why does the sky appear dark instead of blue to an astronaut?
+          <div class="ans-wrap">
+            <button class="show-ans-btn" onclick="toggleAns(this)">Show Answer ▼</button>
+            <div class="ans-box" hidden>
+              The blue colour of the sky is due to the <strong>scattering of sunlight by fine particles in the earth's atmosphere</strong>. Blue light (shorter wavelength) is scattered most strongly by these particles and reaches our eyes, making the sky appear blue.<br><br>
+              An astronaut at very high altitudes is above most of the atmosphere. <strong>Scattering is not prominent</strong> at such heights because there are very few air molecules or fine particles to scatter the light. Without scattering, the sky appears <strong>dark (black)</strong>.<br><br>
+              There is no scattered blue light to reach the astronaut's eyes.
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+<!-- Script[0]: MCQ + toggleAns + scroll reveal -->
+<script>
+document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+
+document.querySelectorAll('.ex-opt').forEach(opt => {
+  opt.addEventListener('click', function() {
+    const parent = this.closest('.ex-options');
+    if (parent.dataset.answered) return;
+    parent.dataset.answered = '1';
+    const isCorrect = this.dataset.correct === 'true';
+    this.classList.add(isCorrect ? 'correct' : 'wrong');
+    if (!isCorrect) {
+      parent.querySelectorAll('.ex-opt').forEach(o => {
+        if (o.dataset.correct === 'true') o.classList.add('correct');
+      });
+    }
+    parent.querySelectorAll('.ex-opt').forEach(o => o.style.cursor = 'default');
+  });
+});
+
+function toggleAns(btn) {
+  const box = btn.nextElementSibling;
+  if (box.hidden) {
+    box.hidden = false;
+    btn.textContent = 'Hide Answer ▲';
+    btn.classList.add('open');
+  } else {
+    box.hidden = true;
+    btn.textContent = 'Show Answer ▼';
+    btn.classList.remove('open');
+  }
+}
+</script>
+
+<!-- Script[1]: Canvas animation — 6 Chapter 10 physics elements -->
+<script>
+(function() {
+  const canvas = document.getElementById('ch10Canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function rand(a, b) { return a + Math.random() * (b - a); }
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  const coral  = ['#ea580c','#f97316','#fb923c','#fed7aa'];
+  const amber  = ['#d97706','#f59e0b','#fbbf24','#fde68a'];
+  const violet = ['#7c3aed','#8b5cf6','#a78bfa','#c4b5fd'];
+  const sky    = ['#0369a1','#0ea5e9','#38bdf8','#7dd3fc'];
+
+  const items = [];
+
+  // 1. Human eye outlines — ellipse with pupil (7)
+  for (let i = 0; i < 7; i++) {
+    items.push({ type: 'eye', x: rand(60, window.innerWidth - 60), y: rand(60, window.innerHeight - 60),
+      vx: rand(-.18, .18), vy: rand(-.15, .15),
+      rot: rand(0, Math.PI * 2), vrot: rand(.002, .004),
+      color: pick(coral), size: rand(18, 30), opacity: rand(.14, .24),
+      blinkPhase: rand(0, Math.PI * 2), blinkSpeed: rand(.02, .04) });
+  }
+
+  // 2. Prism outlines — triangle with dispersed colour lines (6)
+  for (let i = 0; i < 6; i++) {
+    items.push({ type: 'prism', x: rand(60, window.innerWidth - 60), y: rand(60, window.innerHeight - 60),
+      vx: rand(-.16, .16), vy: rand(-.14, .14),
+      rot: rand(0, Math.PI * 2), vrot: rand(.002, .005),
+      size: rand(18, 28), opacity: rand(.14, .24) });
+  }
+
+  // 3. Scattering particles — beam hits tiny dots, blue rays scatter outward (Tyndall Effect) (6)
+  for (let i = 0; i < 6; i++) {
+    items.push({ type: 'scatter', x: rand(60, window.innerWidth - 60), y: rand(60, window.innerHeight - 60),
+      vx: rand(-.16, .16), vy: rand(-.14, .14),
+      rot: rand(0, Math.PI * 2), vrot: rand(.001, .003),
+      size: rand(18, 30), opacity: rand(.14, .24),
+      phase: rand(0, Math.PI * 2), phaseSpeed: rand(.03, .06) });
+  }
+
+  // 4. VIBGYOR spectrum arcs — concentric arc with 7 colour bands (5)
+  for (let i = 0; i < 5; i++) {
+    items.push({ type: 'rainbow', x: rand(60, window.innerWidth - 60), y: rand(60, window.innerHeight - 60),
+      vx: rand(-.15, .15), vy: rand(-.12, .12),
+      rot: rand(0, Math.PI * 2), vrot: rand(.001, .003),
+      size: rand(20, 35), opacity: rand(.13, .22) });
+  }
+
+  // 5. Twinkling star — asterisk with flickering points (7)
+  for (let i = 0; i < 7; i++) {
+    items.push({ type: 'star', x: rand(60, window.innerWidth - 60), y: rand(60, window.innerHeight - 60),
+      vx: rand(-.22, .22), vy: rand(-.2, .2),
+      color: pick([...amber, ...coral]),
+      size: rand(8, 18), opacity: rand(.15, .28),
+      phase: rand(0, Math.PI * 2), phaseSpeed: rand(.05, .12) });
+  }
+
+  // 6. Sun near horizon — flattened ellipse with warm glow (atmospheric refraction) (5)
+  for (let i = 0; i < 5; i++) {
+    const r = rand(14, 26);
+    items.push({ type: 'sun', x: rand(60, window.innerWidth - 60), y: rand(60, window.innerHeight - 60),
+      vx: rand(-.12, .12), vy: rand(-.1, .1),
+      r, flatten: rand(0.55, 0.75),  // vertical squish — atmospheric flattening
+      opacity: rand(.13, .22),
+      phase: rand(0, Math.PI * 2), phaseSpeed: rand(.02, .04) });
+  }
+
+  // Draw functions
+  function drawEye(c, it) {
+    it.blinkPhase += it.blinkSpeed;
+    const squeeze = Math.max(0.15, Math.abs(Math.sin(it.blinkPhase)));
+    c.save(); c.translate(it.x, it.y); c.rotate(it.rot);
+    c.globalAlpha = it.opacity; c.strokeStyle = it.color; c.lineWidth = 2;
+    c.beginPath(); c.ellipse(0, 0, it.size, it.size * 0.55 * squeeze, 0, 0, Math.PI * 2); c.stroke();
+    c.globalAlpha = it.opacity * .15; c.fillStyle = it.color;
+    c.beginPath(); c.ellipse(0, 0, it.size, it.size * 0.55 * squeeze, 0, 0, Math.PI * 2); c.fill();
+    // Pupil
+    c.globalAlpha = it.opacity * .8; c.fillStyle = it.color;
+    c.beginPath(); c.arc(0, 0, it.size * .28 * squeeze, 0, Math.PI * 2); c.fill();
+    // Iris ring
+    c.globalAlpha = it.opacity * .5; c.strokeStyle = it.color; c.lineWidth = 1.2;
+    c.beginPath(); c.arc(0, 0, it.size * .45 * squeeze, 0, Math.PI * 2); c.stroke();
+    c.restore();
+  }
+
+  function drawPrism(c, it) {
+    c.save(); c.translate(it.x, it.y); c.rotate(it.rot);
+    const s = it.size;
+    // Triangle prism
+    c.globalAlpha = it.opacity; c.strokeStyle = '#7c3aed'; c.lineWidth = 2;
+    c.beginPath(); c.moveTo(0, -s); c.lineTo(-s * .87, s * .5); c.lineTo(s * .87, s * .5); c.closePath(); c.stroke();
+    c.globalAlpha = it.opacity * .12; c.fillStyle = '#7c3aed';
+    c.beginPath(); c.moveTo(0, -s); c.lineTo(-s * .87, s * .5); c.lineTo(s * .87, s * .5); c.closePath(); c.fill();
+    // Dispersed rays
+    const colours = ['#7c3aed','#2563eb','#16a34a','#ca8a04','#ea580c','#dc2626'];
+    colours.forEach((col, idx) => {
+      const spread = (idx - 2.5) * .12;
+      c.globalAlpha = it.opacity * .8; c.strokeStyle = col; c.lineWidth = 1.5;
+      c.beginPath(); c.moveTo(s * .87, s * .5); c.lineTo(s * 1.6 + idx * 3, s * .5 + (idx - 2.5) * 8); c.stroke();
+    });
+    c.restore();
+  }
+
+  function drawScatter(c, it) {
+    it.phase += it.phaseSpeed;
+    c.save(); c.translate(it.x, it.y); c.rotate(it.rot);
+    const s = it.size;
+    // Incident white beam (left to right)
+    c.globalAlpha = it.opacity * .5; c.strokeStyle = '#d1d5db'; c.lineWidth = 4;
+    c.beginPath(); c.moveTo(-s * 1.5, 0); c.lineTo(-s * .1, 0); c.stroke();
+    // Central scattering particle
+    c.globalAlpha = it.opacity; c.fillStyle = '#ea580c';
+    c.beginPath(); c.arc(0, 0, s * .18, 0, Math.PI * 2); c.fill();
+    // Scattered blue rays radiating outward in 6 directions (Tyndall)
+    const scatterAngles = [0, Math.PI / 3, (2 * Math.PI) / 3, Math.PI, (4 * Math.PI) / 3, (5 * Math.PI) / 3];
+    scatterAngles.forEach((angle, idx) => {
+      const len = s * (.55 + .15 * Math.sin(it.phase + idx));
+      const brightness = 0.6 + 0.4 * Math.sin(it.phase + idx * 1.1);
+      c.globalAlpha = it.opacity * brightness;
+      c.strokeStyle = idx % 2 === 0 ? '#2563eb' : '#7dd3fc';
+      c.lineWidth = 1.5;
+      c.beginPath();
+      c.moveTo(Math.cos(angle) * s * .22, Math.sin(angle) * s * .22);
+      c.lineTo(Math.cos(angle) * (s * .22 + len), Math.sin(angle) * (s * .22 + len));
+      c.stroke();
+      // Small dot at ray tip
+      c.globalAlpha = it.opacity * brightness * .7;
+      c.fillStyle = '#2563eb';
+      c.beginPath();
+      c.arc(Math.cos(angle) * (s * .22 + len), Math.sin(angle) * (s * .22 + len), 2, 0, Math.PI * 2);
+      c.fill();
+    });
+    // Transmitted beam (continuing right, less bright)
+    c.globalAlpha = it.opacity * .3; c.strokeStyle = '#d1d5db'; c.lineWidth = 3;
+    c.beginPath(); c.moveTo(s * .1, 0); c.lineTo(s * 1.5, 0); c.stroke();
+    c.restore();
+  }
+
+  function drawRainbow(c, it) {
+    c.save(); c.translate(it.x, it.y); c.rotate(it.rot);
+    const rainbowColors = ['#dc2626','#ea580c','#ca8a04','#16a34a','#2563eb','#4338ca','#7c3aed'];
+    rainbowColors.forEach((col, idx) => {
+      const r = it.size + idx * 4;
+      c.globalAlpha = it.opacity * (.9 - idx * .05);
+      c.strokeStyle = col; c.lineWidth = 2.5;
+      c.beginPath(); c.arc(0, 0, r, Math.PI, 0); c.stroke();
+    });
+    c.restore();
+  }
+
+  function drawStar(c, it) {
+    it.phase += it.phaseSpeed;
+    const twinkle = 0.5 + 0.5 * Math.sin(it.phase);
+    const r = it.size * (0.6 + 0.4 * twinkle);
+    c.save(); c.translate(it.x, it.y);
+    c.globalAlpha = it.opacity * twinkle;
+    // 4-pointed star
+    for (let i = 0; i < 4; i++) {
+      const angle = (i / 4) * Math.PI * 2;
+      c.strokeStyle = it.color; c.lineWidth = 1.5;
+      c.beginPath(); c.moveTo(-Math.cos(angle) * r * .25, -Math.sin(angle) * r * .25);
+      c.lineTo(Math.cos(angle) * r, Math.sin(angle) * r); c.stroke();
+    }
+    c.globalAlpha = it.opacity * twinkle * .9; c.fillStyle = it.color;
+    c.beginPath(); c.arc(0, 0, r * .22, 0, Math.PI * 2); c.fill();
+    // Glow
+    const grd = ctx.createRadialGradient(it.x, it.y, 0, it.x, it.y, r * 2.5);
+    grd.addColorStop(0, it.color + '55'); grd.addColorStop(1, it.color + '00');
+    c.globalAlpha = it.opacity * twinkle * .3;
+    c.fillStyle = grd; c.beginPath(); c.arc(0, 0, r * 2.5, 0, Math.PI * 2); c.fill();
+    c.restore();
+  }
+
+  function drawSun(c, it) {
+    it.phase += it.phaseSpeed;
+    const pulse = 1 + .06 * Math.sin(it.phase);
+    c.save(); c.translate(it.x, it.y);
+    const rx = it.r * pulse;
+    const ry = it.r * it.flatten * pulse; // flattened vertically — atmospheric effect
+    // Outer glow
+    const grd = ctx.createRadialGradient(0, 0, 0, 0, 0, rx * 2.2);
+    grd.addColorStop(0, 'rgba(251,191,36,0.35)');
+    grd.addColorStop(0.5, 'rgba(234,88,12,0.15)');
+    grd.addColorStop(1, 'rgba(234,88,12,0)');
+    c.globalAlpha = it.opacity;
+    c.fillStyle = grd;
+    c.beginPath(); c.ellipse(0, 0, rx * 2.2, ry * 2.2, 0, 0, Math.PI * 2); c.fill();
+    // Sun disc (warm orange-yellow gradient)
+    const sunGrd = ctx.createRadialGradient(-rx * .3, -ry * .3, 0, 0, 0, rx);
+    sunGrd.addColorStop(0, '#fde68a');
+    sunGrd.addColorStop(0.5, '#fbbf24');
+    sunGrd.addColorStop(1, '#ea580c');
+    c.globalAlpha = it.opacity * .9;
+    c.fillStyle = sunGrd;
+    c.beginPath(); c.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2); c.fill();
+    // Horizon line below sun (suggesting it's near the horizon)
+    c.globalAlpha = it.opacity * .4; c.strokeStyle = '#d97706'; c.lineWidth = 1;
+    c.beginPath(); c.moveTo(-rx * 2.5, ry * .8); c.lineTo(rx * 2.5, ry * .8); c.stroke();
+    c.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const W = canvas.width, H = canvas.height;
+    items.forEach(it => {
+      it.x += (it.vx || 0); it.y += (it.vy || 0);
+      if (it.rot !== undefined) it.rot += (it.vrot || 0);
+      if (it.x < -100) it.x = W + 100; if (it.x > W + 100) it.x = -100;
+      if (it.y < -80)  it.y = H + 80;  if (it.y > H + 80)  it.y = -80;
+      if      (it.type === 'eye')     drawEye(ctx, it);
+      else if (it.type === 'prism')   drawPrism(ctx, it);
+      else if (it.type === 'scatter')  drawScatter(ctx, it);
+      else if (it.type === 'rainbow') drawRainbow(ctx, it);
+      else if (it.type === 'star')    drawStar(ctx, it);
+      else if (it.type === 'sun')     drawSun(ctx, it);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>
